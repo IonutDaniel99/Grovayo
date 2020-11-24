@@ -219,6 +219,11 @@
                                 </x-jet-dropdown-link>
                             </form>
                             <div style="border-top: 1px solid #ddd;"></div>
+                            @IF($admin == 1)
+                            <x-jet-dropdown-link href="{{ route('Admin_Dashboard_Index') }}">
+                                {{ __('Admin') }}
+                            </x-jet-dropdown-link>
+                            @ENDIF
                         </div>
                     </div>
                 </nav>
