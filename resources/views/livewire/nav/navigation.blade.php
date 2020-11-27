@@ -3,13 +3,14 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-dark1 justify-content-sm-start" style="z-index:1">
-                    <a class="order-1 order-lg-0 ml-lg-0 ml-3 mr-auto" href="{{ route('Home') }}">
+                    <a class="order-1 order-lg-0 ml-lg-0 ml-3 mr-auto" href="{{ route('Redirects') }}">
                         <!-- <img src="images/logo.svg" alt=""> -->
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                     <button class="navbar-toggler align-self-start" type="button">
                         <i class="fas fa-bars"></i>
                     </button>
+                    @cannot("User")
                     <div class="collapse navbar-collapse d-flex flex-column flex-lg-row flex-xl-row justify-content-lg-end bg-dark1 p-3 p-lg-0 mt1-5 mt-lg-0 mobileMenu" id="navbarSupportedContent">
                         <ul class="navbar-nav align-self-stretch">
                             @if(Route::is('Home'))
@@ -178,6 +179,7 @@
                             </div>
                         </li>
                     </ul>
+                    @endcan
                     <div class="account order-1 dropdown">
                         <a href="#" class="account-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
                             <div class="user-dp">@if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -201,6 +203,7 @@
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
                             </div>
+                            @cannot("User")
 
                             <x-jet-dropdown-link href="{{ route('ProfileActivity') }}">
                                 {{ __('Profile') }}
@@ -209,6 +212,14 @@
                             <x-jet-dropdown-link href="{{ route('Settings_Personal_Info_Index') }}">
                                 {{ __('Settings') }}
                             </x-jet-dropdown-link>
+                            @endcan
+
+
+                            @can("Support|Moderator|Administrator|Owner")
+                            <x-jet-dropdown-link href="{{ route('Admin_Dashboard_Index') }}">
+                                {{ __('Admin') }}
+                            </x-jet-dropdown-link>
+                            @endcan
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

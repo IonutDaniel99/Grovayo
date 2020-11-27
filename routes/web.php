@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('redirects', 'App\Http\Responses\LoginResponse@toResponse');
+Route::get('redirects', 'App\Http\Responses\LoginResponse@toResponse')->name('Redirects');
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Home', 'App\Http\Controllers\HomeController@index')->name('Home');
 

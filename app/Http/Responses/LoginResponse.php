@@ -12,7 +12,8 @@ class LoginResponse extends Controller
     public function toResponse()
     {
 
-        if (Auth::user()->roles != "User") {
+
+        if (!Auth::user()->hasRole("User")) {
             return redirect(route('Admin_Dashboard_Index'));
         }
         return redirect(route('Home'));
