@@ -26,11 +26,8 @@ class CreateUsersTable extends Migration
             $table->string("background_image_url")->nullable()->default('storage/background-photos/default.jpg');
             $table->boolean('is_active')->default(true);
             $table->boolean('is_blocked')->default(false);
-            $table->boolean('is_admin')->default(false);
             $table->boolean('user_notification')->default(false);
             $table->boolean('user_ads')->default(false);
-            $table->enum('user_weather_degree', array('F', 'C', 'K'))->default('F');
-            $table->string('time_zone')->default('US/Hawaii');
             $table->string('user_secret_code')->nullable()->default('null');
             $table->timestamps();
             $table->softDeletes();

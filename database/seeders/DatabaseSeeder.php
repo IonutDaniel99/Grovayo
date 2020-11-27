@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             StateSeeder::class,
             CitiesSeeder::class,
-            PermissionAndRolesSeeder::class
+            PermissionAndRolesSeeder::class,
+            UsersCreateSeed::class
         ]);
     }
 }

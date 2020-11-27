@@ -36,6 +36,10 @@ class PermissionAndRolesSeeder extends Seeder
         Permission::create(['name' => 'Create Roles']);
 
         // create roles and assign existing permissions
+
+        Role::create(['name' => 'User']);
+
+        // Support Team
         $SupportTeam = Role::create(['name' => 'Support']);
         $SupportTeam->givePermissionTo('View Reports');
         $SupportTeam->givePermissionTo('Solve Reports');

@@ -31,7 +31,7 @@ class WeatherController extends Controller
     {
         #region TimeAndDate
         $Weather["time_zone"] =
-            DB::table('users')->where('id', Auth::id())->value("time_zone");;
+            DB::table('user_about')->where('id', Auth::id())->value("time_zone");;
         $Weather["day"] = Carbon::now()->timezone($Weather["time_zone"])->format('d');
         $Weather["month"] = Carbon::now()->timezone($Weather["time_zone"])->format('M');
         $Weather["year"] = Carbon::now()->timezone($Weather["time_zone"])->format('yy');
@@ -48,7 +48,7 @@ class WeatherController extends Controller
 
         #region PureWeather
         $weather_data = $this->weather_data;
-        $Weather["degreePreferences"] = DB::table('users')->where('id', Auth::id())->value('user_weather_degree');
+        $Weather["degreePreferences"] = DB::table('user_about')->where('id', Auth::id())->value('user_weather_degree');
         if ($Weather["degreePreferences"] === "F") {
             $Weather["temp"] = $weather_data["main"]["temp"];
             $Weather["min_temp"] = $weather_data["main"]["temp_min"];
@@ -105,7 +105,7 @@ class WeatherController extends Controller
         $Weather["sunset"] = date("H:i", $weather_data["sys"]["sunset"]);
         //return $weather_data;
         #endregion
-    
+
         return view('livewire.weather', compact('Weather'));
     }
 
@@ -130,7 +130,7 @@ class WeatherController extends Controller
         $r_degree = $request->degree;
         $r_timezone = $request->timezone;
 
-        DB::table('users')->where('id', Auth::id())->update(['user_weather_degree' => $r_degree, 'time_zone' => $r_timezone]);
+        DB::table('user_about')->where('id', Auth::id())->update(['user_weather_degree' => $r_degree, 'time_zone' => $r_timezone]);
 
         return redirect()->route('Weather');
     }

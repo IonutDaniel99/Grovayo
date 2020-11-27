@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UsersAbout extends Migration
+class CreateUsersAbout extends Migration
 {
     /**
      * Run the migrations.
@@ -17,6 +17,8 @@ class UsersAbout extends Migration
             $table->increments('id');
             $table->foreignId('user_id')->constrained()->references('id')->on('users')->onDelete('cascade');
             $table->string('live_in', 255)->nullable()->default('Actual Location');
+            $table->enum('user_weather_degree', array('F', 'C', 'K'))->default('F');
+            $table->string('time_zone')->default('US/Hawaii');
             $table->date('birthday')->format('Y-m-d')->nullable();
             $table->enum('gender', array('Male', 'Female', 'Unspecified', 'Other'));
             $table->string('status')->default('Not Specified');

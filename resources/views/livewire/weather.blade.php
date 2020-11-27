@@ -54,7 +54,7 @@
                                             <div class="form-group">
                                                 <label>Country (Time Zone)*</label>
                                                 <div class="select-bg">
-                                                    <select class="wide" name="timezone" style="display: none;">
+                                                    <select class="nice-select wide" name="timezone">
                                                         <option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option>
                                                         <option timeZoneId="3" gmtAdjustment="GMT-10:00" useDaylightTime="0" value="US/Hawaii">(GMT-10:00) Hawaii</option>
                                                         <option timeZoneId="4" gmtAdjustment="GMT-09:00" useDaylightTime="1" value="US/Alaska">(GMT-09:00) Alaska</option>
@@ -98,7 +98,7 @@
                                             <div class="form-group">
                                                 <label>Tempecture Unit*</label>
                                                 <div class="select-bg">
-                                                    <select class="wide" name="degree" style="display: none;">
+                                                    <select class="nice-select wide" name="degree">
                                                         <option value="F">F° (Farenheit)</option>
                                                         <option value="C">C° (Celsius)</option>
                                                         <option value="K">K° (Kelvin)</option>
@@ -148,7 +148,7 @@
                                                     <div class="widget-cf">{{$Weather["pressure"]}} mb</div>
                                                 </div>
                                             </div>
-                                            <div class="owl-item active" style="width: 145.714px; margin-right: 10px;">
+                                            <div class="owl-item active" style="border-left:2px solid gray;  width: 145.714px; margin-right: 10px;">
                                                 <div class="item">
                                                     <div class="widget-day">Sunrise</div>
                                                     <div class="widget-icon"><i class="fas fa-sun"></i></div>

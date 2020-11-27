@@ -72,6 +72,8 @@ class CreateNewUser implements CreatesNewUsers
             'employment_company',
         ]);
 
+        $user->assignRole('User');
+
         return $user;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Debug;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 
 class Debug extends Controller
@@ -20,8 +21,9 @@ class Debug extends Controller
         $all_users_with_all_direct_permissions = User::with('permissions')->get();
         $all_roles_in_database = Role::all()->pluck('name');
         $users_without_any_roles = User::doesntHave('roles')->get();
+        $all = Auth::user()->role;
 
-        return  [$all_users_with_all_their_roles, $all_users_with_all_direct_permissions, $all_roles_in_database, $users_without_any_roles];
+        return  [$all_users_with_all_their_roles, $all_users_with_all_direct_permissions, $all_roles_in_database, $users_without_any_roles, $all];
     }
 
     /**
