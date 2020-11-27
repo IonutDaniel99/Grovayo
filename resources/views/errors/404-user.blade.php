@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <div class="title-bar">
         <div class="container">
             <div class="row">
@@ -6,7 +6,8 @@
                     <ol class="title-bar-text">
                         <li class="breadcrumb-item"><a href="{{route('Home')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Error 404</li>
-                        <li class="breadcrumb-item" aria-current="page">Page not found!</li>
+                        <li class="breadcrumb-item" aria-current="page">User not found!</li>
+
                     </ol>
                 </div>
             </div>
@@ -25,7 +26,7 @@
             </div>
         </div>
     </div>
-    <footer class="fixed-bottom">
+    <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-12">
@@ -48,4 +49,4 @@
             </div>
         </div>
     </footer>
-</x-guest-layout>
+</x-app-layout>

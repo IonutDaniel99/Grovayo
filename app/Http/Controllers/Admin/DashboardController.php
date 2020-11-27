@@ -17,7 +17,7 @@ class DashboardController extends Controller
     public function index()
     {
         $user = User::all()->where('id', Auth::id())->first();
-        return $user;
+        return "admin";
     }
 
     /**

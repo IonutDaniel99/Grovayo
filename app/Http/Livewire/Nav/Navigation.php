@@ -10,10 +10,6 @@ class Navigation extends Component
 {
     public function render()
     {
-        $admin = User::where('id', Auth::id())->first();
-        if ($admin !== NULL)
-            return view('livewire.nav.navigation', ['admin' => $admin->is_admin]);
-        else
-            return view('livewire.nav.navigation');
+        return view('livewire.nav.navigation');
     }
 }

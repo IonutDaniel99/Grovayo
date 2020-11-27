@@ -21,7 +21,7 @@ class UserActivityController extends Controller
     {
         $data = Profile::where('username', $username)->first();
         if (!$data || $data === NULL) {
-            return view('errors.404');
+            return view('errors.404-user');
         }
         $profile['profile_name'] = $data->name;
         $profile['profile_photo_path'] = $data->profile_photo_path;

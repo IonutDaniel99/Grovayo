@@ -26,16 +26,18 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
     <script src="{{ asset('js/all.js') }}"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.nice-select.js"></script>
-    <script src="js/datepicker.min.js"></script>
-    <script src="js/datepicker.en.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/owl.carousel.js"></script>
-    <script src="js/custom1.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.nice-select.js') }}"></script>
+    <script src="{{ asset('js/datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/datepicker.en.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.js') }}"></script>
+    <script src="{{ asset('js/custom1.js') }}"></script>
 </head>
 
 <body>
+    {{\Auth::user()}}
+
     <div class="font-sans text-gray-900 antialiased">
         {{ $slot }}
     </div>

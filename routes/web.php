@@ -105,7 +105,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/Disable-Account', 'App\Ht
 
 // ############################ ADMIN ###############################
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/Admin/Dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->name("Admin_Dashboard_Index");
+Route::middleware(['auth:sanctum', 'verified', 'admin'])->get('/Admin', 'App\Http\Controllers\Admin\DashboardController@index')->name("Admin_Dashboard_Index");
 
 
 
