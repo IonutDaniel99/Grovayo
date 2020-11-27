@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_admin')->default(false);
             $table->boolean('user_notification')->default(false);
             $table->boolean('user_ads')->default(false);
-            $table->enum('user_weather_degree', array('F', 'C', 'K'));
+            $table->enum('user_weather_degree', array('F', 'C', 'K'))->default('F');
             $table->string('time_zone')->default('US/Hawaii');
             $table->string('user_secret_code')->nullable()->default('null');
             $table->timestamps();

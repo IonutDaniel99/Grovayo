@@ -105,7 +105,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/Disable-Account', 'App\Ht
 
 // ############################ ADMIN ###############################
 
-Route::middleware(['auth:sanctum', 'verified', 'admin'])->get('/Admin', 'App\Http\Controllers\Admin\DashboardController@index')->name("Admin_Dashboard_Index");
+Route::middleware(['auth:sanctum', 'verified', 'role:Support|Moderator|Administrator|Owner'])->get('/Admin', 'App\Http\Controllers\Admin\DashboardController@index')->name("Admin_Dashboard_Index");
 
 
 
@@ -136,3 +136,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
     return redirect('/Home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+
+Route::get('/Debug', 'App\Http\Controllers\Debug\Debug@index');
