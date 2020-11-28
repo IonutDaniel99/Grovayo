@@ -10,21 +10,6 @@
                     <div class="col-lg-3 col-md-5">
                         <div class="user-data full-width">
                             <div class="categories-left-heading">
-                                <h3>Social Accounts</h3>
-                            </div>
-                            <div class="categories-items">
-                                <a class="category-social-item" href="#"><i class="fas fa-globe" style="color:#51a5fb;"></i>www.example.com</a>
-                                <a class="category-social-item" href="#"><i class="fab fa-facebook-square" style="color:#3b5998;"></i>http://www.facebook.com</a>
-                                <a class="category-social-item" href="#"><i class="fab fa-twitter" style="color:#1da1f2;"></i>http://www.twitter.com</a>
-                                <a class="category-social-item" href="#"><i class="fab fa-google-plus" style="color:#dd4b39;"></i>http://www.googleplus.com</a>
-                                <a class="category-social-item" href="#"><i class="fab fa-instagram" style="color:#405de6;"></i>http://www.instagram.com</a>
-                                <a class="category-social-item" href="#"><i class="fab fa-pinterest" style="color:#bd081c;"></i>http://www.pinterest.com</a>
-                                <a class="category-social-item" href="#"><i class="fab fa-linkedin" style="color:#0077b5;"></i>http://www.linkedin.com</a>
-                                <a class="category-social-item" href="#"><i class="fab fa-youtube" style="color:#ff0000;"></i>http://www.youtube.com/</a>
-                            </div>
-                        </div>
-                        <div class="user-data full-width">
-                            <div class="categories-left-heading">
                                 <h3>People Viewed Profile</h3>
                             </div>
                             <div class="sugguest-user">
@@ -73,6 +58,40 @@
                                 <button class="request-btn"><i class="fas fa-user-plus"></i></button>
                             </div>
                         </div>
+                        <div class="user-data full-width">
+                            @IF($user_about['isSocialNetworksNull'] == 1)
+                            <div class="categories-left-heading">
+                                <h3>Social Accounts</h3>
+                            </div>
+                            <div class="categories-items">
+                                @IF($user_about['social_webpage'] != NULL)
+                                <a class="category-social-item" href="{{$user_about['social_webpage']}}"><i class="fas fa-globe" style="color:#51a5fb;"></i>{{$user_about['social_webpage']}}</a>
+                                @ENDIF
+                                @IF($user_about['social_facebook'] != NULL)
+                                <a class="category-social-item" href="{{$user_about['social_facebook']}}"><i class="fab fa-facebook-square" style="color:#3b5998;"></i>{{$user_about['social_facebook']}}</a>
+                                @ENDIF
+                                @IF($user_about['social_twitter'] != NULL)
+                                <a class="category-social-item" href="{{$user_about['social_twitter']}}"><i class="fab fa-twitter" style="color:#1da1f2;"></i>{{$user_about['social_twitter']}}</a>
+                                @ENDIF
+                                @IF($user_about['social_youtube'] != NULL)
+                                <a class="category-social-item" href="{{$user_about['social_youtube']}}"><i class="fab fa-google-plus" style="color:#dd4b39;"></i>{{$user_about['social_youtube']}}</a>
+                                @ENDIF
+                                @IF($user_about['social_instagram'] != NULL)
+                                <a class="category-social-item" href="{{$user_about['social_instagram']}}"><i class="fab fa-instagram" style="color:#405de6;"></i>{{$user_about['social_instagram']}}</a>
+                                @ENDIF
+                                @IF($user_about['social_linkedin'] != NULL)
+                                <a class="category-social-item" href="{{$user_about['social_linkedin']}}"><i class="fab fa-pinterest" style="color:#bd081c;"></i>{{$user_about['social_linkedin']}}</a>
+                                @ENDIF
+                                @IF($user_about['social_other1'] != NULL)
+                                <a class="category-social-item" href="{{$user_about['social_other1']}}"><i class="fab fa-linkedin" style="color:#0077b5;"></i>{{$user_about['social_other1']}}</a>
+                                @ENDIF
+                                @IF($user_about['social_other2'] != NULL)
+                                <a class="category-social-item" href="{{$user_about['social_other2']}}"><i class="fab fa-youtube" style="color:#ff0000;"></i>{{$user_about['social_other2']}}</a>
+                                @ENDIF
+                            </div>
+                            @ENDIF
+                        </div>
+
                     </div>
                     <div class="col-lg-6 col-md-7">
                         <div class="main-posts">
@@ -245,12 +264,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="post-event">
-                            <h6>Want to Post Your Event</h6>
-                            <p>Post your event on Goeveni for free. Just make an account and add it through the simple form. As simple as that.</p>
-                            <a href="add_new_event.html" class="add-nw-event">Post It Now</a>
-                        </div>
-                        <div class="w-weather mp-30">
+                        <div class="w-weather">
                             <div class="weather-left">
                                 <div class="weather-city">Ludhiana</div>
                                 <div class="week-text">Monday</div>

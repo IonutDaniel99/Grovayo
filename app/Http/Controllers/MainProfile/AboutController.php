@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Debug;
+namespace App\Http\Controllers\MainProfile;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Country;
 use App\Models\User_About;
-use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
-class Debug extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +17,15 @@ class Debug extends Controller
      */
     public function index()
     {
-        return $this->isSocialPageNull();
+        $user_about = User_About::where('id', Auth::id())->first();
+        $user_about['user_country'] = Country::where('id', $user_about['user_country'])->pluck('name')->first();
+        if ($user_about['birthday'] != NULL)
+            $user_about['birthday'] = date('j F, Y', strtotime($user_about['birthday']));
+
+        $this->isSocialPagesNull($user_about);
+        $this->isFavouritesNull($user_about);
+        return view('livewire.profile.about', compact('user_about'));
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -88,5 +91,31 @@ class Debug extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    function isSocialPagesNull($user_about)
+    {
+        foreach (json_decode($user_about, true) as $key => $value) {
+            if (substr($key, 0, strlen('social_')) === 'social_') {
+                if ($value != NULL) {
+                    $user_about['isSocialNetworksNull'] = 1;
+                    break;
+                }
+                $user_about['isSocialNetworksNull'] = 0;
+            }
+        }
+    }
+
+    function isFavouritesNull($user_about)
+    {
+        foreach (json_decode($user_about, true) as $key => $value) {
+            if (substr($key, 0, strlen('favourite_')) === 'favourite_') {
+                if ($value != NULL) {
+                    $user_about['isFavouritesNull'] = 1;
+                    break;
+                }
+                $user_about['isFavouritesNull'] = 0;
+            }
+        }
     }
 }

@@ -17,15 +17,10 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $user = User::where('id', Auth::id())->first();
-        $profile['profile_name'] = $user->name;
-        $profile['profile_photo_path'] = $user->profile_photo_path;
-        $profile['background_image_url'] = $user->background_image_url;
-        $profile['user_weather_degree'] = $user->user_weather_degree;
-        $profile['active_since'] = date_format($user->created_at, "F Y");
+        $user_about = User_About::where('id', Auth::id())->first();
 
-        $user_about = User_About::where('user_id', Auth::id())->first();
-        return view('livewire.profile.activity', compact('profile', 'user_about'));
+        $this->isSocialPagesNull($user_about);
+        return view('livewire.profile.activity', compact('user_about'));
     }
 
     /**
@@ -92,5 +87,18 @@ class ActivityController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    function isSocialPagesNull($user_about)
+    {
+        foreach (json_decode($user_about, true) as $key => $value) {
+            if (substr($key, 0, strlen('social_')) === 'social_') {
+                if ($value != NULL) {
+                    $user_about['isSocialNetworksNull'] = 1;
+                    break;
+                }
+                $user_about['isSocialNetworksNull'] = 0;
+            }
+        }
     }
 }

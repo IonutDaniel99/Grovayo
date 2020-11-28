@@ -35,11 +35,9 @@ Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Profile', 'A
 
 
 // ######################## Profile Page ###########################
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Activity', 'App\Http\Controllers\MainProfile\ActivityController@index')->name('ProfileActivity');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Activity', 'App\Http\Controllers\MainProfile\ActivityController@index')->name('Profile_Activity_Index');
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/About', function () {
-    return view('livewire.profile.about');
-})->name('ProfileAbout');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/About', 'App\Http\Controllers\MainProfile\AboutController@index')->name('Profile_About_Index');
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Profile-Discussion', function () {
     return view('livewire.profile.discussion');
 })->name('ProfileDiscussion');

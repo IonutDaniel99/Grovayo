@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use DateTime;
-use DateTimeZone;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,14 +28,12 @@ class WeatherController extends Controller
     public function index(Request $request)
     {
         #region TimeAndDate
-        $Weather["time_zone"] =
-            DB::table('user_about')->where('id', Auth::id())->value("time_zone");;
-        $Weather["day"] = Carbon::now()->timezone($Weather["time_zone"])->format('d');
-        $Weather["month"] = Carbon::now()->timezone($Weather["time_zone"])->format('M');
-        $Weather["year"] = Carbon::now()->timezone($Weather["time_zone"])->format('yy');
-        $Weather["dayName"] = Carbon::now()->timezone($Weather["time_zone"])->format('l');
-        $Weather["time"] = Carbon::now()->timezone($Weather["time_zone"])->format('H:i');
-        $Weather["timeFormat"] = Carbon::now()->timezone($Weather["time_zone"])->format('A');
+        $Weather["day"] = Carbon::now()->format('d');
+        $Weather["month"] = Carbon::now()->format('M');
+        $Weather["year"] = Carbon::now()->format('yy');
+        $Weather["dayName"] = Carbon::now()->format('l');
+        $Weather["time"] = Carbon::now()->format('H:i');
+        $Weather["timeFormat"] = Carbon::now()->format('A');
         #endregion
 
         #region Localization
@@ -83,7 +79,7 @@ class WeatherController extends Controller
             elseif ($Weather["weather_wind_degree"] >= 68 && $Weather["weather_wind_degree"] <= 112)
                 $Weather["weather_wind_direction"] = "East";
             elseif ($Weather["weather_wind_degree"] >= 113 && $Weather["weather_wind_degree"] <= 157)
-                $Weather["weather_wind_direction"] = "Souts-East";
+                $Weather["weather_wind_direction"] = "South-East";
             elseif ($Weather["weather_wind_degree"] >= 158 && $Weather["weather_wind_degree"] <= 202)
                 $Weather["weather_wind_direction"] = "South";
             elseif ($Weather["weather_wind_degree"] >= 203 && $Weather["weather_wind_degree"] <= 247)
@@ -103,6 +99,7 @@ class WeatherController extends Controller
         $Weather["pressure"] = $weather_data["main"]["pressure"];
         $Weather["sunrise"] = date("H:i", $weather_data["sys"]["sunrise"]);
         $Weather["sunset"] = date("H:i", $weather_data["sys"]["sunset"]);
+        $Weather['time_zone'] = $this->ipinfo_data['timezone'];
         //return $weather_data;
         #endregion
 
@@ -128,9 +125,8 @@ class WeatherController extends Controller
     public function store(Request $request)
     {
         $r_degree = $request->degree;
-        $r_timezone = $request->timezone;
 
-        DB::table('user_about')->where('id', Auth::id())->update(['user_weather_degree' => $r_degree, 'time_zone' => $r_timezone]);
+        DB::table('user_about')->where('id', Auth::id())->update(['user_weather_degree' => $r_degree]);
 
         return redirect()->route('Weather');
     }

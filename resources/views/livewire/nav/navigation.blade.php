@@ -205,7 +205,7 @@
                             </div>
                             @cannot("User")
 
-                            <x-jet-dropdown-link href="{{ route('ProfileActivity') }}">
+                            <x-jet-dropdown-link href="{{ route('Profile_Activity_Index') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 
