@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\MainProfile;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\News;
 use App\Models\User_About;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,10 +18,15 @@ class ActivityController extends Controller
      */
     public function index()
     {
+        $apiController = new ApiController;
+        $weather = $apiController->callWeatherApi();
         $user_about = User_About::where('id', Auth::id())->first();
 
+        foreach (['world', 'science', 'technology', 'music', 'movies', 'games'] as $topic) {
+            $news[$topic] = News::all()->where("topic", $topic)->random(3);
+        }
         $this->isSocialPagesNull($user_about);
-        return view('livewire.profile.activity', compact('user_about'));
+        return view('livewire.profile.activity', compact('weather', 'user_about', 'news'));
     }
 
     /**

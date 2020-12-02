@@ -1961,6 +1961,7 @@ main {
     margin-top: 0px;
     margin-bottom: 30px;
     border-radius: 3px;
+    background-position: 0px -60px;
 }
 
 .weather-left {
@@ -2002,7 +2003,7 @@ main {
     font-weight: 400;
     color: #fff;
     line-height: 24px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .weather-left .up-down i {
@@ -2016,7 +2017,7 @@ main {
 
 .weather-right span {
     display: block;
-    margin-top: 35px;
+    margin-top: 15px;
     font-size: 50px;
     font-weight: 600;
     color: #fff;
@@ -3085,6 +3086,8 @@ footer {
 .weather-icon-center {
     margin: 0 auto;
     zoom: 150%;
+    max-width: 30px;
+    max-height: 30px;
 }
 
 .weather-list-1 {

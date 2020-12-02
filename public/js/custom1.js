@@ -129,3 +129,4 @@ $('.widget-owl').owlCarousel({
     }
 })
 
+//News widget

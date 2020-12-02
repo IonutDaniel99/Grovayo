@@ -266,86 +266,236 @@
                     <div class="col-lg-3">
                         <div class="w-weather">
                             <div class="weather-left">
-                                <div class="weather-city">Ludhiana</div>
-                                <div class="week-text">Monday</div>
-                                <div class="week-text">14 Oct 2019</div>
-                                <div class="week-text" style="font-size: 18px;"><i class="fas fa-tint"></i> 30%</div>
+                                <div class="weather-city">{{$weather['userLocationCity']}}</div>
+                                <div class="week-text">{{$weather['dayName']}}</div>
+                                <div class="week-text">{{$weather['day']}} {{$weather['month']}} {{$weather['year']}}</div>
+                                <div class="week-text" style="font-size: 18px;"><i class="fas fa-tint"></i> {{$weather['humidity']}}%</div>
                                 <ul>
                                     <li>
-                                        <div class="up-down"><i class="fas fa-long-arrow-alt-up"></i> 18°</div>
+                                        <div class="up-down"><i class="fas fa-long-arrow-alt-down"></i> {{$weather['min_temp']}}°</div>
                                     </li>
                                     <li>
-                                        <div class="up-down"><i class="fas fa-long-arrow-alt-down"></i> 25°</div>
+                                        <div class="up-down"><i class="fas fa-long-arrow-alt-up"></i> {{$weather['max_temp']}}°</div>
                                     </li>
                                 </ul>
                             </div>
                             <div class="weather-right">
-                                <i class="fas fa-cloud-sun"></i>
-                                <span>22°</span>
+                                <img class="weather-icon-center" src="http://openweathermap.org/img/wn/{{$weather["icon"]}}@2x.png" alt="">
+                                <span>{{$weather['temp']}}°</span>
                             </div>
-                            <ul class="weekly-weather">
-                                <li>
-                                    <div class="degree-text">32°</div>
-                                    <div class="weather-icon"><i class="fas fa-sun"></i></div>
-                                    <div class="day-text">Tue</div>
-                                </li>
-                                <li>
-                                    <div class="degree-text">19°</div>
-                                    <div class="weather-icon"><i class="fas fa-cloud-sun-rain"></i></div>
-                                    <div class="day-text">Wed</div>
-                                </li>
-                                <li>
-                                    <div class="degree-text">32°</div>
-                                    <div class="weather-icon"><i class="fas fa-cloud-sun"></i></div>
-                                    <div class="day-text">Thu</div>
-                                </li>
-                                <li>
-                                    <div class="degree-text">27°</div>
-                                    <div class="weather-icon"><i class="fas fa-wind"></i></div>
-                                    <div class="day-text">Fri</div>
-                                </li>
-                                <li>
-                                    <div class="degree-text">22°</div>
-                                    <div class="weather-icon"><i class="fas fa-cloud-showers-heavy"></i></div>
-                                    <div class="day-text">Sat</div>
-                                </li>
-                                <li>
-                                    <div class="degree-text">12°</div>
-                                    <div class="weather-icon"><i class="fas fa-snowflake"></i></div>
-                                    <div class="day-text">Sun</div>
-                                </li>
-                            </ul>
+                            <ul class="weekly-weather"></ul>
                         </div>
+
+
                         <div class="news-data-dash full-width">
-                            <div class="categories-left-heading">
-                                <h3>News</h3>
-                            </div>
-                            <div class="categories-items">
-                                <div class="news-item">
-                                    <div class="news-item-heading">
-                                        <i class="fas fa-music"></i>
-                                        <h6>Music</h6>
-                                    </div>
-                                    <div class="news-description">
-                                        Suspendisse cursus egestas luctus. <a href="#">Http://website.com/news</a>
-                                    </div>
+                            <div id="recipeCarousel" class="carousel slide w-100 multi-item-carousel" data-ride="carousel">
+                                <div class="categories-left-heading">
+                                    <h3><i class="fas fa-globe-europe"></i> News</h3>
                                 </div>
-                                <div class="news-item">
-                                    <div class="news-item-heading">
-                                        <i class="fas fa-pen-nib"></i>
-                                        <h6>Art</h6>
+                                <div class="categories-items">
+                                    <div class="carousel-inner w-100" role="listbox">
+                                        <div class="carousel-item active">
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-globe-europe"></i>
+                                                    <h6>&nbsp;&nbsp;World</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['world'][0]['title']}}
+                                                </div>
+                                                <a href="{{$news['world'][0]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-globe-europe"></i>
+                                                    <h6>&nbsp;&nbsp;World</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['world'][1]['title']}}
+                                                </div>
+                                                <a href="{{$news['world'][1]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-globe-europe"></i>
+                                                    <h6>&nbsp;&nbsp;World</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['world'][2]['title']}}
+                                                </div>
+                                                <a href="{{$news['world'][2]['url']}}">Continue reading...</a>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-atom"></i>
+                                                    <h6>&nbsp;&nbsp;Science</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['science'][0]['title']}}
+                                                </div>
+                                                <a href="{{$news['science'][0]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-atom"></i>
+                                                    <h6>&nbsp;&nbsp;Science</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['science'][1]['title']}}
+                                                </div>
+                                                <a href="{{$news['science'][1]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-atom"></i>
+                                                    <h6>&nbsp;&nbsp;Science</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['science'][2]['title']}}
+                                                </div>
+                                                <a href="{{$news['science'][2]['url']}}">Continue reading...</a>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-microchip"></i>
+                                                    <h6>&nbsp;&nbsp;Technology</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['technology'][0]['title']}}
+                                                </div>
+                                                <a href="{{$news['technology'][0]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-microchip"></i>
+                                                    <h6>&nbsp;&nbsp;Technology</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['technology'][1]['title']}}
+                                                </div>
+                                                <a href="{{$news['technology'][1]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-microchip"></i>
+                                                    <h6>&nbsp;&nbsp;Technology</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['technology'][2]['title']}}
+                                                </div>
+                                                <a href="{{$news['technology'][2]['url']}}">Continue reading...</a>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-music"></i>
+                                                    <h6>&nbsp;&nbsp;Music</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['music'][0]['title']}}
+                                                </div>
+                                                <a href="{{$news['music'][0]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-music"></i>
+                                                    <h6>&nbsp;&nbsp;Music</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['music'][1]['title']}}
+                                                </div>
+                                                <a href="{{$news['music'][1]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-music"></i>
+                                                    <h6>&nbsp;&nbsp;Music</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['music'][2]['title']}}
+                                                </div>
+                                                <a href="{{$news['music'][2]['url']}}">Continue reading...</a>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-film"></i>
+                                                    <h6>&nbsp;&nbsp;Movie</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['movies'][0]['title']}}
+                                                </div>
+                                                <a href="{{$news['movies'][0]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-film"></i>
+                                                    <h6>&nbsp;&nbsp;Movie</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['movies'][1]['title']}}
+                                                </div>
+                                                <a href="{{$news['movies'][1]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-film"></i>
+                                                    <h6>&nbsp;&nbsp;Movie</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['movies'][2]['title']}}
+                                                </div>
+                                                <a href="{{$news['movies'][2]['url']}}">Continue reading...</a>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-dice"></i>
+                                                    <h6>&nbsp;&nbsp;Games</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['games'][0]['title']}}
+                                                </div>
+                                                <a href="{{$news['games'][0]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-dice"></i>
+                                                    <h6>&nbsp;&nbsp;Games</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['games'][1]['title']}}
+                                                </div>
+                                                <a href="{{$news['games'][1]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-dice"></i>
+                                                    <h6>&nbsp;&nbsp;Games</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['games'][2]['title']}}
+                                                </div>
+                                                <a href="{{$news['games'][2]['url']}}">Continue reading...</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="news-description">
-                                        Suspendisse cursus egestas luctus. <a href="#">Http://website.com/news</a>
-                                    </div>
-                                </div>
-                                <div class="news-item">
-                                    <div class="news-item-heading">
-                                        <i class="far fa-futbol"></i>
-                                        <h6>Sports</h6>
-                                    </div>
-                                    <div class="news-description">
-                                        Suspendisse cursus egestas luctus. <a href="#">Http://website.com/news</a>
+                                    <div class="container">
+                                        <div class="row py-2">
+                                            <a id="left-news-button" class="col-6 text-center" href="#recipeCarousel" role="button" data-slide="prev">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </a>
+                                            <a id="right-news-button" class="col-6 text-center" href="#recipeCarousel" role="button" data-slide="next">
+                                                <i class="fas fa-chevron-right"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -353,6 +503,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </main>
 </x-app-layout>

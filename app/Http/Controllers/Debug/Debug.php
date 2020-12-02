@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Debug;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\User_About;
-use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
@@ -19,7 +17,10 @@ class Debug extends Controller
      */
     public function index()
     {
-        return $this->isSocialPageNull();
+
+        $ApiController = new ApiController;
+        $news = $ApiController->callNewsApi();
+        return $news;
     }
 
 
