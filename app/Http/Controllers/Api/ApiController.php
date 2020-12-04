@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\Profile_View;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -20,8 +20,20 @@ class ApiController extends Controller
         $ipinfo_data = json_decode(file_get_contents("https://ipinfo.io/?token=" . $this->ipinfo_key), true);
         $ipinfo_data['lat'] = substr($ipinfo_data['loc'], 0, 5);
         $ipinfo_data['long'] = substr($ipinfo_data['loc'], 8, -2);
-        $weather_data = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/onecall?lat=" . $ipinfo_data['lat'] . "&lon=" . $ipinfo_data['long'] . "&units=imperial&exclude=minutely,hourly,alerts&appid=" . $this->weather_key), true);
-
+        $Weather["degreePreferences"] = DB::table('user_about')->where('id', Auth::id())->value('user_weather_degree');
+        if ($Weather["degreePreferences"] === "F") {
+            $weather_data = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/onecall?lat=" . $ipinfo_data['lat'] . "&lon=" . $ipinfo_data['long'] . "&units=imperial&exclude=minutely,hourly,alerts&appid=" . $this->weather_key), true);
+            $Weather["wind_option"] = "MPH";
+            $Weather["wind_speed"] = round($weather_data["current"]["wind_speed"], 1);
+        } elseif ($Weather["degreePreferences"] === "K") {
+            $weather_data = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/onecall?lat=" . $ipinfo_data['lat'] . "&lon=" . $ipinfo_data['long'] . "&exclude=minutely,hourly,alerts&appid=" . $this->weather_key), true);
+            $Weather["wind_option"] = "MPH";
+            $Weather["wind_speed"] = round($weather_data["current"]["wind_speed"], 1);
+        } elseif ($Weather["degreePreferences"] === "C") {
+            $weather_data = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/onecall?lat=" . $ipinfo_data['lat'] . "&lon=" . $ipinfo_data['long'] . "&units=metric&exclude=minutely,hourly,alerts&appid=" . $this->weather_key), true);
+            $Weather["wind_option"] = "KM/H";
+            $Weather["wind_speed"] = round($weather_data["current"]["wind_speed"] * 1.609, 1);
+        }
         #region TimeAndDate
         $Weather["day"] = Carbon::now()->format('d');
         $Weather["month"] = Carbon::now()->format('M');
@@ -30,40 +42,17 @@ class ApiController extends Controller
         $Weather["time"] = Carbon::now()->format('H:i');
         $Weather["timeFormat"] = Carbon::now()->format('A');
         #endregion
-
         #region Localization
         $Weather["userLocationCity"] = $ipinfo_data["city"];
         $Weather['userLocationDistrict'] = $ipinfo_data['region'];
         $Weather['userLocationCountry'] = $ipinfo_data['country'];
         #endregion
 
-        #region PureWeather
-        $weather_data = $weather_data;
-        $Weather["degreePreferences"] = DB::table('user_about')->where('id', Auth::id())->value('user_weather_degree');
-        if ($Weather["degreePreferences"] === "F") {
-            $Weather["temp"] = $weather_data["current"]["temp"];
-            $Weather["min_temp"] = $weather_data["daily"][0]["temp"]["min"];
-            $Weather["max_temp"] = $weather_data["daily"][0]["temp"]["max"];
-            $Weather["wind_speed"] = round($weather_data["current"]["wind_speed"], 1);
-            $Weather["wind_option"] = "MPH";
-        } elseif ($Weather["degreePreferences"] === "K") {
-            $Weather["temp"] = ($weather_data["current"]["temp"] - 32) * 5 / 9 + 273.15;
-            $Weather["min_temp"] = ($weather_data["daily"][0]["temp"]["min"] - 32) * 5 / 9 + 273.15;
-            $Weather["max_temp"] = ($weather_data["daily"][0]["temp"]["max"] - 32) * 5 / 9 + 273.15;
-            $Weather["wind_speed"] = round($weather_data["current"]["wind_speed"], 1);
-            $Weather["wind_option"] = "MPH";
-        } elseif ($Weather["degreePreferences"] === "C") {
-            $Weather["temp"] = ($weather_data["current"]["temp"] - 32) * 5 / 9;
-            $Weather["min_temp"] = ($weather_data["daily"][0]["temp"]["min"] - 32) * 5 / 9;
-            $Weather["max_temp"] = ($weather_data["daily"][0]["temp"]["max"] - 32) * 5 / 9;
-            $Weather["wind_speed"] = round($weather_data["current"]["wind_speed"] * 1.609, 1);
-            $Weather["wind_option"] = "KM/H";
-        }
-        $Weather["temp"] = round($Weather["temp"]);
-        $Weather["min_temp"] = round($Weather["min_temp"]);
-        $Weather["max_temp"] = round($Weather["max_temp"]);
+        $Weather["temp"] = round($weather_data["current"]["temp"]);
+        $Weather["min_temp"] = round($weather_data["daily"][0]["temp"]["min"]);
+        $Weather["max_temp"] = round($weather_data["daily"][0]["temp"]["max"]);
         $Weather["main_temp_text"] = $weather_data["current"]["weather"][0]["main"];
-        $Weather["icon"] = $weather_data["current"]["weather"][0]["icon"];
+        $Weather["icon"] = $weather_data["current"]["weather"][0]["id"];
 
         if (isset($weather_data["current"]["wind_deg"])) {
             $Weather["weather_wind_degree"] = floor($weather_data["current"]["wind_deg"]);
@@ -95,17 +84,16 @@ class ApiController extends Controller
         $Weather["sunrise"] = date("H:i", $weather_data["current"]["sunrise"]);
         $Weather["sunset"] = date("H:i", $weather_data["current"]["sunset"]);
         $Weather['time_zone'] = $ipinfo_data['timezone'];
-        #endregion
-
+        $Weather['daily'] = $weather_data['daily'];
         return $Weather;
     }
 
     public function callNewsApi()
     {
-        $from = date('Y-m-d', strtotime('-7 days'));
+        $from = date('Y-m-d', strtotime('-1 days'));
         $lastCreated = strtotime(News::select("created_at")->pluck('created_at')->first());
         $lastDay = strtotime('24 hours');
-        $news_array = ['world', 'science', 'technology', 'music', 'movies', 'games'];
+        $news_array = ['world', 'science', 'technology', 'music', 'movies', 'games', 'sport'];
         if (News::all()->isEmpty()) {
             foreach ($news_array as $topic) {
                 $data = json_decode(file_get_contents("http://newsapi.org/v2/everything?q=" . $topic . "&from=" . $from . "&sort&languange=en&apiKey=" . $this->news_api), true);
@@ -119,7 +107,7 @@ class ApiController extends Controller
                 }
             }
         }
-        if ($lastCreated > $lastDay) {
+        if ($lastCreated < $lastDay) {
             foreach ($news_array as $topic) {
                 $data = json_decode(file_get_contents("http://newsapi.org/v2/everything?q=" . $topic . "&from=" . $from . "&sort&languange=en&apiKey=" . $this->news_api), true);
                 foreach ($data["articles"] as $articles) {
@@ -132,5 +120,18 @@ class ApiController extends Controller
                 }
             }
         }
+    }
+
+    public function viewdProfile($data)
+    {
+        // TODO Profile View
+        if ($data["id"] == Auth::id()) {
+            return;
+        }
+        Profile_View::insert([
+            'profile_user_id' => $data['id'],
+            'visitor_user_id' => Auth::id(),
+            'visitor_time' => now()
+        ]);
     }
 }

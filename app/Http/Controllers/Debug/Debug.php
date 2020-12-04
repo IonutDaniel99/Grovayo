@@ -17,10 +17,7 @@ class Debug extends Controller
      */
     public function index()
     {
-
-        $ApiController = new ApiController;
-        $news = $ApiController->callNewsApi();
-        return $news;
+        return "nimic";
     }
 
 

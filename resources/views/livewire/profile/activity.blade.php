@@ -280,10 +280,41 @@
                                 </ul>
                             </div>
                             <div class="weather-right">
-                                <img class="weather-icon-center" src="http://openweathermap.org/img/wn/{{$weather["icon"]}}@2x.png" alt="">
+                                <i class="owf owf-<?php echo $weather['icon'] ?>"></i>
                                 <span>{{$weather['temp']}}°</span>
                             </div>
-                            <ul class="weekly-weather"></ul>
+                            <ul class="weekly-weather">
+                                <li title={{ $weather['daily'][1]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][1]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][1]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][1]["dt"])}}</div>
+                                </li>
+                                <li title={{ $weather['daily'][2]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][2]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][2]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][2]["dt"])}}</div>
+                                </li>
+                                <li title={{ $weather['daily'][3]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][3]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][3]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][3]["dt"])}}</div>
+                                </li>
+                                <li title={{ $weather['daily'][4]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][4]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][4]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][4]["dt"])}}</div>
+                                </li>
+                                <li title={{ $weather['daily'][5]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][5]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][5]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][5]["dt"])}}</div>
+                                </li>
+                                <li title={{ $weather['daily'][6]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][6]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][6]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][6]["dt"])}}</div>
+                                </li>
+                            </ul>
                         </div>
 
 
@@ -303,7 +334,7 @@
                                                 <div class="news-description">
                                                     {{$news['world'][0]['title']}}
                                                 </div>
-                                                <a href="{{$news['world'][0]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['world'][0]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -313,7 +344,7 @@
                                                 <div class="news-description">
                                                     {{$news['world'][1]['title']}}
                                                 </div>
-                                                <a href="{{$news['world'][1]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['world'][1]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -323,7 +354,7 @@
                                                 <div class="news-description">
                                                     {{$news['world'][2]['title']}}
                                                 </div>
-                                                <a href="{{$news['world'][2]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['world'][2]['url']}}">Continue reading...</a>
                                             </div>
                                         </div>
                                         <div class="carousel-item">
@@ -335,7 +366,7 @@
                                                 <div class="news-description">
                                                     {{$news['science'][0]['title']}}
                                                 </div>
-                                                <a href="{{$news['science'][0]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['science'][0]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -345,7 +376,7 @@
                                                 <div class="news-description">
                                                     {{$news['science'][1]['title']}}
                                                 </div>
-                                                <a href="{{$news['science'][1]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['science'][1]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -355,7 +386,7 @@
                                                 <div class="news-description">
                                                     {{$news['science'][2]['title']}}
                                                 </div>
-                                                <a href="{{$news['science'][2]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['science'][2]['url']}}">Continue reading...</a>
                                             </div>
                                         </div>
                                         <div class="carousel-item">
@@ -367,7 +398,7 @@
                                                 <div class="news-description">
                                                     {{$news['technology'][0]['title']}}
                                                 </div>
-                                                <a href="{{$news['technology'][0]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['technology'][0]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -377,7 +408,7 @@
                                                 <div class="news-description">
                                                     {{$news['technology'][1]['title']}}
                                                 </div>
-                                                <a href="{{$news['technology'][1]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['technology'][1]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -387,7 +418,7 @@
                                                 <div class="news-description">
                                                     {{$news['technology'][2]['title']}}
                                                 </div>
-                                                <a href="{{$news['technology'][2]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['technology'][2]['url']}}">Continue reading...</a>
                                             </div>
                                         </div>
                                         <div class="carousel-item">
@@ -399,7 +430,7 @@
                                                 <div class="news-description">
                                                     {{$news['music'][0]['title']}}
                                                 </div>
-                                                <a href="{{$news['music'][0]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['music'][0]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -409,7 +440,7 @@
                                                 <div class="news-description">
                                                     {{$news['music'][1]['title']}}
                                                 </div>
-                                                <a href="{{$news['music'][1]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['music'][1]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -419,7 +450,7 @@
                                                 <div class="news-description">
                                                     {{$news['music'][2]['title']}}
                                                 </div>
-                                                <a href="{{$news['music'][2]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['music'][2]['url']}}">Continue reading...</a>
                                             </div>
                                         </div>
                                         <div class="carousel-item">
@@ -431,7 +462,7 @@
                                                 <div class="news-description">
                                                     {{$news['movies'][0]['title']}}
                                                 </div>
-                                                <a href="{{$news['movies'][0]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['movies'][0]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -441,7 +472,7 @@
                                                 <div class="news-description">
                                                     {{$news['movies'][1]['title']}}
                                                 </div>
-                                                <a href="{{$news['movies'][1]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['movies'][1]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -451,7 +482,7 @@
                                                 <div class="news-description">
                                                     {{$news['movies'][2]['title']}}
                                                 </div>
-                                                <a href="{{$news['movies'][2]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['movies'][2]['url']}}">Continue reading...</a>
                                             </div>
                                         </div>
                                         <div class="carousel-item">
@@ -463,7 +494,7 @@
                                                 <div class="news-description">
                                                     {{$news['games'][0]['title']}}
                                                 </div>
-                                                <a href="{{$news['games'][0]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['games'][0]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -473,7 +504,7 @@
                                                 <div class="news-description">
                                                     {{$news['games'][1]['title']}}
                                                 </div>
-                                                <a href="{{$news['games'][1]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['games'][1]['url']}}">Continue reading...</a>
                                             </div>
                                             <div class="news-item">
                                                 <div class="news-item-heading">
@@ -483,7 +514,39 @@
                                                 <div class="news-description">
                                                     {{$news['games'][2]['title']}}
                                                 </div>
-                                                <a href="{{$news['games'][2]['url']}}">Continue reading...</a>
+                                                <a target="_blank" href="{{$news['games'][2]['url']}}">Continue reading...</a>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-futbol"></i>
+                                                    <h6>&nbsp;&nbsp;Sport</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['sport'][0]['title']}}
+                                                </div>
+                                                <a target="_blank" href="{{$news['sport'][0]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-futbol"></i>
+                                                    <h6>&nbsp;&nbsp;Sport</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['sport'][1]['title']}}
+                                                </div>
+                                                <a target="_blank" href="{{$news['sport'][1]['url']}}">Continue reading...</a>
+                                            </div>
+                                            <div class="news-item">
+                                                <div class="news-item-heading">
+                                                    <i class="fas fa-futbol"></i>
+                                                    <h6>&nbsp;&nbsp;Sport</h6>
+                                                </div>
+                                                <div class="news-description">
+                                                    {{$news['sport'][2]['title']}}
+                                                </div>
+                                                <a target="_blank" href="{{$news['sport'][2]['url']}}">Continue reading...</a>
                                             </div>
                                         </div>
                                     </div>

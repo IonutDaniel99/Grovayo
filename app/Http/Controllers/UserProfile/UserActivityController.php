@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\UserProfile;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
-use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserActivityController extends Controller
@@ -19,15 +20,18 @@ class UserActivityController extends Controller
 
     public function index($username)
     {
-        $data = Profile::where('username', $username)->first();
+        $data = User::where('username', $username)->first();
         if (!$data || $data === NULL) {
             return view('errors.404-user');
         }
         $profile['profile_name'] = $data->name;
         $profile['profile_photo_path'] = $data->profile_photo_path;
         $profile['background_image_url'] = $data->background_image_url;
-        $profile['user_weather_degree'] = $data->user_weather_degree;
         $profile['active_since'] = date_format($data->created_at, "F Y");
+
+        $profile_view = new ApiController;
+        $profile_view->viewdProfile($data);
+
         return view('livewire.user-profile.username', compact('username', 'profile'));
     }
 

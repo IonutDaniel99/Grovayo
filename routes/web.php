@@ -52,7 +52,7 @@ Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Messages', f
 })->name('Messages');
 
 // ####################### Personal Info #################################
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Personal-Info', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@index')->name("Settings_Personal_Info_Index");
+Route::middleware(['auth:sanctum', 'verified', 'unlessrole:User'])->get('/Personal-Info', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@index')->name("Settings_Personal_Info_Index");
 Route::post('/Personal-Info/Store', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@update')->name('Settings_Personal_Info_Update');
 
 Route::get('/Personal-Info/country-state-city', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@index');

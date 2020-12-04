@@ -22,7 +22,7 @@ class ActivityController extends Controller
         $weather = $apiController->callWeatherApi();
         $user_about = User_About::where('id', Auth::id())->first();
 
-        foreach (['world', 'science', 'technology', 'music', 'movies', 'games'] as $topic) {
+        foreach (['world', 'science', 'technology', 'music', 'movies', 'games', 'sport'] as $topic) {
             $news[$topic] = News::all()->where("topic", $topic)->random(3);
         }
         $this->isSocialPagesNull($user_about);
