@@ -12,51 +12,30 @@
                             <div class="categories-left-heading">
                                 <h3>People Viewed Profile</h3>
                             </div>
+                            @if($viewed_profile == 0)
                             <div class="sugguest-user">
                                 <div class="sugguest-user-dt">
-                                    <a href="#"><img src="images/homepage/left-side/left-img-1.jpg" alt=""></a>
-                                    <a href="#">
-                                        <h4>Johnson</h4>
-                                    </a>
+                                    <h4>Clear</h4>
                                 </div>
-                                <button class="request-btn"><i class="fas fa-user-plus"></i></button>
                             </div>
+                            @else
+                            @foreach($viewed_profile as $visitor)
                             <div class="sugguest-user">
                                 <div class="sugguest-user-dt">
-                                    <a href="#"><img src="images/homepage/left-side/left-img-2.jpg" alt=""></a>
-                                    <a href="#">
-                                        <h4>Jassica William</h4>
+                                    <a href="/user/{{$visitor['visitor_username']}}">
+                                        @if($visitor['visitor_image'] == null)
+                                        <img src="https://ui-avatars.com/api/?name={{$visitor['visitor_username']}}&color=7F9CF5&background=EBF4FF" alt="">
+                                        @else
+                                        <img src="storage/{{$visitor['visitor_image']}}" alt="">
+                                        @endif
                                     </a>
+                                    <a href="/user/{{$visitor['visitor_username']}}">
+                                        <h4>{{$visitor['visitor_name']}}</h4>
                                 </div>
-                                <button class="request-btn"><i class="fas fa-user-plus"></i></button>
+                                <button class=" request-btn"><i class="fas fa-user-plus"></i></button>
                             </div>
-                            <div class="sugguest-user">
-                                <div class="sugguest-user-dt">
-                                    <a href="#"><img src="images/homepage/left-side/left-img-3.jpg" alt=""></a>
-                                    <a href="#">
-                                        <h4>Rock</h4>
-                                    </a>
-                                </div>
-                                <button class="request-btn"><i class="fas fa-user-plus"></i></button>
-                            </div>
-                            <div class="sugguest-user">
-                                <div class="sugguest-user-dt">
-                                    <a href="#"><img src="images/homepage/left-side/left-img-4.jpg" alt=""></a>
-                                    <a href="#">
-                                        <h4>Davil Smith</h4>
-                                    </a>
-                                </div>
-                                <button class="request-btn"><i class="fas fa-user-plus"></i></button>
-                            </div>
-                            <div class="sugguest-user">
-                                <div class="sugguest-user-dt">
-                                    <a href="#"><img src="images/homepage/left-side/left-img-5.jpg" alt=""></a>
-                                    <a href="#">
-                                        <h4>Ricky Doe</h4>
-                                    </a>
-                                </div>
-                                <button class="request-btn"><i class="fas fa-user-plus"></i></button>
-                            </div>
+                            @endforeach
+                            @endif
                         </div>
                         <div class="user-data full-width">
                             @IF($user_about['isSocialNetworksNull'] == 1)
@@ -65,28 +44,28 @@
                             </div>
                             <div class="categories-items">
                                 @IF($user_about['social_webpage'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_webpage']}}"><i class="fas fa-globe" style="color:#51a5fb;"></i>{{$user_about['social_webpage']}}</a>
+                                <a class="category-social-item" href="{{$user_about['social_webpage']}}"><i class="fas fa-globe" style="color:#51a5fb;"></i>&nbsp;&nbsp;{{$user_about['social_webpage']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_facebook'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_facebook']}}"><i class="fab fa-facebook-square" style="color:#3b5998;"></i>{{$user_about['social_facebook']}}</a>
+                                <a class="category-social-item" href="{{$user_about['social_facebook']}}"><i class="fab fa-facebook-square" style="color:#3b5998;"></i>&nbsp;&nbsp;{{$user_about['social_facebook']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_twitter'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_twitter']}}"><i class="fab fa-twitter" style="color:#1da1f2;"></i>{{$user_about['social_twitter']}}</a>
+                                <a class="category-social-item" href="{{$user_about['social_twitter']}}"><i class="fab fa-twitter" style="color:#1da1f2;"></i>&nbsp;&nbsp;{{$user_about['social_twitter']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_youtube'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_youtube']}}"><i class="fab fa-google-plus" style="color:#dd4b39;"></i>{{$user_about['social_youtube']}}</a>
+                                <a class="category-social-item" href="{{$user_about['social_youtube']}}"><i class="fab fa-google-plus" style="color:#dd4b39;"></i>&nbsp;&nbsp;{{$user_about['social_youtube']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_instagram'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_instagram']}}"><i class="fab fa-instagram" style="color:#405de6;"></i>{{$user_about['social_instagram']}}</a>
+                                <a class="category-social-item" href="{{$user_about['social_instagram']}}"><i class="fab fa-instagram" style="color:#405de6;"></i>&nbsp;&nbsp;{{$user_about['social_instagram']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_linkedin'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_linkedin']}}"><i class="fab fa-pinterest" style="color:#bd081c;"></i>{{$user_about['social_linkedin']}}</a>
+                                <a class="category-social-item" href="{{$user_about['social_linkedin']}}"><i class="fab fa-pinterest" style="color:#bd081c;"></i>&nbsp;&nbsp;{{$user_about['social_linkedin']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_other1'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_other1']}}"><i class="fab fa-linkedin" style="color:#0077b5;"></i>{{$user_about['social_other1']}}</a>
+                                <a class="category-social-item" href="{{$user_about['social_other1']}}"><i class="fab fa-linkedin" style="color:#0077b5;"></i>&nbsp;&nbsp;{{$user_about['social_other1']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_other2'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_other2']}}"><i class="fab fa-youtube" style="color:#ff0000;"></i>{{$user_about['social_other2']}}</a>
+                                <a class="category-social-item" href="{{$user_about['social_other2']}}"><i class="fab fa-youtube" style="color:#ff0000;"></i>&nbsp;&nbsp;{{$user_about['social_other2']}}</a>
                                 @ENDIF
                             </div>
                             @ENDIF

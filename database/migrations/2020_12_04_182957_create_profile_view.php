@@ -14,9 +14,11 @@ class CreateProfileView extends Migration
     public function up()
     {
         Schema::create('profile_view', function (Blueprint $table) {
-            $table->integer('visitor_user_id')->constrained()->references('id')->on('users')->onDelete('cascade');
+            $table->id();
             $table->integer('profile_user_id')->constrained()->references('id')->on('users')->onDelete('cascade');
+            $table->integer('visitor_user_id')->constrained()->references('id')->on('users')->onDelete('cascade');
             $table->datetime("visitor_time");
+            $table->timestamps();
         });
     }
 

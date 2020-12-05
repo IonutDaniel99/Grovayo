@@ -5,6 +5,8 @@ namespace App\Http\Controllers\MainProfile;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\Profile_View;
+use App\Models\User;
 use App\Models\User_About;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,13 +22,14 @@ class ActivityController extends Controller
     {
         $apiController = new ApiController;
         $weather = $apiController->callWeatherApi();
-        $user_about = User_About::where('id', Auth::id())->first();
+        $user_about = User_About::where('user_id', Auth::id())->first();
 
         foreach (['world', 'science', 'technology', 'music', 'movies', 'games', 'sport'] as $topic) {
             $news[$topic] = News::all()->where("topic", $topic)->random(3);
         }
         $this->isSocialPagesNull($user_about);
-        return view('livewire.profile.activity', compact('weather', 'user_about', 'news'));
+        $viewed_profile = $this->whoViewedMyProfile();
+        return view('livewire.profile.activity', compact('weather', 'user_about', 'news', 'viewed_profile'));
     }
 
     /**
@@ -106,5 +109,23 @@ class ActivityController extends Controller
                 $user_about['isSocialNetworksNull'] = 0;
             }
         }
+    }
+
+    function whoViewedMyProfile()
+    {
+        $visitor_user_id = Profile_View::all()->where('profile_user_id', Auth::id())->sortBy('visitor_time')->values()->pluck('visitor_user_id');
+        if ($visitor_user_id->isEmpty()) {
+            $visitor_user_details = 0;
+        } else {
+            foreach ($visitor_user_id as $id) {
+                $user = User::all()->where('id', $id);
+                $visitor_user_details[] = [
+                    'visitor_name' => $user->pluck('name')->first(),
+                    'visitor_image' => $user->pluck('profile_photo_path')->first(),
+                    'visitor_username' => $user->pluck('username')->first()
+                ];
+            };
+        }
+        return $visitor_user_details;
     }
 }

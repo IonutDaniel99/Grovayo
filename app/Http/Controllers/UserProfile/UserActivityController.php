@@ -4,8 +4,11 @@ namespace App\Http\Controllers\UserProfile;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
+use App\Models\Profile_View;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class UserActivityController extends Controller
 {
@@ -31,6 +34,7 @@ class UserActivityController extends Controller
 
         $profile_view = new ApiController;
         $profile_view->viewdProfile($data);
+
 
         return view('livewire.user-profile.username', compact('username', 'profile'));
     }

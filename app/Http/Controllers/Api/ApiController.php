@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Profile_View;
+use App\Models\User_About;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller
 {
@@ -20,7 +20,7 @@ class ApiController extends Controller
         $ipinfo_data = json_decode(file_get_contents("https://ipinfo.io/?token=" . $this->ipinfo_key), true);
         $ipinfo_data['lat'] = substr($ipinfo_data['loc'], 0, 5);
         $ipinfo_data['long'] = substr($ipinfo_data['loc'], 8, -2);
-        $Weather["degreePreferences"] = DB::table('user_about')->where('id', Auth::id())->value('user_weather_degree');
+        $Weather["degreePreferences"] = User_About::where('user_id', Auth::id())->value('user_weather_degree');
         if ($Weather["degreePreferences"] === "F") {
             $weather_data = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/onecall?lat=" . $ipinfo_data['lat'] . "&lon=" . $ipinfo_data['long'] . "&units=imperial&exclude=minutely,hourly,alerts&appid=" . $this->weather_key), true);
             $Weather["wind_option"] = "MPH";
@@ -124,14 +124,27 @@ class ApiController extends Controller
 
     public function viewdProfile($data)
     {
-        // TODO Profile View
         if ($data["id"] == Auth::id()) {
             return;
         }
-        Profile_View::insert([
-            'profile_user_id' => $data['id'],
-            'visitor_user_id' => Auth::id(),
-            'visitor_time' => now()
-        ]);
+
+        if (Profile_View::where('profile_user_id', $data["id"])->get()->count() > 4) {
+            if (Profile_View::where('profile_user_id', $data["id"])->where('visitor_user_id', Auth::id())->exists()) {
+                Profile_View::where('profile_user_id', $data["id"])->where('visitor_user_id', Auth::id())->update([
+                    'visitor_time' => now()
+                ]);
+            } else {
+                Profile_View::where('profile_user_id', $data["id"])->orderBy('visitor_time')->get()->first()->update([
+                    'visitor_user_id' => Auth::id(),
+                    'visitor_time' => now()
+                ]);
+            }
+        } else {
+            Profile_View::insert([
+                'profile_user_id' => $data['id'],
+                'visitor_user_id' => Auth::id(),
+                'visitor_time' => now()
+            ]);
+        }
     }
 }
