@@ -14,6 +14,7 @@ class CreateUsersFollow extends Migration
     public function up()
     {
         Schema::create('users_follow', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_follow_id')->constrained()->references('id')->on('users');
             $table->unsignedInteger('user_followed_id');
             $table->enum('user_follow_status', array('0', '1', '2', '3'));

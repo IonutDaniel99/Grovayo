@@ -37,22 +37,23 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="col-lg-6 col-md-6 col-sm-12 pr-2 pt-2">
                 <ul class="right-details">
                     <li>
-                        <div class="my-all-evnts">
-                            <a href="my_dashboard_events.html">View Events</a>
+                        <div class="all-dis-evnt">
+                            <div class="dscun-txt">Posts</div>
+                            <div class="dscun-numbr">3</div>
                         </div>
                     </li>
                     <li>
                         <div class="all-dis-evnt">
-                            <div class="dscun-txt">Events</div>
+                            <div class="dscun-txt">Followers</div>
                             <div class="dscun-numbr">22</div>
                         </div>
                     </li>
                     <li>
                         <div class="all-dis-evnt">
-                            <div class="dscun-txt">Discussions</div>
+                            <div class="dscun-txt">Following</div>
                             <div class="dscun-numbr">402</div>
                         </div>
                     </li>

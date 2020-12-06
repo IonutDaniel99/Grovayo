@@ -63,6 +63,7 @@ Route::post('/Personal-Info/get-cities-by-state', 'App\Http\Controllers\MainProf
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Profile', 'App\Http\Controllers\MainProfile\Settings\ProfileController@index')->name("Settings_Profile_Index");
 Route::post('/Profile/Update', 'App\Http\Controllers\MainProfile\Settings\ProfileController@update')->name('Settings_Profile_Update');
+Route::post('/Profile/Update/ProfileVisibility', 'App\Http\Controllers\MainProfile\Settings\ProfileController@setProfileVisibility')->name('Settings_Profile_Visibility');
 
 // ####################### Friend Request #################################
 

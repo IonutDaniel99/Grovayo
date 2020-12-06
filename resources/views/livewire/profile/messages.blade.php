@@ -92,7 +92,7 @@
                                         <!--message-bar-head end-->
                                         <div class="messages-line mCustomScrollbar _mCS_1">
                                             <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
-                                                <div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+                                                <div id="mCSB_1_container" class="mCSB_container" style="position: relative; left: 0px;" dir="ltr">
                                                     <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0" style="max-height: none;">
                                                         <div id="mCSB_1_container" class="mCSB_container" style="position: relative; top: 0px; left: 0px;" dir="ltr">
                                                             <div class="main-message-box">
@@ -158,7 +158,7 @@
                                                         </div>
                                                         <div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: block;">
                                                             <div class="mCSB_draggerContainer">
-                                                                <div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 458px; display: block; height: 300px; max-height: 619px; top: 0px;">
+                                                                <div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 458px; display: block; height: 300px; max-height: 619px; top: 171px;">
                                                                     <div class="mCSB_dragger_bar" style="line-height: 458px;"></div>
                                                                 </div>
                                                                 <div class="mCSB_draggerRail"></div>

@@ -18,7 +18,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('livewire.profile.settings.profile');
+        $user_about_model = User::all()->where('id', Auth::id())->first();
+        return view('livewire.profile.settings.profile', ['user_about_model' => $user_about_model]);
     }
 
     /**
@@ -86,6 +87,19 @@ class ProfileController extends Controller
         return back();
     }
 
+    public function setProfileVisibility()
+    {
+        $user_about_model = User::all()->where('id', Auth::id())->first();
+        if ($user_about_model->is_private == 0) {
+            $user_about_model->is_private = 1;
+            $user_about_model->save();
+            return back();
+        } else {
+            $user_about_model->is_private = 0;
+            $user_about_model->save();
+            return back();
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *

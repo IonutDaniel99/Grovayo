@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->text('profile_photo_path')->nullable();
             $table->string("background_image_url")->nullable()->default('storage/background-photos/default.jpg');
             $table->boolean('is_active')->default(true);
+            $table->boolean('is_private')->default(false);
             $table->boolean('is_blocked')->default(false);
             $table->boolean('user_notification')->default(false);
             $table->boolean('user_ads')->default(false);

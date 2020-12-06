@@ -15,7 +15,7 @@
                             @if($viewed_profile == 0)
                             <div class="sugguest-user">
                                 <div class="sugguest-user-dt">
-                                    <h4>Clear</h4>
+                                    <h6>No one viewed your profile yet!</h6>
                                 </div>
                             </div>
                             @else
@@ -31,6 +31,7 @@
                                     </a>
                                     <a href="/user/{{$visitor['visitor_username']}}">
                                         <h4>{{$visitor['visitor_name']}}</h4>
+                                    </a>
                                 </div>
                                 <button class=" request-btn"><i class="fas fa-user-plus"></i></button>
                             </div>

@@ -24,6 +24,51 @@
                                 @endif
                                 <div class="user-data full-width">
                                     <div class="about-left-heading">
+                                        <h3>Profile status</h3>
+                                    </div>
+                                    <div class="prsnl-info">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12">
+                                                <form action="{{ route('Settings_Profile_Visibility') }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    <div class="form-group">
+                                                        @if($user_about_model['is_private'] == 0)
+                                                        <h6><span style="color:red"><b>Note!</b></span> Your profile is set on <b class="underline" style="color: red;">Private</b>. You can change your profile every 3 days!</h6>
+                                                        @if(strtotime($user_about_model['updated_at']) < strtotime('-3 days')) <h6>While your profile is set on Private,other users can't:</h6>
+                                                            <ul class="pl-4" style="list-style:disc">
+                                                                <li>Follow your profile without accepting their request!</li>
+                                                                <li>See your profile activity and about page!</li>
+                                                                <li>View who you follow and your followers!</li>
+                                                            </ul>
+                                                            <div class=" add-profile-btn">
+                                                                <button class="setting-save-btn inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150" type="sub">Set to Public</button>
+                                                            </div>
+                                                            @else
+                                                            <h6>You can change your profile again at {{ gmdate("F j, Y",strtotime($user_about_model['updated_at']) + 259200)}}</h6>
+                                                            @endif
+                                                            @else
+                                                            <h6><span style="color:red"><b>Note!</b></span> Your profile its set on <b class="underline" style="color: green;">Public</b>.You can change your profile every 3 days!</h6>
+                                                            @if(strtotime($user_about_model['updated_at']) < strtotime('-3 days')) <h6>While your profile is set on Public,other users can:</h6>
+                                                                <ul class="pl-4" style="list-style:disc">
+                                                                    <li>Follow your profile!</li>
+                                                                    <li>See your profile activity and about page!</li>
+                                                                    <li>View who you follow and your followers!</li>
+                                                                </ul>
+                                                                <div class="add-profile-btn">
+                                                                    <button class="setting-save-btn inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150" type="sub">Set to Private</button>
+                                                                </div>
+                                                                @else
+                                                                <h6>You can change your profile again at {{ gmdate("F j, Y",strtotime($user_about_model['updated_at']) + 259200)}}</h6>
+                                                                @endif
+                                                                @endif
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="user-data full-width">
+                                    <div class="about-left-heading">
                                         <h3>Profile Photo</h3>
                                     </div>
                                     <div class="prsnl-info">
