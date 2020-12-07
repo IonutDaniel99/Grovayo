@@ -11,6 +11,6 @@ class Tabs extends Component
 
     public function render()
     {
-        return view('livewire.nav.profile.tabs', ['user_about' => $this->user_about]);
+        return view('livewire.profile.nav.profile.tabs', ['user_about' => $this->user_about]);
     }
 }

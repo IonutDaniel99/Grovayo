@@ -36,7 +36,7 @@ class UserActivityController extends Controller
         $profile_view->viewdProfile($data);
 
 
-        return view('livewire.user-profile.username', compact('username', 'profile'));
+        return view('livewire.user-profile.activity', compact('username', 'profile'));
     }
 
     /**

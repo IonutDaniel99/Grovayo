@@ -1,63 +1,11 @@
 <x-profile-layout>
     <main class="dashboard-mp">
-        <div class="dash-todo-thumbnail-area1">
-            <div class="todo-thumb1 dash-bg-image1 dash-bg-overlay" style="background-image:url(../storage/images/profile/my-bg.jpg)"> </div>
-            <div class="dash-todo-header1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12">
-                            <div class="my-profile-dash">
-                                <div class="my-dp-dash">
-                                    <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- TODOME Profile Photos and Name -->
-        <div class="dash-dts">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="event-title">
-                            <div class="my-dash-dt">
-                                <h3>Dani</h3>
-                                <span>Member since iulie</span>
-                                <span><i class="fas fa-map-marker-alt"></i>India</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <ul class="right-details">
-                            <li>
-                                <div class="my-all-evnts">
-                                    <a href="my_dashboard_events.html">View Events</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="all-dis-evnt">
-                                    <div class="dscun-txt">Events</div>
-                                    <div class="dscun-numbr">22</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="all-dis-evnt">
-                                    <div class="dscun-txt">Discussions</div>
-                                    <div class="dscun-numbr">40</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @livewire('user-profile.nav.user-profile-info',['username' => $username])
         <div class="dash-tab-links">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        @livewire('user-profile.profile.profile-tabs',['username' => $username])
+                        @livewire('user-profile.nav.profile-tabs',['username' => $username])
                     </div>
                     <div class="col-lg-3 col-md-5">
                         <div class="user-data full-width">
@@ -83,7 +31,7 @@
                                 <div class="sugguest-user-dt">
                                     <a href="#"><img src="images/homepage/left-side/left-img-1.jpg" alt=""></a>
                                     <a href="#">
-                                        <h4>Johnson</h4>
+                                        <h4>{{$username}}</h4>
                                     </a>
                                 </div>
                                 <button class="request-btn"><i class="fas fa-user-plus"></i></button>

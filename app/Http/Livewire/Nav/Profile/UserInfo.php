@@ -23,6 +23,6 @@ class UserInfo extends Component
         $this->user_about['user_state'] = State::where("id", $this->user_about['user_state'])->value('name');
         $this->user_about['user_city'] = City::where("id", $this->user_about['user_city'])->value('name');
 
-        return view('livewire.nav.profile.user-info', ['user_about' => $this->user_about, 'profile' => $profile]);
+        return view('livewire.profile.nav.profile.user-info', ['user_about' => $this->user_about, 'profile' => $profile]);
     }
 }

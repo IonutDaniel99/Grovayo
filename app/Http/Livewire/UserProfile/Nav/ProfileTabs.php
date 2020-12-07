@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\UserProfile\Profile;
+namespace App\Http\Livewire\UserProfile\Nav;
 
 use Livewire\Component;
 
@@ -15,6 +15,6 @@ class ProfileTabs extends Component
 
     public function render()
     {
-        return view('livewire.user-profile.profile.profile-tabs', ['username' => $this->username]);
+        return view('livewire.user-profile.nav.profile-tabs', ['username' => $this->username]);
     }
 }
