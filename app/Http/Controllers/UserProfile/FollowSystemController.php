@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Debug;
+namespace App\Http\Controllers\UserProfile;
 
-use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
-use App\Models\Profile_View;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
-class Debug extends Controller
+class FollowSystemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,14 +15,8 @@ class Debug extends Controller
      */
     public function index()
     {
-        $user_model = User::where("username", "madavoicu99");
-        if ($user_model->pluck('is_private')->first() == 0) {
-            return $user_model->pluck('is_private')->first();
-        } else
-            dd("da", $user_model->pluck('is_private')->first());
+        
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -92,5 +82,14 @@ class Debug extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function follwUserRequest(Request $request)
+    {
+        $user = User::find($request->username);
+        $response = auth()->user()->toggleFollow($user);
+
+
+        return response()->json(['success' => $response]);
     }
 }

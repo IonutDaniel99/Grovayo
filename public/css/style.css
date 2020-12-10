@@ -2072,6 +2072,12 @@ main {
     color: #313131;
 }
 
+.news-item-heading svg {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ff7555;
+}
+
 .news-description {
     float: left;
     width: 100%;
@@ -6062,7 +6068,7 @@ footer {
     margin-bottom: 0;
 }
 
-.my-dash-dt span i {
+.my-dash-dt span svg {
     color: #ff7555;
     font-size: 14px;
     margin-right: 5px;
@@ -6075,7 +6081,6 @@ footer {
 
 .right-details {
     text-align: right;
-    margin-bottom: 0;
     width: 100%;
 }
 
@@ -6121,8 +6126,8 @@ footer {
 }
 
 .my-all-evnts a:hover {
-    background: #f55f3d;
-    color: #fff !important;
+    background: #f5f1f0;
+    color: #000000 !important;
 }
 
 .dash-tab-links {

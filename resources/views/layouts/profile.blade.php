@@ -27,7 +27,6 @@
     @livewireStyles
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquery.nice-select.js') }}"></script>
     <script src="{{ asset('js/datepicker.min.js') }}"></script>
@@ -39,6 +38,7 @@
     <script src="{{ asset('js/jquery.mCustomScrollbar.js') }}"></script>
     <script src="{{ asset('js/Scrollbar.js') }}"></script>
     <script src="{{ asset('js/custom1.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
 </head>
 
 <body class="font-sans antialiased">

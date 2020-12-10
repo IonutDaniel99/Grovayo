@@ -51,6 +51,8 @@ Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Messages', f
     return view('livewire.profile.messages');
 })->name('Messages');
 
+#region User Personal Info
+
 // ####################### Personal Info #################################
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Personal-Info', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@index')->name("Settings_Personal_Info_Index");
 Route::post('/Personal-Info/Store', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@update')->name('Settings_Personal_Info_Update');
@@ -103,21 +105,23 @@ Route::post('/Change-Password/Update', 'App\Http\Controllers\MainProfile\Setting
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Disable-Account', 'App\Http\Controllers\MainProfile\Settings\DisableAccountController@index')->name("Settings_Disable_Account_Index");
 
+#endregion
 
 // ############################ ADMIN ###############################
 
 Route::middleware(['auth:sanctum', 'verified', 'role:Support|Moderator|Administrator|Owner'])->get('/Admin', 'App\Http\Controllers\Admin\DashboardController@index')->name("Admin_Dashboard_Index");
 
 
-
 // ########################### USER PROFILE #########################
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}', 'App\Http\Controllers\UserProfile\UserActivityController@index');
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/Activity', 'App\Http\Controllers\UserProfile\UserActivityController@index')->name("UserActivity");
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/About', 'App\Http\Controllers\UserProfile\UserAboutController@index')->name("UserAbout");
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/Followers', 'App\Http\Controllers\UserProfile\UserFollowerController@index')->name("UserFollowers");
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/Following', 'App\Http\Controllers\UserProfile\UserFollowingController@index')->name("UserFollowing");
 
-
+Route::post('follow', 'App\Http\Controllers\UserProfile\FollowSystemController@follwUserRequest')->name('follow');
 
 
 // ############################ Email Middleware ####################
