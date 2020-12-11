@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
 use App\Models\Profile_View;
 use App\Models\User;
+use App\Models\User_Follow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Profiler\Profile;
@@ -23,20 +24,26 @@ class UserActivityController extends Controller
 
     public function index($username)
     {
-        $data = User::where('username', $username)->first();
-        if (!$data || $data === NULL) {
+        $user_model = User::where('username', $username)->first();
+        if (!$user_model || $user_model === NULL) {
             return view('errors.404-user');
         }
-        $profile['profile_name'] = $data->name;
-        $profile['profile_photo_path'] = $data->profile_photo_path;
-        $profile['background_image_url'] = $data->background_image_url;
-        $profile['active_since'] = date_format($data->created_at, "F Y");
+
+        $follow_model = User_Follow::where("user_follow_id", Auth::id())->where('user_followed_id', $user_model->id)->pluck('user_follow_status')->first();
+
+        if ($follow_model == 4) {
+            return view('errors.404-user');
+        } elseif ($follow_model == 2) {
+            $is_private = 0;
+        } else {
+            $is_private = 1;
+        }
 
         $profile_view = new ApiController;
-        $profile_view->viewdProfile($data);
+        $profile_view->viewdProfile($user_model);
 
 
-        return view('livewire.user-profile.activity', compact('username', 'profile'));
+        return view('livewire.user-profile.activity', compact('username', 'user_model', 'is_private'));
     }
 
     /**

@@ -32,9 +32,11 @@
                                             {{$state}}
                                         </a>
                                     </div>
+                                    @if($state == 'Followed')
                                     <div class="user-follow">
-                                        <a href="user_dashboard_events.html">View Events</a>
+                                        <a href="user_dashboard_events.html">Message</a>
                                     </div>
+                                    @endif
                                     <div class="user-follow">
                                         <a href="user_dashboard_events.html"><i class="fas fa-ellipsis-h"></i></a>
                                     </div>

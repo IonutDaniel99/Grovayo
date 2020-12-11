@@ -1,17 +1,17 @@
 <x-profile-layout>
     <main class="dashboard-mp">
         <div class="dash-todo-thumbnail-area1">
-            <div class="todo-thumb1 dash-bg-image1 dash-bg-overlay" style="background-image:url(/{{$profile['background_image_url']}})"> </div>
+            <div class="todo-thumb1 dash-bg-image1 dash-bg-overlay" style="background-image:url(/{{$user_model->background_image_url}})"> </div>
             <div class="dash-todo-header1">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="my-profile-dash">
                                 <div class="my-dp-dash">
-                                    @if($profile['profile_photo_path'] == NULL)
-                                    <img src="https://ui-avatars.com/api/?name={{$profile['profile_name']}}&color=7F9CF5&background=EBF4FF" alt="{{ $profile['profile_name'] }}">
+                                    @if($user_model->profile_photo_path == NULL)
+                                    <img src="https://ui-avatars.com/api/?name={{$user_model->name}}&color=7F9CF5&background=EBF4FF" alt="{{ $user_model->name }}">
                                     @else
-                                    <img src="{{ $profile['profile_photo_path'] }}" alt="{{ $profile['profile_name'] }}">
+                                    <img src="{{ $user_model->profile_photo_path }}" alt="{{$user_model->name}}">
                                     @endif
                                 </div>
                             </div>
@@ -21,6 +21,7 @@
             </div>
         </div>
         @livewire('user-profile.nav.user-profile-info',['username' => $username])
+        @if($is_private == 0)
         <div class="dash-tab-links">
             <div class="container">
                 <div class="row">
@@ -344,5 +345,13 @@
                 </div>
             </div>
         </div>
+        @else
+        <div class="dash-tab-links">
+            <div class="container text-center">
+                <h1>This account is Private</h1>
+                <h4>Follow to see his posts, images and videos!</h4>
+            </div>
+        </div>
+        @endif
     </main>
 </x-profile-layout>

@@ -121,7 +121,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/About', '
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/Followers', 'App\Http\Controllers\UserProfile\UserFollowerController@index')->name("UserFollowers");
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/Following', 'App\Http\Controllers\UserProfile\UserFollowingController@index')->name("UserFollowing");
 
-Route::post('follow', 'App\Http\Controllers\UserProfile\FollowSystemController@follwUserRequest')->name('follow');
 
 
 // ############################ Email Middleware ####################
