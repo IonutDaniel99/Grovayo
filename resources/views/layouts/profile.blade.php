@@ -27,13 +27,13 @@
     @livewireStyles
 
     <!-- Scripts -->
+    <script src="{{ asset('js/all.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquery.nice-select.js') }}"></script>
     <script src="{{ asset('js/datepicker.min.js') }}"></script>
     <script src="{{ asset('js/datepicker.en.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.js') }}"></script>
-    <script src="{{ asset('js/all.js') }}"></script>
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js') }}"></script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.js') }}"></script>
     <script src="{{ asset('js/Scrollbar.js') }}"></script>

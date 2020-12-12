@@ -22,96 +22,17 @@
                                     <div class="all-rqusts1">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12">
+                                                @foreach($friends_request as $friend_request)
                                                 <div class="user-request-list">
                                                     <div class="request-users">
                                                         <div class="user-request-dt">
-                                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
+                                                            <a href="{{$friends_request['follower_request_username']}}"><img src="images/user-dp-1.jpg" alt=""></a>
                                                             <a href="#" class="user-title">Jassica William</a>
                                                         </div>
                                                         <button class="accept-btn">Accept</button>
                                                     </div>
                                                 </div>
-                                                <div class="user-request-list">
-                                                    <div class="request-users">
-                                                        <div class="user-request-dt">
-                                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                                            <a href="#" class="user-title">Joginder Singh</a>
-                                                        </div>
-                                                        <button class="accept-btn">Accept</button>
-                                                    </div>
-                                                </div>
-                                                <div class="user-request-list">
-                                                    <div class="request-users">
-                                                        <div class="user-request-dt">
-                                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                                            <a href="#" class="user-title">Rock Smith</a>
-                                                        </div>
-                                                        <button class="accept-btn">Accept</button>
-                                                    </div>
-                                                </div>
-                                                <div class="user-request-list">
-                                                    <div class="request-users">
-                                                        <div class="user-request-dt">
-                                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                                            <a href="#" class="user-title">Poonam Verma</a>
-                                                        </div>
-                                                        <button class="accept-btn">Accept</button>
-                                                    </div>
-                                                </div>
-                                                <div class="user-request-list">
-                                                    <div class="request-users">
-                                                        <div class="user-request-dt">
-                                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                                            <a href="#" class="user-title">Davinder Singh</a>
-                                                        </div>
-                                                        <button class="accept-btn">Accept</button>
-                                                    </div>
-                                                </div>
-                                                <div class="user-request-list">
-                                                    <div class="request-users">
-                                                        <div class="user-request-dt">
-                                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                                            <a href="#" class="user-title">Lucy William</a>
-                                                        </div>
-                                                        <button class="accept-btn">Accept</button>
-                                                    </div>
-                                                </div>
-                                                <div class="user-request-list">
-                                                    <div class="request-users">
-                                                        <div class="user-request-dt">
-                                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                                            <a href="#" class="user-title">Johnson Dua</a>
-                                                        </div>
-                                                        <button class="accept-btn">Accept</button>
-                                                    </div>
-                                                </div>
-                                                <div class="user-request-list">
-                                                    <div class="request-users">
-                                                        <div class="user-request-dt">
-                                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                                            <a href="#" class="user-title">Albert</a>
-                                                        </div>
-                                                        <button class="accept-btn">Accept</button>
-                                                    </div>
-                                                </div>
-                                                <div class="user-request-list">
-                                                    <div class="request-users">
-                                                        <div class="user-request-dt">
-                                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                                            <a href="#" class="user-title">Joy Dua</a>
-                                                        </div>
-                                                        <button class="accept-btn">Accept</button>
-                                                    </div>
-                                                </div>
-                                                <div class="user-request-list">
-                                                    <div class="request-users">
-                                                        <div class="user-request-dt">
-                                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                                            <a href="#" class="user-title">Zoena Singh</a>
-                                                        </div>
-                                                        <button class="accept-btn">Accept</button>
-                                                    </div>
-                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
