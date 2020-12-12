@@ -11,7 +11,7 @@
                                     @if($user_model->profile_photo_path == NULL)
                                     <img src="https://ui-avatars.com/api/?name={{$user_model->name}}&color=7F9CF5&background=EBF4FF" alt="{{ $user_model->name }}">
                                     @else
-                                    <img src="{{ $user_model->profile_photo_path }}" alt="{{$user_model->name}}">
+                                    <img src="/storage/{{ $user_model->profile_photo_path }}" alt="{{$user_model->name}}">
                                     @endif
                                 </div>
                             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\MainProfile\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\User_Follow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -89,14 +90,21 @@ class ProfileController extends Controller
 
     public function setProfileVisibility()
     {
-        $user_about_model = User::all()->where('id', Auth::id())->first();
-        if ($user_about_model->is_private == 0) {
-            $user_about_model->is_private = 1;
-            $user_about_model->save();
+        $auth_id = Auth::id();
+        $user_model = User::all()->where('id', $auth_id)->first();
+        if ($user_model->is_private == 0) {
+
+            $user_model->is_private = 1;
+            $user_model->save();
+
             return back();
         } else {
-            $user_about_model->is_private = 0;
-            $user_about_model->save();
+            User_Follow::where("user_followed_id", $auth_id)->update([
+                'user_follow_status' => 0,
+                'user_action_id' => $auth_id
+            ]);
+            $user_model->is_private = 0;
+            $user_model->save();
             return back();
         }
     }

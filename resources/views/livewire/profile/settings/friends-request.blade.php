@@ -26,8 +26,8 @@
                                                 <div class="user-request-list">
                                                     <div class="request-users">
                                                         <div class="user-request-dt">
-                                                            <a href="{{$friends_request['follower_request_username']}}"><img src="images/user-dp-1.jpg" alt=""></a>
-                                                            <a href="#" class="user-title">Jassica William</a>
+                                                            <a href="/user/{{$friend_request['follower_request_username']}}"><img src="storage/{{$friend_request['follower_request_profile_photo']}}" alt=""></a>
+                                                            <a href="/user/{{$friend_request['follower_request_username']}}" class="user-title">{{$friend_request['follower_request_name']}}</a>
                                                         </div>
                                                         <button class="accept-btn">Accept</button>
                                                     </div>

@@ -12,11 +12,11 @@
                                     From: {{$about_model['user_country']}}
                                     @IF($about_model['user_state'] != NULL)
                                     / {{$about_model['user_state']}}
+                                    @ENDIF
                                     @IF($about_model['user_city'] != NULL)
                                     / {{$about_model['user_city']}}
                                     @ENDIF
                                 </span>
-                                @ENDIF
                                 @ELSE
                                 <span><i class="fas fa-map-marker-alt" style="margin-right:5px"></i>Not Specified</span>
                                 @ENDIF
