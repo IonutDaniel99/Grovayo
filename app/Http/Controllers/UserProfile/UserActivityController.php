@@ -31,7 +31,7 @@ class UserActivityController extends Controller
 
         $follow_model = User_Follow::where("user_follow_id", Auth::id())->where('user_followed_id', $user_model->id)->pluck('user_follow_status')->first();
 
-        if ($follow_model == 4) {
+        if ($follow_model == 3) {
             return view('errors.404-user');
         } elseif ($follow_model == 2) {
             $is_private = 0;

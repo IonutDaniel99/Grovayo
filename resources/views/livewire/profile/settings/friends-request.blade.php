@@ -29,7 +29,7 @@
                                                             <a href="/user/{{$friend_request['follower_request_username']}}"><img src="storage/{{$friend_request['follower_request_profile_photo']}}" alt=""></a>
                                                             <a href="/user/{{$friend_request['follower_request_username']}}" class="user-title">{{$friend_request['follower_request_name']}}</a>
                                                         </div>
-                                                        <button class="accept-btn">Accept</button>
+                                                        <livewire:profile.settings.friends-request.content :post='$friend_request'/>
                                                     </div>
                                                 </div>
                                                 @endforeach

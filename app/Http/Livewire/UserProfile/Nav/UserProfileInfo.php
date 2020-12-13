@@ -92,8 +92,7 @@ class UserProfileInfo extends Component
         0 - follpw
         if private  = 1 - pending
         2 - followed
-        3 - declined
-        4 - blocked
+        3 - blocked
         */
     }
 
@@ -113,9 +112,6 @@ class UserProfileInfo extends Component
             }
             if ($follow_status == 2) {
                 $this->state = "Followed";
-            }
-            if ($follow_status == 3) {
-                $this->state = "Follow";
             }
         } else {
             $this->state = "Follow";
