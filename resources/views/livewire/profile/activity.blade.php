@@ -9,8 +9,15 @@
                     </div>
                     <div class="col-lg-3 col-md-5">
                         <div class="user-data full-width">
-                            <div class="categories-left-heading">
-                                <h3>People Viewed Profile</h3>
+                            <div class="categories-left-heading" x-data="{tooltip:false}">
+                                <div @mouseenter="tooltip = true" @mouseleave="tooltip = false">
+                                    <h3>People Viewed Profile <i class="fas fa-info-circle info-button pt-1"></i></h3>
+                                </div>
+                                <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
+                                    <div class="absolute z-10 w-auto p-2 -mt-1 text-sm leading-tight text-white transform -translate-x-0 -translate-y-20 bg-orange-500 rounded-lg shadow-lg">
+                                        You can see your last visitior even if your profile is set on private!
+                                    </div>
+                                </div>
                             </div>
                             @if($viewed_profile == 0)
                             <div class="sugguest-user">

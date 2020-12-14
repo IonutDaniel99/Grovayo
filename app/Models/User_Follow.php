@@ -12,8 +12,8 @@ class User_Follow extends Model
     protected $table = 'users_follow';
 
 
-    public function follow()
+    public function user()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\Models\User', 'id', 'user_follow_id');
     }
 }

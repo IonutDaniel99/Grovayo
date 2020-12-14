@@ -48,13 +48,13 @@
                     <li>
                         <div class="all-dis-evnt">
                             <div class="dscun-txt">Followers</div>
-                            <div class="dscun-numbr">22</div>
+                            <div class="dscun-numbr">{{$user_about['follow_number']}}</div>
                         </div>
                     </li>
                     <li>
                         <div class="all-dis-evnt">
                             <div class="dscun-txt">Following</div>
-                            <div class="dscun-numbr">402</div>
+                            <div class="dscun-numbr">{{$user_about['following_number']}}</div>
                         </div>
                     </li>
                 </ul>

@@ -22,17 +22,7 @@
                                     <div class="all-rqusts1">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12">
-                                                @foreach($friends_request as $friend_request)
-                                                <div class="user-request-list">
-                                                    <div class="request-users">
-                                                        <div class="user-request-dt">
-                                                            <a href="/user/{{$friend_request['follower_request_username']}}"><img src="storage/{{$friend_request['follower_request_profile_photo']}}" alt=""></a>
-                                                            <a href="/user/{{$friend_request['follower_request_username']}}" class="user-title">{{$friend_request['follower_request_name']}}</a>
-                                                        </div>
-                                                        <livewire:profile.settings.friends-request.content :post='$friend_request'/>
-                                                    </div>
-                                                </div>
-                                                @endforeach
+                                                <livewire:profile.settings.other.friends-request-content />
                                             </div>
                                         </div>
                                     </div>

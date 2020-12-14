@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\MainProfile\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\User_Follow;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class FriendsRequests extends Controller
 {
@@ -17,23 +14,7 @@ class FriendsRequests extends Controller
      */
     public function index()
     {
-        $auth_id = Auth::id();
-        $follow_model = User_Follow::all()->where("user_followed_id", $auth_id)->where('user_follow_status', 1)->toArray();
-        $friends_request = [];
-        $i = 1;
-        foreach ($follow_model as $follow_data) {
-            $follow_user = User::where('id', $follow_data['user_follow_id'])->first();
-            array_push($friends_request, [
-                'follower_value' => $i,
-                'auth_id' => $auth_id,
-                'follower_request_id' => $follow_data['user_follow_id'],
-                'follower_request_username' => $follow_user['username'],
-                'follower_request_profile_photo' => $follow_user['profile_photo_path'],
-                'follower_request_name' => $follow_user['name'],
-            ]);
-            $i++;
-        }
-        return view('livewire.profile.settings.friends-request', ['friends_request' => $friends_request]);
+        return view('livewire.profile.settings.friends-request');
     }
 
     /**

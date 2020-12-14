@@ -39,8 +39,7 @@ class UserActivityController extends Controller
             $is_private = 1;
         }
 
-        $profile_view = new ApiController;
-        $profile_view->viewdProfile($user_model);
+        $this->viewdProfile($user_model);
 
 
         return view('livewire.user-profile.activity.main', compact('username', 'user_model', 'is_private'));
@@ -110,5 +109,42 @@ class UserActivityController extends Controller
     public function destroy($id)
     {
         //
+    }
+    /**
+     * Return the last 5 users who visited your profile
+     * @param username $data
+     * @return App\Models\Profile_View\update;
+     * @return App\Models\Profile_View\insert;
+     */
+    function viewdProfile($data)
+    {
+        if ($data["id"] == Auth::id()) {
+            return;
+        }
+
+        if (Profile_View::where('profile_user_id', $data["id"])->get()->count() > 4) {
+            if (Profile_View::where('profile_user_id', $data["id"])->where('visitor_user_id', Auth::id())->exists()) {
+                Profile_View::where('profile_user_id', $data["id"])->where('visitor_user_id', Auth::id())->update([
+                    'visitor_time' => now()
+                ]);
+            } else {
+                Profile_View::where('profile_user_id', $data["id"])->orderBy('visitor_time')->get()->first()->update([
+                    'visitor_user_id' => Auth::id(),
+                    'visitor_time' => now()
+                ]);
+            }
+        } else {
+            if (Profile_View::where('profile_user_id', $data["id"])->where('visitor_user_id', Auth::id())->exists()) {
+                Profile_View::where('profile_user_id', $data["id"])->where('visitor_user_id', Auth::id())->update([
+                    'visitor_time' => now()
+                ]);
+            } else {
+                Profile_View::insert([
+                    'profile_user_id' => $data['id'],
+                    'visitor_user_id' => Auth::id(),
+                    'visitor_time' => now()
+                ]);
+            }
+        }
     }
 }

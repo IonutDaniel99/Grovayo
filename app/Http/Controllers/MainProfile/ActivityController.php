@@ -113,7 +113,7 @@ class ActivityController extends Controller
 
     function whoViewedMyProfile()
     {
-        $visitor_user_id = Profile_View::all()->where('profile_user_id', Auth::id())->sortBy('visitor_time')->values()->pluck('visitor_user_id');
+        $visitor_user_id = Profile_View::all()->where('profile_user_id', Auth::id())->sortByDesc('visitor_time')->values()->pluck('visitor_user_id');
         if ($visitor_user_id->isEmpty()) {
             $visitor_user_details = 0;
         } else {

@@ -122,29 +122,4 @@ class ApiController extends Controller
         }
     }
 
-    public function viewdProfile($data)
-    {
-        if ($data["id"] == Auth::id()) {
-            return;
-        }
-
-        if (Profile_View::where('profile_user_id', $data["id"])->get()->count() > 4) {
-            if (Profile_View::where('profile_user_id', $data["id"])->where('visitor_user_id', Auth::id())->exists()) {
-                Profile_View::where('profile_user_id', $data["id"])->where('visitor_user_id', Auth::id())->update([
-                    'visitor_time' => now()
-                ]);
-            } else {
-                Profile_View::where('profile_user_id', $data["id"])->orderBy('visitor_time')->get()->first()->update([
-                    'visitor_user_id' => Auth::id(),
-                    'visitor_time' => now()
-                ]);
-            }
-        } else {
-            Profile_View::insert([
-                'profile_user_id' => $data['id'],
-                'visitor_user_id' => Auth::id(),
-                'visitor_time' => now()
-            ]);
-        }
-    }
 }
