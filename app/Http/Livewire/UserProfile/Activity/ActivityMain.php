@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Main;
 
 use Livewire\Component;
 
-class Main extends Component
+class ActivityMain extends Component
 {
     public $username;
     public function mount($username)

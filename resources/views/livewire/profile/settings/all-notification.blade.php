@@ -1,6 +1,6 @@
 <x-app-layout>
     <main class="dashboard-mp">
-        @livewire('nav.profile.user-info')
+        <livewire:profile.nav.other.user-info />
         <div class="dash-tab-links">
             <div class="container">
                 <div class="setting-page mb-20">
@@ -10,7 +10,7 @@
                                 <div class="categories-left-heading">
                                     <h3>Your Details</h3>
                                 </div>
-                                @livewire('nav.settings.details-row')
+                                <livewire:profile.nav.settings.details-row />
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-7">

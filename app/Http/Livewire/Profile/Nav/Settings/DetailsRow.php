@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Nav\Settings;
+namespace App\Http\Livewire\Profile\Nav\Settings;
 
 use Livewire\Component;
 

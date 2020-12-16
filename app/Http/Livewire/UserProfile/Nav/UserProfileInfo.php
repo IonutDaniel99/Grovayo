@@ -27,7 +27,7 @@ class UserProfileInfo extends Component
         $user_model = User::where("username", $this->username);
         $username_id = $user_model->pluck('id')->first();
         $follow_model = User_Follow::where("user_follow_id", $this->auth_user_id)->where('user_followed_id', $username_id);
-
+        sleep(1);
         if ($follow_model->exists()) {
             if ($user_model->pluck('is_private')->first() == 1 && $follow_model->pluck('user_follow_status')->first() == 0) {
                 $follow_model->update([

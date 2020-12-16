@@ -16,4 +16,8 @@ class User_Follow extends Model
     {
         return $this->hasMany('App\Models\User', 'id', 'user_follow_id');
     }
+    public function user_about()
+    {
+        return $this->hasMany('App\Models\User_About', 'user_id', 'user_follow_id');
+    }
 }

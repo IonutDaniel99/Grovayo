@@ -1,13 +1,11 @@
 <x-app-layout>
     <main class="dashboard-mp">
-
-        @livewire('nav.profile.user-info')
-
+        <livewire:profile.nav.other.user-info />
         <div class="dash-tab-links">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        @livewire('nav.profile.tabs')
+                        <livewire:profile.nav.other.tabs />
                     </div>
                 </div>
                 <div class="dash-discussions mb-20 bpm-50">

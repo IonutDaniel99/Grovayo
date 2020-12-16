@@ -29,7 +29,14 @@
                                 <div class="user-buttons">
                                     <div class="user-follow">
                                         <a role="button" wire:click="toggle_follow_state()">
-                                            {{$state}}
+                                            <texte wire:loading.remove>{{$state}}</texte>
+                                            <texte wire:loading>
+                                                <div class="spinner" style="border: none !important">
+                                                    <div class="bounce1"></div>
+                                                    <div class="bounce2"></div>
+                                                    <div class="bounce3"></div>
+                                                </div>
+                                            </texte>
                                         </a>
                                     </div>
                                     @if($state == 'Followed')
