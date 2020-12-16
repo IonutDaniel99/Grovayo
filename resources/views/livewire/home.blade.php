@@ -6,8 +6,8 @@
                     <div class="main-left-sidebar">
                         <div class="user-data full-width">
                             <div class="user-profile">
-                                <div class="username-dt dpbg-<?php echo random_int(1, 12); ?>">
-                                    <div class="usr-pic">
+                                <div class="username-dt dpbg" style="background-image:url('{{Auth::user()->background_image_url}}')">
+                                    <div class=" usr-pic">
                                         <img class="h-100 w-100" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                                     </div>
                                 </div>

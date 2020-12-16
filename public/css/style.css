@@ -5138,52 +5138,8 @@ footer {
     padding-top: 24px;
 }
 
-.dpbg-1 {
-    background-image: url(../storage/images/dpbg/bg-1.jpg) !important;
-}
-
-.dpbg-2 {
-    background-image: url(../storage/images/dpbg/bg-2.jpg) !important;
-}
-
-.dpbg-3 {
-    background-image: url(../storage/images/dpbg/bg-3.jpg) !important;
-}
-
-.dpbg-4 {
-    background-image: url(../storage/images/dpbg/bg-4.jpg) !important;
-}
-
-.dpbg-5 {
-    background-image: url(../storage/images/dpbg/bg-5.jpg) !important;
-}
-
-.dpbg-6 {
-    background-image: url(../storage/images/dpbg/bg-6.jpg)) !important;
-}
-
-.dpbg-7 {
-    background-image: url(../storage/images/dpbg/bg-7.jpg) !important;
-}
-
-.dpbg-8 {
-    background-image: url(../storage/images/dpbg/bg-8.jpg) !important;
-}
-
-.dpbg-9 {
-    background-image: url(../storage/images/dpbg/bg-9.jpg) !important;
-}
-
-.dpbg-10 {
-    background-image: url(../storage/images/dpbg/bg-10.jpg) !important;
-}
-
-.dpbg-11 {
-    background-image: url(../storage/images/dpbg/bg-11.jpg) !important;
-}
-
-.dpbg-12 {
-    background-image: url(../storage/images/dpbg/bg-12.jpg) !important;
+.dpbg {
+    background-size: 100% 100%;
 }
 
 /* === About Us Page === */

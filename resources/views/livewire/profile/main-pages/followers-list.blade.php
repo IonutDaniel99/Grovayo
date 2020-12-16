@@ -1,6 +1,13 @@
 <div>
     <div class="dash-discussions mb20">
         <div class="main-section">
+            @if($is_follower_list_empty == true)
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <p>You don't have any followers yet!</p>
+                </div>
+            </div>
+            @else
             <div class="container">
                 <div class="row justify-content-md-center">
                     <div class="col-lg-4 col-md-12">
@@ -17,7 +24,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="user-data full-width">
                             <div class="user-profile">
-                                <div class="userbg-dt dpbg-<?php echo random_int(1, 12); ?>">
+                                <div class="userbg-dt dpbg" style="background-image:url({{$follower['follower_request_background_photo']}});">
                                     <div class="usr-pic">
                                         @if($follower['follower_request_profile_photo'] == NULL)
                                         <img src="https://ui-avatars.com/api/?name={{$follower['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="">
@@ -38,13 +45,13 @@
                                 </div>
                                 <ul class="follow-msg-dt">
                                     <li>
-                                        @if($follower['follower_request_isFriend'] == true)
+                                        @if($follower['follower_request_Friends'] == true)
                                         <div class="msg-dt-sm">
                                             <button class="msg-btn1" wire:click="message()">Message</button>
                                         </div>
                                         @else
                                         <div class="msg-dt-sm">
-                                            <button class="follow-btn1" wire:click="followBack()">Follow Back</button>
+                                            <button class="follow-btn1" wire:click="followBack({{$follower['follower_request_id']}})">{{$state}}</button>
                                         </div>
                                         @endif
                                     </li>
@@ -72,6 +79,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>
