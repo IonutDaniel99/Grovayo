@@ -10,10 +10,10 @@
         <a class="nav-link" href="{{ route('ProfileDiscussion') }}">Discussions</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">{{$user_about['followed_number']}}</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">{{$user_about['following_number']}}</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('Messages') }}">Messages <span class="badge badge-alrts">2</span></a>
@@ -35,10 +35,10 @@
         <a class="nav-link" href="{{ route('ProfileDiscussion') }}">Discussions</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">{{$user_about['followed_number']}}</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">{{$user_about['following_number']}}</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('Messages') }}">Messages <span class="badge badge-alrts">2</span></a>
@@ -61,10 +61,10 @@
         <a class="nav-link active" href="{{ route('ProfileDiscussion') }}">Discussions</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">{{$user_about['followed_number']}}</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">{{$user_about['following_number']}}</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('Messages') }}">Messages <span class="badge badge-alrts">2</span></a>
@@ -87,10 +87,10 @@
         <a class="nav-link" href="{{ route('ProfileDiscussion') }}">Discussions</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link active" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">{{$user_about['followed_number']}}</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">{{$user_about['following_number']}}</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('Messages') }}">Messages <span class="badge badge-alrts">2</span></a>
@@ -113,10 +113,10 @@
         <a class="nav-link" href="{{ route('ProfileDiscussion') }}">Discussions</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">{{$user_about['followed_number']}}</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link active" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">{{$user_about['following_number']}}</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('Messages') }}">Messages <span class="badge badge-alrts">2</span></a>
@@ -139,10 +139,10 @@
         <a class="nav-link" href="{{ route('ProfileDiscussion') }}">Discussions</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">{{$user_about['followed_number']}}</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">{{$user_about['following_number']}}</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link active" href="{{ route('Messages') }}">Messages <span class="badge badge-alrts">2</span></a>
@@ -163,10 +163,10 @@
         <a class="nav-link" href="{{ route('ProfileDiscussion') }}">Discussions</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowers') }}">Followers <span class="badge badge-alrts">{{$user_about['followed_number']}}</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">20</span></a>
+        <a class="nav-link" href="{{ route('ProfileFollowing') }}">Following <span class="badge badge-alrts">{{$user_about['following_number']}}</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('Messages') }}">Messages <span class="badge badge-alrts">2</span></a>

@@ -45,18 +45,18 @@
                                 </div>
                                 <ul class="follow-msg-dt">
                                     <li>
-                                        @if($follower['follower_request_Friends'] == true)
+                                        @if($they_are_friends == true)
                                         <div class="msg-dt-sm">
                                             <button class="msg-btn1" wire:click="message()">Message</button>
                                         </div>
                                         @else
                                         <div class="msg-dt-sm">
-                                            <button class="follow-btn1" wire:click="followBack({{$follower['follower_request_id']}})">{{$state}}</button>
+                                            <button class="follow-btn1" wire:click="followBack('{{$follower['follower_request_username']}}')">{{$state}}</button>
                                         </div>
                                         @endif
                                     </li>
                                     <li>
-                                        <div class=" follow-dt-sm">
+                                        <div class="follow-dt-sm">
                                             <button class="follow-btn1" wire:click="deleteFollow({{$follower['follower_request_id']}})">Delete Follow</button>
                                         </div>
                                     </li>
