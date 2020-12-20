@@ -1,7 +1,7 @@
 <div>
     <div class="dash-discussions mb20">
         <div class="main-section">
-            @if($is_follower_list_empty == true)
+            @if($is_following_list_empty == true)
             <div class="container">
                 <div class="row justify-content-md-center">
                     <p>You don't have any followers yet!</p>
@@ -20,7 +20,7 @@
             </div>
             <div class="all-search-events">
                 <div class="row">
-                    @foreach($follower_list as $follower)
+                    @foreach($following_list as $follower)
                     <div class="col-lg-3 col-md-6">
                         <div class="user-data full-width">
                             <div class="user-profile">
