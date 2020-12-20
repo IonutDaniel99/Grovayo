@@ -34,7 +34,8 @@
                                     </div>
                                 </div>
                                 <div class="user-main-details">
-                                    <h4>{{$follower['follower_request_username']}}</h4>
+                                    <h4>{{$follower['follower_request_name']}}</h4>
+                                    <h6 style="color: #adadad;text-decoration: underline;">{{$follower['follower_request_username']}}</h6>
                                     <span><i class="fas fa-map-marker-alt"></i>
                                         @if($follower['follower_request_location'] == NULL)
                                         Unspecified

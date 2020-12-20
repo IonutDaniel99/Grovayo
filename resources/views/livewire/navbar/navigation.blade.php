@@ -22,16 +22,6 @@
                                 <a class="nav-link" href="{{ route('Home') }}">Home</span></a>
                             </li>
                             @endif
-                            @if(Route::is('Discussion'))
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('Discussion') }}">Discussion<span class="sr-only">(current)</span></a>
-                            </li>
-                            @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Discussion') }}">Discussion</span></a>
-                            </li>
-                            @endif
-
                             @if(Route::is('Weather'))
                             <li class="nav-item active">
                                 <a class="nav-link" href="{{ route('Weather') }}">Weather<span class="sr-only">(current)</span></a>
@@ -54,39 +44,38 @@
                         <a href="add_new_event.html" class="add-event">Add New Event</a>
                     </div>
                     <ul class="group-icons">
-                        <li><a href="search_result.html" class="icon-set"><i class="fas fa-search"></i></a></li>
+                        <li><a href="{{ route('Search') }}" class="icon-set"><i class="fas fa-search"></i></a></li>
                         <li class="dropdown">
                             <a href="#" class="icon-set dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
+                                @if($friends_request == NULL)
                                 <i class="fas fa-user-plus"></i>
+                                @else
+                                <i class="fas fa-user-check" style="color:darkorange"></i>
+                                @endif
                             </a>
                             <div class="dropdown-menu user-request-dropdown dropdown-menu-right">
+                                @if($friends_request == NULL)
                                 <div class="user-request-list">
                                     <div class="request-users">
                                         <div class="user-request-dt">
-                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                            <a href="#" class="user-title">Jassica William</a>
+                                            You dont have any friends request.
                                         </div>
-                                        <button class="accept-btn">Accept</button>
                                     </div>
                                 </div>
+                                @else
+                                @foreach($friends_request as $friend_request)
                                 <div class="user-request-list">
                                     <div class="request-users">
                                         <div class="user-request-dt">
-                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                            <a href="#" class="user-title">Rock Smith</a>
+                                            <a href="/user/{{$friend_request['follower_request_username']}}"><img src="storage/{{$friend_request['follower_request_profile_photo']}}" alt=""></a>
+                                            <a href="/user/{{$friend_request['follower_request_username']}}" class="user-title">{{$friend_request['follower_request_name']}}</a>
                                         </div>
-                                        <button class="accept-btn">Accept</button>
+                                        <button class="accept-btn mx-1" type="submit" wire:click="decline({{$friend_request['follower_request_id']}})">Decline</button>
+                                        <button class="accept-btn mx-1" type="submit" wire:click="accept({{$friend_request['follower_request_id']}})">Accept</button>
                                     </div>
                                 </div>
-                                <div class="user-request-list">
-                                    <div class="request-users">
-                                        <div class="user-request-dt">
-                                            <a href="#"><img src="images/user-dp-1.jpg" alt=""></a>
-                                            <a href="#" class="user-title">Joy Doe</a>
-                                        </div>
-                                        <button class="accept-btn">Accept</button>
-                                    </div>
-                                </div>
+                                @endforeach
+                                @endif
                                 <div class="user-request-list">
                                     <a href="my_dashboard_all_requests.html" class="view-all">View All Friend Requests</a>
                                 </div>

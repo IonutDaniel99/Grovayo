@@ -880,7 +880,7 @@ span.right-cm {
 
 .group-icons .user-request-dropdown {
     float: left;
-    width: 277px;
+    width: 350px;
     right: -13px;
     margin-top: 5px !important;
     padding: 0 !important;
@@ -3354,9 +3354,9 @@ footer {
 
 .search-filters .worldwide-dropdown {
     float: left;
-    width: 270px;
-    left: 0;
-    margin-top: 29px !important;
+    width: 300px;
+    left: -22px !important;
+    margin-top: 15px !important;
     padding: 0 !important;
     background: #fff !important;
     border-radius: 2px !important;
@@ -3376,13 +3376,6 @@ footer {
     color: #847577;
     margin-bottom: 0;
     float: left;
-}
-
-.dropdown:hover .worldwide-dropdown {
-    display: block;
-    margin: 0;
-    padding: 0;
-    z-index: 11;
 }
 
 .worldwide-inputs {

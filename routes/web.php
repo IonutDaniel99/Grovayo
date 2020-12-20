@@ -23,8 +23,6 @@ Route::get('redirects', 'App\Http\Responses\LoginResponse@toResponse')->name('Re
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Home', 'App\Http\Controllers\HomeController@index')->name('Home');
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Discussion', 'App\Http\Controllers\DiscussionController@index')->name('Discussion');
-
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Weather', 'App\Http\Controllers\WeatherController@index')->name('Weather');
 Route::post('/Weather/Store', 'App\Http\Controllers\WeatherController@store')->name('weather.store');
 
@@ -32,15 +30,14 @@ Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Blog', 'App\
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Profile', 'App\Http\Controllers\ProfileController@index')->name('Profile');
 
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Search', 'App\Http\Controllers\SearchController@index')->name('Search');
+
 
 
 // ######################## Profile Page ###########################
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Activity', 'App\Http\Controllers\MainProfile\ActivityController@index')->name('Profile_Activity_Index');
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/About', 'App\Http\Controllers\MainProfile\AboutController@index')->name('Profile_About_Index');
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Profile-Discussion', function () {
-    return view('livewire.profile.discussion');
-})->name('ProfileDiscussion');
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Followers', function () {
     return view('livewire.profile.followers');
 })->name('ProfileFollowers');

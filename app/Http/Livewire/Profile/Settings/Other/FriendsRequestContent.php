@@ -31,14 +31,14 @@ class FriendsRequestContent extends Component
     public function render()
     {
         $auth_id = Auth::id();
-        $follow_model = User_Follow::with('user')->where("user_followed_id", $auth_id)->where('user_follow_status', 1)->get();
+        $follow_model = User_Follow::with('user_follow')->where("user_followed_id", $auth_id)->where('user_follow_status', 1)->get();
         $friends_request = [];
         foreach ($follow_model as $follow_data) {
             array_push($friends_request, [
                 'follower_request_id' => $follow_data['user_follow_id'],
-                'follower_request_username' => $follow_data->user->pluck('username')->first(),
-                'follower_request_profile_photo' => $follow_data->user->pluck('profile_photo_path')->first(),
-                'follower_request_name' => $follow_data->user->pluck('name')->first(),
+                'follower_request_username' => $follow_data->user_follow->pluck('username')->first(),
+                'follower_request_profile_photo' => $follow_data->user_follow->pluck('profile_photo_path')->first(),
+                'follower_request_name' => $follow_data->user_follow->pluck('name')->first(),
             ]);
         }
         return view('livewire.profile.settings.other.friends-request-content', ['friends_request' => $friends_request]);

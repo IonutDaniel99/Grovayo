@@ -17,8 +17,9 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $user_about = User_About::where('id', Auth::id())->first();
+        $user_about = User_About::where('user_id', Auth::id())->first();
         $user_about['user_country'] = Country::where('id', $user_about['user_country'])->pluck('name')->first();
+       
         if ($user_about['birthday'] != NULL)
             $user_about['birthday'] = date('j F, Y', strtotime($user_about['birthday']));
 
