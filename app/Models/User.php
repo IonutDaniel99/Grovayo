@@ -65,7 +65,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function about()
+    public function about_model()
     {
         return $this->hasOne('App\Models\User_About', 'user_id');
     }

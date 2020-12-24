@@ -28,7 +28,7 @@ class AdminSeeder extends Seeder
             'user_secret_code' => $secret_string
         ]);
 
-        $user->about()->create([
+        $user->about_model()->create([
             'user_id' => User::select('id')->where('user_secret_code', $secret_string),
         ]);
 

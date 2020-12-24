@@ -35,7 +35,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
-        $user->about()->create([
+        $user->about_model()->create([
             'user_id' => Auth::id(),
             'date_of_birth',
             'contact_email',
