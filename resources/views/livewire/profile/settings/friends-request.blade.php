@@ -27,6 +27,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="user-data full-width mb-0 mt-3">
+                                    <div class="about-left-heading">
+                                        <h3>All Blocked Users</h3>
+                                    </div>
+                                    <div class="all-rqusts1">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

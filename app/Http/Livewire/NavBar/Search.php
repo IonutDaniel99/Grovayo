@@ -26,7 +26,7 @@ class Search extends Component
     public function updatedQuery()
     {
         sleep(1);
-        $this->users = User::query()->with('about_model', 'follower')
+        $this->users = User::query()->with('about_model','follower')
             ->where(function ($query) {
                 $query->where('name', 'like', '%' . $this->query . '%')
                     ->orWhere('username', 'like', '%' . $this->query . '%');

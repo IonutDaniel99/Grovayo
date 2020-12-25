@@ -29,11 +29,12 @@ class UserActivityController extends Controller
             return view('errors.404-user');
         }
 
-        $follow_model = User_Follow::where("user_follow_id", Auth::id())->where('user_followed_id', $user_model->id)->pluck('user_follow_status')->first();
+        $follow_model_a_to_b = User_Follow::where("user_follow_id", Auth::id())->where('user_followed_id', $user_model->id)->pluck('user_follow_status')->first();
+        $follow_model_b_to_a = User_Follow::where("user_followed_id", Auth::id())->where('user_follow_id', $user_model->id)->pluck('user_follow_status')->first();
 
-        if ($follow_model == 3) {
+        if ($follow_model_a_to_b == 3 || $follow_model_b_to_a == 3) {
             return view('errors.404-user');
-        } elseif ($follow_model == 2) {
+        } elseif ($follow_model_b_to_a == 2) {
             $is_private = 0;
         } else {
             $is_private = 1;
