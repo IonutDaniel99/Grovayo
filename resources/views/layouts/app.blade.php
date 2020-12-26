@@ -45,7 +45,7 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        @livewire('nav-bar.navigation')
+        @livewire('www.user.navigationbar')
 
         <!-- Page Content -->
         {{ $slot }}

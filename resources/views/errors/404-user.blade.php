@@ -6,8 +6,11 @@
                     <ol class="title-bar-text">
                         <li class="breadcrumb-item"><a href="{{route('Home')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Error 404</li>
+                        @if(!empty($message))
+                        <li class="breadcrumb-item" aria-current="page">{{ $message}}</li>
+                        @else
                         <li class="breadcrumb-item" aria-current="page">User not found!</li>
-
+                        @endif
                     </ol>
                 </div>
             </div>

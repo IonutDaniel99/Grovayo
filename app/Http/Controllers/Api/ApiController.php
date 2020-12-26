@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
-use App\Models\Profile_View;
 use App\Models\User_About;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -121,5 +120,4 @@ class ApiController extends Controller
             }
         }
     }
-
 }

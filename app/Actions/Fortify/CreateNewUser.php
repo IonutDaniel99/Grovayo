@@ -3,7 +3,6 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
-use App\Models\User_About;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -46,7 +45,7 @@ class CreateNewUser implements CreatesNewUsers
             'user_state',
             'user_city,',
             'description',
-            'favourite_music_genre, Genre',
+            'favourite_music_genre',
             'favourite_books',
             'favourite_music',
             'favourite_shows',

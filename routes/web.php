@@ -21,36 +21,24 @@ Route::get('/', function () {
 
 Route::get('redirects', 'App\Http\Responses\LoginResponse@toResponse')->name('Redirects');
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Home', 'App\Http\Controllers\HomeController@index')->name('Home');
-
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Weather', 'App\Http\Controllers\WeatherController@index')->name('Weather');
-Route::post('/Weather/Store', 'App\Http\Controllers\WeatherController@store')->name('weather.store');
-
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Blog', 'App\Http\Controllers\BlogController@index')->name('Blog');
-
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Profile', 'App\Http\Controllers\ProfileController@index')->name('Profile');
-
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Search', 'App\Http\Controllers\SearchController@index')->name('Search');
-
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Home', 'App\Http\Controllers\www\User\HomeController@index')->name('Home');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Weather', 'App\Http\Controllers\www\User\WeatherController@index')->name('Weather');
+Route::post('/Weather/Store', 'App\Http\Controllers\www\User\WeatherController@store')->name('weather.store');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Blog', 'App\Http\Controllers\www\User\BlogController@index')->name('Blog');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Search', 'App\Http\Controllers\www\User\SearchController@index')->name('Search');
 
 
 // ######################## Profile Page ###########################
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Activity', 'App\Http\Controllers\MainProfile\ActivityController@index')->name('Profile_Activity_Index');
-
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/About', 'App\Http\Controllers\MainProfile\AboutController@index')->name('Profile_About_Index');
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Followers', function () {
-    return view('livewire.profile.followers');
-})->name('ProfileFollowers');
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Following', function () {
-    return view('livewire.profile.following');
-})->name('ProfileFollowing');
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Messages', function () {
-    return view('livewire.profile.messages');
-})->name('Messages');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Activity', 'App\Http\Controllers\www\User\Auth_User\ActivityController@index')->name('Profile_Activity_Index');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/About', 'App\Http\Controllers\www\User\Auth_User\AboutController@index')->name('Profile_About_Index');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Followers', 'App\Http\Controllers\www\User\Auth_User\FollowersController@index')->name('Profile_Followers_Index');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Following', 'App\Http\Controllers\www\User\Auth_User\FollowingController@index')->name('Profile_Following_Index');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Messages', 'App\Http\Controllers\www\User\Auth_User\MessagesController@index')->name('Profile_Messages_Index');
 
 #region User Personal Info
 
 // ####################### Personal Info #################################
+//TODO Continua de aici
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Personal-Info', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@index')->name("Settings_Personal_Info_Index");
 Route::post('/Personal-Info/Store', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@update')->name('Settings_Personal_Info_Update');
 
@@ -138,7 +126,8 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     return redirect('/Home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
-
+// ####################### Personal Info #################################
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Personal-Info', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@index')->name("Settings_Personal_Info_Index");
+Route::post('/Personal-Info/Store', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@update')->name('Settings_Personal_Info_Update');
 
 Route::get('/Debug', 'App\Http\Controllers\Debug\Debug@index');
-Route::get('/News', 'App\Http\Controllers\Api\ApiController@callNewsApi');
