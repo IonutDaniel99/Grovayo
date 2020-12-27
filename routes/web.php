@@ -38,61 +38,62 @@ Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Messages', '
 #region User Personal Info
 
 // ####################### Personal Info #################################
-//TODO Continua de aici
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Personal-Info', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@index')->name("Settings_Personal_Info_Index");
-Route::post('/Personal-Info/Store', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@update')->name('Settings_Personal_Info_Update');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Personal-Info', 'App\Http\Controllers\www\User\Auth_User\Settings\PersonalInfoController@index')->name("Settings_Personal_Info_Index");
+Route::post('/Personal-Info/Store', 'App\Http\Controllers\www\User\Auth_User\Settings\PersonalInfoController@update')->name('Settings_Personal_Info_Update');
 
-Route::get('/Personal-Info/country-state-city', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@index');
-Route::post('/Personal-Info/get-states-by-country', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@getState');
-Route::post('/Personal-Info/get-cities-by-state', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@getCity');
+Route::get('/Personal-Info/country-state-city', 'App\Http\Controllers\www\User\Auth_User\Settings\PersonalInfoController@index');
+Route::post('/Personal-Info/get-states-by-country', 'App\Http\Controllers\www\User\Auth_User\Settings\PersonalInfoController@getState');
+Route::post('/Personal-Info/get-cities-by-state', 'App\Http\Controllers\www\User\Auth_User\Settings\PersonalInfoController@getCity');
 
 // ####################### Profile #################################
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Profile', 'App\Http\Controllers\MainProfile\Settings\ProfileController@index')->name("Settings_Profile_Index");
-Route::post('/Profile/Update', 'App\Http\Controllers\MainProfile\Settings\ProfileController@update')->name('Settings_Profile_Update');
-Route::post('/Profile/Update/ProfileVisibility', 'App\Http\Controllers\MainProfile\Settings\ProfileController@setProfileVisibility')->name('Settings_Profile_Visibility');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Profile', 'App\Http\Controllers\www\User\Auth_User\Settings\ProfileController@index')->name("Settings_Profile_Index");
+Route::post('/Profile/Update', 'App\Http\Controllers\www\User\Auth_User\Settings\ProfileController@update')->name('Settings_Profile_Update');
+Route::post('/Profile/Update/ProfileVisibility', 'App\Http\Controllers\www\User\Auth_User\Settings\ProfileController@setProfileVisibility')->name('Settings_Profile_Visibility');
 
 // ####################### Friend Request #################################
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Requests', 'App\Http\Controllers\MainProfile\Settings\FriendsRequests@index')->name("Settings_Friends_Request_Index");
-Route::post('/Friends-Request', 'App\Http\Controllers\MainProfile\Settings\FriendsRequests@store')->name('Settings_Friends_Request_Store');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Requests', 'App\Http\Controllers\www\User\Auth_User\Settings\FriendsRequestController@index')->name("Settings_Friends_Request_Index");
+Route::post('/Friends-Request', 'App\Http\Controllers\www\User\Auth_User\Settings\FriendsRequestController@store')->name('Settings_Friends_Request_Store');
 
 // ####################### All Notification #################################
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Notifications', 'App\Http\Controllers\MainProfile\Settings\NotificationController@index')->name("Settings_All_Notification_Index");
-Route::post('/All-Notifications', 'App\Http\Controllers\MainProfile\Settings\NotificationController@store')->name('Settings_All_Notification_Store');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Activity-History', 'App\Http\Controllers\www\User\Auth_User\Settings\ActivityHistoryController@index')->name("Settings_Activity_History_Index");
+Route::post('/Activity-History', 'App\Http\Controllers\MainProfile\www\User\Auth_User\ActivityHistoryController@store')->name('Settings_Activity_History_Store');
 
 // ####################### Social Networks #################################
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Social-Networks', 'App\Http\Controllers\MainProfile\Settings\SocialNetworksController@index')->name("Settings_Social_Networks_Index");
-Route::post('/Social-Networks/Update', 'App\Http\Controllers\MainProfile\Settings\SocialNetworksController@update')->name('Settings_Social_Networks_Update');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Social-Networks', 'App\Http\Controllers\www\User\Auth_User\Settings\SocialNetworksController@index')->name("Settings_Social_Networks_Index");
+Route::post('/Social-Networks/Update', 'App\Http\Controllers\www\User\Auth_User\Settings\SocialNetworksController@update')->name('Settings_Social_Networks_Update');
 
 // ####################### Email Settings #################################
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Email-Settings', 'App\Http\Controllers\MainProfile\Settings\EmailSettingsController@index')->name("Settings_Email_Index");
-Route::post('/Email-Settings/Update', 'App\Http\Controllers\MainProfile\Settings\EmailSettingsController@update')->name('Settings_Email_Update');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Email-Settings', 'App\Http\Controllers\www\User\Auth_User\Settings\EmailSettingsController@index')->name("Settings_Email_Index");
+Route::post('/Email-Settings/Update', 'App\Http\Controllers\www\User\Auth_User\Settings\EmailSettingsController@update')->name('Settings_Email_Update');
 
 // ####################### User Notification Settings #################################
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Notification-Settings', 'App\Http\Controllers\MainProfile\Settings\NotificationSettingsController@index')->name("Settings_User_Notification_Index");
-Route::post('/Notification-Settings', 'App\Http\Controllers\MainProfile\Settings\NotificationSettingsController@store')->name('Settings_User_Notification_Store');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Notification-Settings', 'App\Http\Controllers\www\User\Auth_User\Settings\NotificationSettingsController@index')->name("Settings_User_Notification_Index");
+Route::post('/Notification-Settings', 'App\Http\Controllers\www\User\Auth_User\Settings\NotificationSettingsController@store')->name('Settings_User_Notification_Store');
 
 // ####################### Security #################################
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Security', 'App\Http\Controllers\MainProfile\Settings\SecurityController@index')->name("Settings_Security_Index");
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Security', 'App\Http\Controllers\www\User\Auth_User\Settings\SecurityController@index')->name("Settings_Security_Index");
 
 // ####################### Change Password #################################
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Change-Password', 'App\Http\Controllers\MainProfile\Settings\ChangePasswordController@index')->name("Settings_Change_Password_Index");
-Route::post('/Change-Password/Update', 'App\Http\Controllers\MainProfile\Settings\ChangePasswordController@update')->name('Settings_Change_Password_Update');
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Change-Password', 'App\Http\Controllers\www\User\Auth_User\Settings\ChangePasswordController@index')->name("Settings_Change_Password_Index");
+Route::post('/Change-Password/Update', 'App\Http\Controllers\www\User\Auth_User\Settings\ChangePasswordController@update')->name('Settings_Change_Password_Update');
 
 // ####################### Disable Account #################################
 
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Disable-Account', 'App\Http\Controllers\MainProfile\Settings\DisableAccountController@index')->name("Settings_Disable_Account_Index");
+Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Disable-Account', 'App\Http\Controllers\www\User\Auth_User\Settings\DisableAccountController@index')->name("Settings_Disable_Account_Index");
 
 #endregion
 
 // ############################ ADMIN ###############################
+
+//TODO Continua de aici   www\User\Auth_User
 
 Route::middleware(['auth:sanctum', 'verified', 'role:Support|Moderator|Administrator|Owner'])->get('/Admin', 'App\Http\Controllers\Admin\DashboardController@index')->name("Admin_Dashboard_Index");
 
@@ -127,7 +128,4 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 // ####################### Personal Info #################################
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Personal-Info', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@index')->name("Settings_Personal_Info_Index");
-Route::post('/Personal-Info/Store', 'App\Http\Controllers\MainProfile\Settings\PersonalInfoController@update')->name('Settings_Personal_Info_Update');
-
 Route::get('/Debug', 'App\Http\Controllers\Debug\Debug@index');
