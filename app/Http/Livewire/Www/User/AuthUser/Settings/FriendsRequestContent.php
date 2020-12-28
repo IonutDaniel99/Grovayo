@@ -15,6 +15,7 @@ class FriendsRequestContent extends Component
         $follow_model->update([
             'user_follow_status' => 2,
             'user_action_id' => $auth_id,
+            'updated_at' => now()
         ]);
     }
     public function decline($username_id)
@@ -24,6 +25,7 @@ class FriendsRequestContent extends Component
         $follow_model->update([
             'user_follow_status' => 0,
             'user_action_id' => $auth_id,
+            'updated_at' => now()
         ]);
     }
 

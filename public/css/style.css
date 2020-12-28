@@ -1946,7 +1946,7 @@ main {
 }
 
 .w-weather {
-    background-image: url("../storage/images/home/weather.jpg");
+    background-image: url("../storage/www/auth_user/home/weather/weather.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     padding: 20px;
@@ -3033,7 +3033,7 @@ footer {
 }
 
 .bg-weather {
-    background-image: url("../storage/images/weather/weather-bg.jpg");
+    background-image: url("../storage/www/auth_user/weather/weather-bg.jpg");
 }
 
 .weather-date-time {
@@ -3087,7 +3087,7 @@ footer {
 
 .weather-icon-center {
     margin: 0 auto;
-    zoom: 150%;
+    zoom: 500%;
     max-width: 30px;
     max-height: 30px;
 }

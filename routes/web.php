@@ -59,7 +59,7 @@ Route::post('/Friends-Request', 'App\Http\Controllers\www\User\Auth_User\Setting
 // ####################### All Notification #################################
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Activity-History', 'App\Http\Controllers\www\User\Auth_User\Settings\ActivityHistoryController@index')->name("Settings_Activity_History_Index");
-Route::post('/Activity-History', 'App\Http\Controllers\MainProfile\www\User\Auth_User\ActivityHistoryController@store')->name('Settings_Activity_History_Store');
+Route::post('/Activity-History', 'App\Http\Controllers\www\User\Auth_User\Settings\ActivityHistoryController@store')->name('Settings_Activity_History_Store');
 
 // ####################### Social Networks #################################
 
@@ -93,21 +93,15 @@ Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Disable-Acco
 
 // ############################ ADMIN ###############################
 
-//TODO Continua de aici   www\User\Auth_User
-
-Route::middleware(['auth:sanctum', 'verified', 'role:Support|Moderator|Administrator|Owner'])->get('/Admin', 'App\Http\Controllers\Admin\DashboardController@index')->name("Admin_Dashboard_Index");
-
+Route::middleware(['auth:sanctum', 'verified', 'role:Support|Moderator|Administrator|Owner'])->get('/Admin', 'App\Http\Controllers\www\Admin\AdminController@index')->name("Admin_Dashboard_Index");
 
 // ########################### USER PROFILE #########################
 
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}', 'App\Http\Controllers\UserProfile\UserActivityController@index');
-Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/Activity', 'App\Http\Controllers\UserProfile\UserActivityController@index')->name("UserActivity");
-Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/About', 'App\Http\Controllers\UserProfile\UserAboutController@index')->name("UserAbout");
-Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/Followers', 'App\Http\Controllers\UserProfile\UserFollowerController@index')->name("UserFollowers");
-Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/Following', 'App\Http\Controllers\UserProfile\UserFollowingController@index')->name("UserFollowing");
-
-
+Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}', 'App\Http\Controllers\www\User\View_User\UserActivityController@index');
+Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/Activity', 'App\Http\Controllers\www\User\View_User\UserActivityController@index')->name("UserActivity");
+Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/About', 'App\Http\Controllers\www\User\View_User\UserAboutController@index')->name("UserAbout");
+Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/Followers', 'App\Http\Controllers\www\User\View_User\UserFollowerController@index')->name("UserFollowers");
+Route::middleware(['auth:sanctum', 'verified'])->get('/user/{username}/Following', 'App\Http\Controllers\www\User\View_User\UserFollowingController@index')->name("UserFollowing");
 
 // ############################ Email Middleware ####################
 

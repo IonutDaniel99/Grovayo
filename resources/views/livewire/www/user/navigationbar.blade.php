@@ -53,6 +53,7 @@
                                 <i class="fas fa-user-check" style="color:darkorange"></i>
                                 @endif
                             </a>
+                            @if(Auth::user()->is_private == 1)
                             <div class="dropdown-menu user-request-dropdown dropdown-menu-right">
                                 @if($friends_request == NULL)
                                 <div class="user-request-list">
@@ -77,9 +78,34 @@
                                 @endforeach
                                 @endif
                                 <div class="user-request-list">
-                                    <a href="my_dashboard_all_requests.html" class="view-all">View All Friend Requests</a>
+                                    <a href="{{ route('Settings_Friends_Request_Index') }}" class="view-all">View All Friend Requests</a>
                                 </div>
                             </div>
+                            @else
+                            <!-- //TODO message dropdown user request dropdown -->
+                            <div class="dropdown-menu user-request-dropdown dropdown-menu-right">
+                                @foreach($latest_friends as $friend)
+                                <div class="user-request-list">
+                                    <div class="request-users">
+                                        <div class="user-request-dt">
+                                            <a href="/user/{{$friend['follower_request_username']}}">
+                                                @if($friend['follower_request_profile_photo'])
+                                                <img src="storage/{{$friend['follower_request_profile_photo']}}" alt="">
+                                                @else
+                                                <img src="https://ui-avatars.com/api/?name={{$friend['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="">
+                                                @endif
+                                                <div class="user-title1">{{$friend['follower_request_name']}}</div>
+                                                <span>Has followed you <b>{{$friend['follower_request_date']->diffForHumans()}}</b></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                <div class="user-request-list">
+                                    <a href="{{ route('Settings_Profile_Index') }}" class="view-all">Set profile on private!</a>
+                                </div>
+                            </div>
+                            @endif
                         </li>
                         <li class="dropdown">
                             <a href="#" class="icon-set dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
@@ -89,34 +115,13 @@
                                 <div class="user-request-list">
                                     <div class="request-users">
                                         <div class="user-request-dt">
-                                            <a href="#"><img src="images/user-dp-1.jpg" alt="">
+                                            <a href="#">
+                                                <img src="images/user-dp-1.jpg" alt="">
                                                 <div class="user-title1">Jassica William </div>
                                                 <span>Hey How are you John Doe...</span>
                                             </a>
                                         </div>
                                         <div class="time5">2 min ago</div>
-                                    </div>
-                                </div>
-                                <div class="user-request-list">
-                                    <div class="request-users">
-                                        <div class="user-request-dt">
-                                            <a href="#"><img src="images/user-dp-1.jpg" alt="">
-                                                <div class="user-title1">Rock Smith </div>
-                                                <span>Interesting Event! I will join this...</span>
-                                            </a>
-                                        </div>
-                                        <div class="time5">5 min ago</div>
-                                    </div>
-                                </div>
-                                <div class="user-request-list">
-                                    <div class="request-users">
-                                        <div class="user-request-dt">
-                                            <a href="#"><img src="images/user-dp-1.jpg" alt="">
-                                                <div class="user-title1">Joy Doe </div>
-                                                <span>Hey Sir! What about you...</span>
-                                            </a>
-                                        </div>
-                                        <div class="time5">10 min ago</div>
                                     </div>
                                 </div>
                                 <div class="user-request-list">

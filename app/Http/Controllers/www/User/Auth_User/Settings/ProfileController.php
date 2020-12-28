@@ -71,7 +71,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $user_about_model = User::all()->where('id', Auth::id())->first();;
 
@@ -111,7 +111,8 @@ class ProfileController extends Controller
         } else {
             User_Follow::where("user_followed_id", $auth_id)->update([
                 'user_follow_status' => 0,
-                'user_action_id' => $auth_id
+                'user_action_id' => $auth_id,
+                'updated_at' => now()
             ]);
             $user_model->is_private = 0;
             $user_model->save();

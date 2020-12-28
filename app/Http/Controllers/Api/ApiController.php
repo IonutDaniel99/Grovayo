@@ -51,7 +51,7 @@ class ApiController extends Controller
         $Weather["min_temp"] = round($weather_data["daily"][0]["temp"]["min"]);
         $Weather["max_temp"] = round($weather_data["daily"][0]["temp"]["max"]);
         $Weather["main_temp_text"] = $weather_data["current"]["weather"][0]["main"];
-        $Weather["icon"] = $weather_data["current"]["weather"][0]["id"];
+        $Weather["icon"] = $weather_data["current"]["weather"][0]["icon"];
 
         if (isset($weather_data["current"]["wind_deg"])) {
             $Weather["weather_wind_degree"] = floor($weather_data["current"]["wind_deg"]);
