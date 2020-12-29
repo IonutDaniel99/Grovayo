@@ -37,7 +37,7 @@
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js') }}"></script>
 </head>
 
-<body>
+<body class="body-bg">
     <div class="font-sans text-gray-900 antialiased">
         {{ $slot }}
     </div>

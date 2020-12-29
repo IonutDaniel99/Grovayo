@@ -50,16 +50,16 @@
                                 @if($friends_request == NULL)
                                 <i class="fas fa-user-plus"></i>
                                 @else
-                                <i class="fas fa-user-check" style="color:darkorange"></i>
+                                <i class="fas fa-user-plus" style="color:darkorange"></i>
                                 @endif
                             </a>
                             @if(Auth::user()->is_private == 1)
-                            <div class="dropdown-menu user-request-dropdown dropdown-menu-right">
+                            <div class="dropdown-menu user-request-dropdown dropdown-menu-right show">
                                 @if($friends_request == NULL)
                                 <div class="user-request-list">
                                     <div class="request-users">
                                         <div class="user-request-dt">
-                                            You dont have any friends request.
+                                            <span class="text-truncate mx-0">You dont have any friends request. </span>
                                         </div>
                                     </div>
                                 </div>
@@ -68,11 +68,27 @@
                                 <div class="user-request-list">
                                     <div class="request-users">
                                         <div class="user-request-dt">
-                                            <a href="/user/{{$friend_request['follower_request_username']}}"><img src="storage/{{$friend_request['follower_request_profile_photo']}}" alt=""></a>
-                                            <a href="/user/{{$friend_request['follower_request_username']}}" class="user-title">{{$friend_request['follower_request_name']}}</a>
+                                            <a href="/user/{{$friend_request['follower_request_username']}}">
+                                                @if($friend_request['follower_request_profile_photo'])
+                                                <img src="storage/{{$friend_request['follower_request_profile_photo']}}" alt="">
+                                                @else
+                                                <img src="https://ui-avatars.com/api/?name={{$friend_request['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="">
+                                                @endif
+                                            </a>
+                                            <a href="/user/{{$friend_request['follower_request_username']}}" class="user-title">
+                                                <span>
+                                                    {{$friend_request['follower_request_name']}}
+                                                </span>
+                                                <span class="time4">
+                                                    <d style="float:right">{{$friend_request['follower_request_date']->diffForHumans()}}</d>
+                                                </span>
+                                                <span class="text-truncate mx-0">Has requested to follow you!</span>
+                                            </a>
                                         </div>
-                                        <button class="accept-btn mx-1" type="submit" wire:click="decline({{$friend_request['follower_request_id']}})">Decline</button>
-                                        <button class="accept-btn mx-1" type="submit" wire:click="accept({{$friend_request['follower_request_id']}})">Accept</button>
+                                        <div class="user-request-dt" style="width: 100%; margin: 5px 0px -5px -5px;">
+                                            <button class="accept-btn mx-1" style="min-width: 70px;" type="submit" wire:click="accept({{$friend_request['follower_request_id']}})">Accept</i></button>
+                                            <button class="accept-btn mx-1" style="min-width: 70px;" type="submit" wire:click="decline({{$friend_request['follower_request_id']}})">Decline</button>
+                                        </div>
                                     </div>
                                 </div>
                                 @endforeach
@@ -82,7 +98,6 @@
                                 </div>
                             </div>
                             @else
-                            <!-- //TODO message dropdown user request dropdown -->
                             <div class="dropdown-menu user-request-dropdown dropdown-menu-right">
                                 @foreach($latest_friends as $friend)
                                 <div class="user-request-list">
@@ -94,15 +109,22 @@
                                                 @else
                                                 <img src="https://ui-avatars.com/api/?name={{$friend['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="">
                                                 @endif
-                                                <div class="user-title1">{{$friend['follower_request_name']}}</div>
-                                                <span>Has followed you <b>{{$friend['follower_request_date']->diffForHumans()}}</b></span>
+                                            </a>
+                                            <a href="/user/{{$friend['follower_request_username']}}" class="user-title">
+                                                <span>
+                                                    {{$friend['follower_request_name']}}
+                                                </span>
+                                                <span class="time4">
+                                                    <d style="float:right">{{$friend['follower_request_date']->diffForHumans()}}</d>
+                                                </span>
+                                                <span class="text-truncate mx-0">Has recently followed you!</span>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 @endforeach
                                 <div class="user-request-list">
-                                    <a href="{{ route('Settings_Profile_Index') }}" class="view-all">Set profile on private!</a>
+                                    <a href="{{ route('Settings_Profile_Index') }}" class="view-all">Profile Settings!</a>
                                 </div>
                             </div>
                             @endif

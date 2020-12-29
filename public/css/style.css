@@ -880,7 +880,7 @@ span.right-cm {
 
 .group-icons .user-request-dropdown {
     float: left;
-    width: 350px;
+    width: 277px;
     right: -13px;
     margin-top: 5px !important;
     padding: 0 !important;
@@ -945,7 +945,7 @@ span.right-cm {
     color: #313131;
     font-size: 13px !important;
     font-weight: 500 !important;
-    margin-top: 8px !important;
+    /* margin-top: 8px !important; */
     margin-left: 10px !important;
 }
 
@@ -954,9 +954,9 @@ span.right-cm {
 }
 
 .user-request-dt img {
-    width: 35px !important;
+    width: 45px !important;
     height: 35px !important;
-    border-radius: 100%;
+    border-radius: 10%;
     background: #e5e5e5;
     float: left;
 }
@@ -1039,13 +1039,19 @@ span.right-cm {
 
 .user-request-dt span {
     float: left;
-    margin-left: 10px;
     font-size: 12px;
     color: #847577;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     margin-right: 10px;
+    min-width: 88px;
+}
+
+.time4 {
+    font-weight: 500;
+    color: #a7a8aa;
+    position: absolute;
 }
 
 .time5 {
@@ -4541,7 +4547,7 @@ footer {
 }
 
 .body-bg {
-    background-image: url(../images/login-register/main-bg.jpg) !important;
+    background-image: url(../storage/www/login/main-bg.jpg) !important;
     background-attachment: fixed !important;
     background-position: center !important;
 }
@@ -4552,7 +4558,7 @@ footer {
 }
 
 .lg-left {
-    background-image: url(../images/login-register/bg.jpg);
+    background-image: url(../storage/www/login/bg.jpg);
     height: 646px;
     width: 100%;
     padding: 30px;

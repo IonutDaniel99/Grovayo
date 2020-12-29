@@ -25,7 +25,7 @@ class Navigationbar extends Component
         $follow_model = User_Follow::where("user_followed_id", $auth_id)->where('user_follow_id', $username_id);
         $follow_model->update([
             'user_follow_status' => 0,
-            'user_action_id' => $auth_id, 
+            'user_action_id' => $auth_id,
             'updated_at' => now()
 
         ]);
@@ -55,6 +55,7 @@ class Navigationbar extends Component
                 'follower_request_username' => $follow_data_pending->user_follow->pluck('username')->first(),
                 'follower_request_profile_photo' => $follow_data_pending->user_follow->pluck('profile_photo_path')->first(),
                 'follower_request_name' => $follow_data_pending->user_follow->pluck('name')->first(),
+                'follower_request_date' => $follow_data_pending['created_at']
             ]);
         }
 
