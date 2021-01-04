@@ -22,7 +22,7 @@
                 <div class="row justify-content-md-center">
                     <div class="col-lg-12 col-md-12">
                         <div class="errror-404">
-                            <img src="{{ asset('storage/images/errors/error.png') }}" alt="" style="margin:0 auto">
+                            <img src="{{ asset('storage/www/404/error.png') }}" alt="" style="margin:0 auto">
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,4 @@
 <x-guest-layout>
-
     <main class="register-mp">
         <div class="main-section">
             <div class="container">
@@ -22,8 +21,8 @@
                                 <div class="col-lg-6">
                                     <div class="lr-right">
                                         <div class="social-logins">
-                                            <button class="social-f-btn"><i class="fab fa-facebook-f"></i>Continue with facebook</button>
-                                            <button class="social-g-btn"><i class="fab fa-google"></i>Continue with Google</button>
+                                            <button class="social-f-btn"><i class="fab fa-facebook-f"></i>&nbsp;Continue with facebook</button>
+                                            <button class="social-g-btn"><i class="fab fa-google"></i>&nbsp;Continue with Google</button>
                                         </div>
                                         <div class="or">Or</div>
                                         <div class="login-register-form">

@@ -23,6 +23,7 @@
     <link href="{{ asset('css/owfont-regular.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet">
 
+
     @livewireStyles
 
     <!-- Scripts -->
@@ -38,15 +39,14 @@
     <script src="{{ asset('js/Scrollbar.js') }}"></script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.js') }}"></script>
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
+    <script src="{{ asset('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js') }}" defer></script>
 
     <!-- Other -->
 </head>
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        @livewire('www.user.navigationbar')
-
+        <livewire:www.user.navigationbar />
         <!-- Page Content -->
         {{ $slot }}
     </div>
