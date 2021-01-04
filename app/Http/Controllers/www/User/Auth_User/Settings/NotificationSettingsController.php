@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\www\User\Auth_User\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\User_Notification_Settings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationSettingsController extends Controller
 {
@@ -14,7 +17,9 @@ class NotificationSettingsController extends Controller
      */
     public function index()
     {
-        return view('www.user.auth_user.settings.notification-settings');
+        $user_model = User::where('id', Auth::id())->with('notifications')->first();
+        $user_model = $user_model['notifications'];
+        return view('www.user.auth_user.settings.notification-settings', compact('user_model'));
     }
 
     /**
@@ -67,9 +72,30 @@ class NotificationSettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $email_follow = isset($request->email_follow) ? 1 : 0;
+        $email_like = isset($request->email_like) ? 1 : 0;
+        $email_comment = isset($request->email_comment) ? 1 : 0;
+        $email_update = isset($request->email_update) ? 1 : 0;
+        $email_marketing = isset($request->email_marketing) ? 1 : 0;
+        $hide_profile = isset($request->hide_profile) ? 1 : 0;
+        $hide_ads = isset($request->hide_ads) ? 1 : 0;
+        $hide_alerts = isset($request->hide_alerts) ? 1 : 0;
+
+
+        User_Notification_Settings::where('user_id', Auth::id())->update([
+            'email_follow' => $email_follow,
+            'email_like' => $email_like,
+            'email_comment' => $email_comment,
+            'email_update' => $email_update,
+            'email_marketing' => $email_marketing,
+            'hide_profile' => $hide_profile,
+            'hide_ads' => $hide_ads,
+            'hide_alerts' => $hide_alerts,
+        ]);
+
+        return back();
     }
 
     /**

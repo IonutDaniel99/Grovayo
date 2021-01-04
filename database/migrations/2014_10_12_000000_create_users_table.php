@@ -27,8 +27,6 @@ class CreateUsersTable extends Migration
             $table->boolean('is_active')->default(true);
             $table->boolean('is_private')->default(false);
             $table->boolean('is_blocked')->default(false);
-            $table->boolean('user_notification')->default(false);
-            $table->boolean('user_ads')->default(false);
             $table->string('user_secret_code')->nullable()->default('null');
             $table->timestamps();
             $table->softDeletes();

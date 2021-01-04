@@ -41,8 +41,7 @@ class WeatherController extends Controller
     public function store(Request $request)
     {
         $r_degree = $request->degree;
-
-        DB::table('user_about')->where('id', Auth::id())->update(['user_weather_degree' => $r_degree]);
+        DB::table('user_about')->where('user_id', Auth::id())->update(['user_weather_degree' => $r_degree]);
 
         return redirect()->route('Weather');
     }

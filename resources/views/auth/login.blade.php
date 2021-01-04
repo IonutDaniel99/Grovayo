@@ -13,13 +13,14 @@
                                         </div>
                                         <div class="lr-text">
                                             <h2>Login Now</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum blandit felis a hendrerit.</p>
+                                            <p>Connect with friends and the world around you on {{ config('app.name')}}</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="lr-right">
+                                        <h4>Log In</h4>
                                         <div class="social-logins">
                                             <button class="social-f-btn"><i class="fab fa-facebook-f"></i>&nbsp;Continue with facebook</button>
                                             <button class="social-g-btn"><i class="fab fa-google"></i>&nbsp;Continue with Google</button>

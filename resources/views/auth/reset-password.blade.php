@@ -1,36 +1,57 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+    <main class="register-mp">
+        <div class="main-section">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-10">
+                        <div class="login-register-bg">
+                            <div class="row no-gutters">
+                                <div class="col-lg-6">
+                                    <div class="lg-left">
+                                        <div class="lg-logo">
+                                            <a href="index.html"><img src="images/login-register/logo.svg" alt=""></a>
+                                        </div>
+                                        <div class="lr-text">
+                                            <h2>Password Recover</h2>
+                                            <p>Just enter your new password and voila. Your password has been changed with a new one.</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <x-jet-validation-errors class="mb-4" />
+                                <div class="col-lg-6">
+                                    <div class="lr-right">
+                                        <div class="login-register-form" style="position: relative;Top: 50%;transform: translateY(-50%);">
+                                            <h4>Password Recover</h4>
+                                            <form method="POST" action="{{ route('password.update') }}">
+                                                @csrf
+                                                <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
+                                                <div class="form-group">
+                                                    <input class="title-discussion-input" placeholder="Email" id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+                                                </div>
 
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                                                <div class="form-group">
+                                                    <input class="title-discussion-input" placeholder="New Password" id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                                                </div>
 
-            <div class="block">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+                                                <div class="form-group">
+                                                    <input class="title-discussion-input" placeholder="Confirm Password" id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                                                </div>
+                                                <button class="login-btn" type="submit">{{ __('Reset Password') }}</button>
+
+                                            </form>
+                                            <div class="login-link">If you have an account? <a href="{{ route('login') }}">Login Now</a></div>
+                                            @if (Route::has('register'))
+                                            <div class="regstr-link">Don’t have an account? <a href="{{ route('register') }}">Register Now</a></div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-jet-button>
-                    {{ __('Reset Password') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
+        </div>
+    </main>
 </x-guest-layout>

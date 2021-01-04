@@ -3,7 +3,6 @@
 namespace App\Http\Responses;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginResponse extends Controller
@@ -15,5 +14,13 @@ class LoginResponse extends Controller
             return redirect(route('Admin_Dashboard_Index'));
         }
         return redirect(route('Home'));
+    }
+
+    public function toWelcome()
+    {
+        if (Auth::check()) {
+            return redirect(route('Home'));
+        }
+        return redirect(route("login"));
     }
 }

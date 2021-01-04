@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
-class CreateNewUser implements CreatesNewUsers
+class CreateNewUser implements
+    CreatesNewUsers
 {
     use PasswordValidationRules;
 
@@ -35,40 +36,11 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         $user->about_model()->create([
-            'user_id' => Auth::id(),
-            'date_of_birth',
-            'contact_email',
-            'phone_number',
-            'gender',
-            'status',
-            'user_country',
-            'user_state',
-            'user_city,',
-            'description',
-            'favourite_music_genre',
-            'favourite_books',
-            'favourite_music',
-            'favourite_shows',
-            'favourite_games',
-            'favourite_brands',
-            'favourite_artists',
-            'favourite_interests',
-            'social_webpage',
-            'social_facebook',
-            'social_twitter',
-            'social_youtube',
-            'social_instagram',
-            'social_linkedin',
-            'social_other1',
-            'social_other2',
-            'education_title',
-            'education_date_start',
-            'education_date_end',
-            'education_institute',
-            'employment_title',
-            'employment_date_start',
-            'employment_date_end',
-            'employment_company',
+            'user_id' => Auth::id()
+        ]);
+
+        $user->notifications()->create([
+            'user_id' => Auth::id()
         ]);
 
         $user->assignRole('User');

@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
-// implements MustVerifyEmail
+ //implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -72,5 +72,9 @@ class User extends Authenticatable
     public function follower()
     {
         return $this->hasMany('App\Models\User_Follow', 'user_followed_id');
+    }
+    public function notifications()
+    {
+        return $this->hasOne('App\Models\User_Notification_Settings', 'user_id');
     }
 }

@@ -15,10 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/', 'App\Http\Responses\LoginResponse@toWelcome')->name('Welcome');
 Route::get('redirects', 'App\Http\Responses\LoginResponse@toResponse')->name('Redirects');
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Home', 'App\Http\Controllers\www\User\HomeController@index')->name('Home');
@@ -74,7 +72,7 @@ Route::post('/Email-Settings/Update', 'App\Http\Controllers\www\User\Auth_User\S
 // ####################### User Notification Settings #################################
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Notification-Settings', 'App\Http\Controllers\www\User\Auth_User\Settings\NotificationSettingsController@index')->name("Settings_User_Notification_Index");
-Route::post('/Notification-Settings', 'App\Http\Controllers\www\User\Auth_User\Settings\NotificationSettingsController@store')->name('Settings_User_Notification_Store');
+Route::post('/Notification-Settings/Update', 'App\Http\Controllers\www\User\Auth_User\Settings\NotificationSettingsController@update')->name('Settings_User_Notification_Update');
 
 // ####################### Security #################################
 

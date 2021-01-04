@@ -21,7 +21,7 @@ class FollowingList extends Component
         $follow_model = User_Follow::where("user_follow_id", Auth::id())->where('user_follow_status', 2)->get();
         $following_list = [];
         if ($follow_model->isEmpty()) {
-            return view('livewire.profile.main-pages.following-list', ['is_following_list_empty' => true]);
+            return view('livewire.www.user.auth-user.following-list', ['is_following_list_empty' => true]);
         } else {
             $is_following_list_empty = false;
         }
