@@ -303,8 +303,6 @@
                                 </li>
                             </ul>
                         </div>
-
-
                         <div class="news-data-dash full-width">
                             <div id="recipeCarousel" class="carousel slide w-100 multi-item-carousel" data-ride="carousel">
                                 <div class="categories-left-heading">

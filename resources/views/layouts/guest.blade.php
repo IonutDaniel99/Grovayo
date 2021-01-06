@@ -44,6 +44,7 @@
     <div class="font-sans text-gray-900 antialiased">
         {{ $slot }}
     </div>
+    @if($errors->all())
     @foreach ($errors->all() as $error)
     <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 100px;">
         <div class="toast" style="position: absolute; top: 0; right: 0; opacity: 1 !important; margin: 35px;">
@@ -62,6 +63,7 @@
         </div>
     </div>
     @endforeach
+    @endif
 </body>
 
 </html>

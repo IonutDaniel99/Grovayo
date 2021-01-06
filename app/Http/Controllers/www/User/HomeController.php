@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\www\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +15,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('www.user.home');
+        foreach (['world', 'science', 'technology', 'music', 'movies', 'games', 'sport'] as $topic) {
+            $news[$topic] = News::all()->where("topic", $topic)->random(3);
+        }
+        return view('www.user.home', compact('news'));
     }
 
     /**
