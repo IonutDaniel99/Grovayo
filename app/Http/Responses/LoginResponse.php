@@ -4,7 +4,7 @@ namespace App\Http\Responses;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
-use App\Models\User_About;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class LoginResponse extends Controller
@@ -14,7 +14,7 @@ class LoginResponse extends Controller
     {
         $user_location = new ApiController();
         if (Auth::user()->hasRole("User")) {
-            User_About::where('user_id', Auth::id())->update([
+            User::where('id', Auth::id())->update([
                 'live_in' => $user_location->returnUserLocation()
             ]);
             return redirect(route('Home'));

@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
- //implements MustVerifyEmail
+//implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -61,9 +61,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+    // protected $appends = [
+    //     'profile_photo_url',
+    // ];
 
     public function about_model()
     {

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class User_About extends Model
 {
@@ -50,4 +51,6 @@ class User_About extends Model
         'employment_date_end',
         'employment_company',
     ];
+
+
 }

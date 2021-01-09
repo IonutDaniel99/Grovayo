@@ -54,7 +54,7 @@
                                 @endif
                             </a>
                             @if(Auth::user()->is_private == 1)
-                            <div class="dropdown-menu user-request-dropdown dropdown-menu-right show">
+                            <div class="dropdown-menu user-request-dropdown dropdown-menu-right">
                                 @if($friends_request == NULL)
                                 <div class="user-request-list">
                                     <div class="request-users">
@@ -210,7 +210,8 @@
                                         </svg>
                                     </div>
                                 </button>
-                                @endif</div>
+                                @endif
+                            </div>
                             <span>{{ Auth::user()->name }} <i class="fas fa-angle-down"></i>
                             </span>
                         </a>

@@ -1305,8 +1305,18 @@ main {
     font-size: 16px;
     margin-bottom: 0;
     margin-left: 10px;
-    margin-top: 10px;
+    margin-top: 3px;
     font-weight: 500;
+    text-align: left;
+}
+
+.sugguest-user-dt a h5 {
+    color: #313131cc !important;
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-left: 10px;
+    font-weight: 500;
+    text-align: left;
 }
 
 .sugguest-user-dt a h4:hover {

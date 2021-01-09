@@ -21,24 +21,24 @@
                                 @endif
                                 <div class="user-main-details">
                                     <h4>{{ Auth::user()->name }} </h4>
-                                    <span><i class="fas fa-map-marker-alt"></i>India</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> &nbsp;{{$user_about['user_country']}}</span>
                                 </div>
                                 <ul class="followers-dts">
                                     <li>
                                         <div class="followers-dt-sm">
                                             <h4>Followers</h4>
-                                            <span>155</span>
+                                            <span>{{$user_follow['followers_number']}}</span>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="followers-dt-sm">
                                             <h4>Following</h4>
-                                            <span>355</span>
+                                            <span>{{$user_follow['following_number']}}</span>
                                         </div>
                                     </li>
                                 </ul>
                                 <div class="profile-link">
-                                    <a href="my_dashboard_activity.html">View Profile</a>
+                                    <a href="{{ route('Settings_Personal_Info_Index') }}">View Profile</a>
                                 </div>
                             </div>
                         </div>
@@ -1264,53 +1264,53 @@
                     <div class="right-side-items">
                         <div class="w-weather">
                             <div class="weather-left">
-                                <div class="weather-city">Ludhiana</div>
-                                <div class="week-text">Monday</div>
-                                <div class="week-text">14 Oct 2019</div>
-                                <div class="week-text" style="font-size: 18px;"><i class="fas fa-tint"></i> 30%</div>
+                                <div class="weather-city">{{$weather['userLocationCity']}}</div>
+                                <div class="week-text">{{$weather['dayName']}}</div>
+                                <div class="week-text">{{$weather['day']}} {{$weather['month']}} {{$weather['year']}}</div>
+                                <div class="week-text" style="font-size: 18px;"><i class="fas fa-tint"></i> {{$weather['humidity']}}%</div>
                                 <ul>
                                     <li>
-                                        <div class="up-down"><i class="fas fa-long-arrow-alt-up"></i> 18°</div>
+                                        <div class="up-down"><i class="fas fa-long-arrow-alt-down"></i> {{$weather['min_temp']}}°</div>
                                     </li>
                                     <li>
-                                        <div class="up-down"><i class="fas fa-long-arrow-alt-down"></i> 25°</div>
+                                        <div class="up-down"><i class="fas fa-long-arrow-alt-up"></i> {{$weather['max_temp']}}°</div>
                                     </li>
                                 </ul>
                             </div>
                             <div class="weather-right">
-                                <i class="fas fa-cloud-sun"></i>
-                                <span>22°</span>
+                                <i class="owf owf-<?php echo $weather['icon'] ?>"></i>
+                                <span>{{$weather['temp']}}°</span>
                             </div>
                             <ul class="weekly-weather">
-                                <li>
-                                    <div class="degree-text">32°</div>
-                                    <div class="weather-icon"><i class="fas fa-sun"></i></div>
-                                    <div class="day-text">Tue</div>
+                                <li title={{ $weather['daily'][1]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][1]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][1]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][1]["dt"])}}</div>
                                 </li>
-                                <li>
-                                    <div class="degree-text">19°</div>
-                                    <div class="weather-icon"><i class="fas fa-cloud-sun-rain"></i></div>
-                                    <div class="day-text">Wed</div>
+                                <li title={{ $weather['daily'][2]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][2]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][2]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][2]["dt"])}}</div>
                                 </li>
-                                <li>
-                                    <div class="degree-text">32°</div>
-                                    <div class="weather-icon"><i class="fas fa-cloud-sun"></i></div>
-                                    <div class="day-text">Thu</div>
+                                <li title={{ $weather['daily'][3]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][3]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][3]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][3]["dt"])}}</div>
                                 </li>
-                                <li>
-                                    <div class="degree-text">27°</div>
-                                    <div class="weather-icon"><i class="fas fa-wind"></i></div>
-                                    <div class="day-text">Fri</div>
+                                <li title={{ $weather['daily'][4]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][4]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][4]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][4]["dt"])}}</div>
                                 </li>
-                                <li>
-                                    <div class="degree-text">22°</div>
-                                    <div class="weather-icon"><i class="fas fa-cloud-showers-heavy"></i></div>
-                                    <div class="day-text">Sat</div>
+                                <li title={{ $weather['daily'][5]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][5]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][5]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][5]["dt"])}}</div>
                                 </li>
-                                <li>
-                                    <div class="degree-text">12°</div>
-                                    <div class="weather-icon"><i class="fas fa-snowflake"></i></div>
-                                    <div class="day-text">Sun</div>
+                                <li title={{ $weather['daily'][6]['weather'][0]["description"]}}>
+                                    <div class="degree-text">{{ round($weather['daily'][6]["temp"]["max"])}}°</div>
+                                    <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][6]['weather'][0]["id"]; ?>"></i></i></div>
+                                    <div class="day-text">{{date("D",$weather['daily'][6]["dt"])}}</div>
                                 </li>
                             </ul>
                         </div>
@@ -1318,42 +1318,7 @@
                             <div class="categories-left-heading">
                                 <h3>Peoples</h3>
                             </div>
-                            <div class="sugguest-user">
-                                <div class="sugguest-user-dt">
-                                    <a href="/danimocanu"><img src="{{ Auth::user()->profile_photo_url }}" alt=""></a>
-                                    <a href="/danimocanu">
-                                        <h4>Johnson</h4>
-                                    </a>
-                                </div>
-                                <button class="request-btn"><i class="fas fa-user-plus"></i></button>
-                            </div>
-                            <div class="sugguest-user">
-                                <div class="sugguest-user-dt">
-                                    <a href="user_dashboard_activity.html"><img src="images/homepage/left-side/left-img-2.jpg" alt=""></a>
-                                    <a href="user_dashboard_activity.html">
-                                        <h4>Jassica William</h4>
-                                    </a>
-                                </div>
-                                <button class="request-btn"><i class="fas fa-user-plus"></i></button>
-                            </div>
-                            <div class="sugguest-user">
-                                <div class="sugguest-user-dt">
-                                    <a href="user_dashboard_activity.html"><img src="images/homepage/left-side/left-img-3.jpg" alt=""></a>
-                                    <a href="user_dashboard_activity.html">
-                                        <h4>Rock</h4>
-                                    </a>
-                                </div>
-                                <button class="request-btn"><i class="fas fa-user-plus"></i></button>
-                            </div>
-                            <div class="sugguest-user">
-                                <div class="sugguest-user-dt">
-                                    <a href="user_dashboard_activity.html"><img src="images/homepage/left-side/left-img-4.jpg" alt=""></a>
-                                    <a href="user_dashboard_activity.html">
-                                        <h4>Davil Smith</h4>
-                                    </a>
-                                </div>
-                                <button class="request-btn"><i class="fas fa-user-plus"></i></button>
-                            </div>
+                            <livewire:www.user.related-user />
                         </div>
                     </div>
                 </div>

@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Debug;
+namespace App\Http\Livewire\Www\User;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 use App\Models\Country;
 use App\Models\State;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
-
-class Debug extends Controller
+class RelatedUser extends Component
 {
-    public function index()
+    public function render()
     {
         $peopleAroundYourCurrentLocation = [];
         $allAroundCurrentLocation = User::where('live_in', Auth::user()->live_in)
@@ -74,7 +73,6 @@ class Debug extends Controller
             $peopleAroundYourSetCountryLocation,
             $allAroundWorld
         );
-
-        return $people;
+        return view('livewire.www.user.related-user', compact('people'));
     }
 }

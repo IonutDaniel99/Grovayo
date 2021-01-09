@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers\www\User;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Models\News;
+use App\Models\State;
+use App\Models\User;
+use App\Models\User_About;
+use App\Models\User_Follow;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -15,10 +22,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user_about['user_country'] = User_About::where('user_id', Auth::id())->pluck('user_country')->first();
+        $user_about['user_country'] = Country::where('id', $user_about['user_country'])->pluck('name')->first();
+
+        $apiController = new ApiController;
+        $weather = $apiController->callWeatherApi();
+
+        $user_follow['followers_number'] = User_Follow::where("user_followed_id", Auth::id())->count();
+        $user_follow['following_number'] = User_Follow::where('user_follow_id', Auth::id())->count();
+
         foreach (['world', 'science', 'technology', 'music', 'movies', 'games', 'sport'] as $topic) {
             $news[$topic] = News::all()->where("topic", $topic)->random(3);
         }
-        return view('www.user.home', compact('news'));
+        return view('www.user.home', compact('news', 'weather', 'user_about', 'user_follow'));
     }
 
     /**

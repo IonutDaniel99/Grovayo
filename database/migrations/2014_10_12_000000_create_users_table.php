@@ -22,12 +22,13 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
+            $table->string('live_in', 255)->nullable()->default('Actual Location');
             $table->text('profile_photo_path')->nullable();
             $table->string("background_image_url")->nullable()->default('storage/background-photos/default.jpg');
             $table->boolean('is_active')->default(true);
             $table->boolean('is_private')->default(false);
             $table->boolean('is_blocked')->default(false);
-            $table->string('user_secret_code')->nullable()->default('null');
+            $table->string('user_secret_code')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

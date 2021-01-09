@@ -16,7 +16,6 @@ class CreateUsersAbout extends Migration
         Schema::create('user_about', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('user_id')->constrained()->references('id')->on('users')->onDelete('cascade');
-            $table->string('live_in', 255)->nullable()->default('Actual Location');
             $table->enum('user_weather_degree', array('F', 'C', 'K'))->default('F');
             $table->string('time_zone')->default('US/Hawaii');
             $table->date('birthday')->format('Y-m-d')->nullable();
