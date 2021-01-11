@@ -32,7 +32,7 @@ class HomeController extends Controller
         $user_follow['following_number'] = User_Follow::where('user_follow_id', Auth::id())->count();
 
         foreach (['world', 'science', 'technology', 'music', 'movies', 'games', 'sport'] as $topic) {
-            $news[$topic] = News::all()->where("topic", $topic)->random(3);
+            $news[$topic] = News::inRandomOrder()->limit(3)->where("topic", $topic)->get();
         }
         return view('www.user.home', compact('news', 'weather', 'user_about', 'user_follow'));
     }

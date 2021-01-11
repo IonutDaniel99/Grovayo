@@ -19,8 +19,8 @@ class CreateUsersAbout extends Migration
             $table->enum('user_weather_degree', array('F', 'C', 'K'))->default('F');
             $table->string('time_zone')->default('US/Hawaii');
             $table->date('birthday')->format('Y-m-d')->nullable();
-            $table->enum('gender', array('Male', 'Female', 'Unspecified', 'Other'));
-            $table->string('status')->default('Not Specified');
+            $table->enum('gender', array('Male', 'Female', 'Unspecified', 'Other'))->default('Other');
+            $table->string('status')->enum('Single', 'Married', 'In a relationship', 'Engaged', 'Its complicated', 'Widowed', 'Not specified')->default('Not Specified');
             $table->string('contact_email', 255)->nullable();
             $table->string('phone_number', 25)->nullable();
             $table->text('about')->nullable()->default('About Me');

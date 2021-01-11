@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Www\User\ViewUser;
 
+use App\Models\Country;
+use App\Models\State;
 use App\Models\User;
 use App\Models\User_About;
 use App\Models\User_Follow;
@@ -99,6 +101,8 @@ class ViewUserInfo extends Component
     {
         $user_model = User::where("username", $this->username)->select('id', 'name', 'username', 'profile_photo_path', 'background_image_url', 'created_at')->first();
         $about_model = User_About::where('user_id', $user_model->id)->first();
+        $about_model['user_state'] = State::where('id', $about_model['user_state'])->value('name');
+        $about_model['user_country'] = Country::where('id', $about_model['user_country'])->value('name');
         $follow_model = User_Follow::where("user_follow_id", $this->auth_user_id)->where('user_followed_id', $user_model->id);
 
         if ($follow_model->exists()) {
@@ -115,6 +119,6 @@ class ViewUserInfo extends Component
         } else {
             $this->state = "Follow";
         }
-        return view('livewire.www.user.view-user.view-user-info', ['user_model' => $user_model, 'about_model' => $about_model]);
+        return view('livewire.www.user.view-user.view-user-info', compact('user_model', 'about_model'));
     }
 }

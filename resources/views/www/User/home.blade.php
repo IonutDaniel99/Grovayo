@@ -21,7 +21,11 @@
                                 @endif
                                 <div class="user-main-details">
                                     <h4>{{ Auth::user()->name }} </h4>
+                                    @if($user_about['user_country'] != NULL)
                                     <span><i class="fas fa-map-marker-alt"></i> &nbsp;{{$user_about['user_country']}}</span>
+                                    @else
+                                    <span><i class="fas fa-map-marker-alt"></i> &nbsp;Not Specified</span>
+                                    @endif
                                 </div>
                                 <ul class="followers-dts">
                                     <li>
@@ -38,7 +42,9 @@
                                     </li>
                                 </ul>
                                 <div class="profile-link">
-                                    <a href="{{ route('Settings_Personal_Info_Index') }}">View Profile</a>
+                                    <a href="{{ route('Settings_Personal_Info_Index') }}">
+                                        <button class=" msg-btn1">View Profile</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -274,16 +280,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="container">
-                                        <div class="row py-2">
-                                            <a id="left-news-button" class="col-6 text-center" href="#recipeCarousel" role="button" data-slide="prev">
-                                                <i class="fas fa-chevron-left"></i>
-                                            </a>
-                                            <a id="right-news-button" class="col-6 text-center" href="#recipeCarousel" role="button" data-slide="next">
-                                                <i class="fas fa-chevron-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    <ol class="carousel-indicators mx-3" style="bottom: -18px !important;">
+                                        <li data-target="#recipeCarousel" data-slide-to="0" class="active"></li>
+                                        @for($i=1;$i<=5;$i++) <li data-target="#recipeCarousel" data-slide-to={{$i}}>
+                                            </li>
+                                            @endfor
+                                    </ol>
                                 </div>
                             </div>
                         </div>
@@ -1315,7 +1317,7 @@
                             </ul>
                         </div>
                         <div class="user-data full-width">
-                            <div class="categories-left-heading">
+                            <div class="categories-left-heading" style="border-bottom: 1px solid #e1e1e1;">
                                 <h3>Peoples</h3>
                             </div>
                             <livewire:www.user.related-user />

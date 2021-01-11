@@ -82,7 +82,6 @@
                                                                 <option>It's complicated</option>
                                                                 <option>Widowed</option>
                                                                 <option>Not specified</option>
-
                                                             </select>
                                                         </div>
                                                     </div>
@@ -93,7 +92,6 @@
                                                         <div class="select-bg">
                                                             <select class="nice-select wide" id="country-dropdown" name="country">
                                                                 <option>Select Country</option>
-
                                                                 @foreach ($data['countries'] as $country)
                                                                 <option value="{{$country->id}}">
                                                                     {{$country->name}}

@@ -32,6 +32,11 @@ class AdminSeeder extends Seeder
             'user_id' => User::select('id')->where('user_secret_code', $secret_string),
         ]);
 
+        $user->notifications()->create([
+            'user_id' => User::where('user_secret_code', $secret_string)->value('id'),
+            'hide_profile' => 1
+        ]);
+
         $user->assignRole('Owner');
     }
 }

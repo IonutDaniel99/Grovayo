@@ -24,24 +24,25 @@ class User_About extends Model
      */
     protected $fillable = [
         'user_id',
-        'full_name',
+        'user_weather_degree',
+        'time_zone',
         'birthday',
-        'email',
-        'phone_number',
         'gender',
         'status',
-        'country',
-        'state',
-        'city',
-        'description',
+        'contact_email',
+        'phone_number',
+        'about',
+        'user_country',
+        'user_state',
+        'user_city',
         'favourite_music_genre',
         'favourite_books',
+        'favourite_music',
         'favourite_movies',
-        'favourite_shows',
         'favourite_games',
         'favourite_brands',
-        'favourite_artist',
-        'favourite_interest',
+        'favourite_artists',
+        'favourite_interests',
         'education_title',
         'education_date_start',
         'education_date_end',
@@ -51,6 +52,4 @@ class User_About extends Model
         'employment_date_end',
         'employment_company',
     ];
-
-
 }

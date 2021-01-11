@@ -53,5 +53,23 @@
                 </div>
             </div>
         </div>
-    </main>
+    </main> 
+    @foreach ($errors->all() as $error)
+    <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 100px;">
+        <div class="toast" style="position: absolute; top: 0; right: 0; opacity: 1 !important; margin: 35px;">
+            <div class="toast-header">
+                <svg class="bd-placeholder-img rounded mr-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+                    <rect width="100%" height="100%" fill="#F32013"></rect>
+                </svg>
+                <strong class="mr-auto">Creditential Error</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                {{ $error }}
+            </div>
+        </div>
+    </div>
+    @endforeach
 </x-guest-layout>

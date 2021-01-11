@@ -119,6 +119,7 @@ class ApiController extends Controller
                 }
             }
         }
+        
     }
 
     public function returnUserLocation()

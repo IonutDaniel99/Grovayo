@@ -25,7 +25,7 @@ class ActivityController extends Controller
         $user_about = User_About::where('user_id', Auth::id())->first();
 
         foreach (['world', 'science', 'technology', 'music', 'movies', 'games', 'sport'] as $topic) {
-            $news[$topic] = News::all()->where("topic", $topic)->random(3);
+            $news[$topic] = News::inRandomOrder()->limit(3)->where("topic", $topic)->get();
         }
         $this->isSocialPagesNull($user_about);
         $viewed_profile = $this->whoViewedMyProfile();
