@@ -28,19 +28,19 @@
                             @else
                             @foreach($viewed_profile as $visitor)
                             <div class="sugguest-user">
-                                <div class="sugguest-user-dt">
+                                <div class="sugguest-user-dt" style="display: unset !important;">
                                     <a href="/user/{{$visitor['visitor_username']}}">
                                         @if($visitor['visitor_image'] == null)
-                                        <img src="https://ui-avatars.com/api/?name={{$visitor['visitor_username']}}&color=7F9CF5&background=EBF4FF" alt="">
+                                        <img src="https://ui-avatars.com/api/?name={{$visitor['visitor_username']}}&color=7F9CF5&background=EBF4FF" alt="" style="margin-right:10px">
                                         @else
-                                        <img src="storage/{{$visitor['visitor_image']}}" alt="">
+                                        <img src="storage/{{$visitor['visitor_image']}}" alt="" style="margin-right:10px">
                                         @endif
                                     </a>
                                     <a href="/user/{{$visitor['visitor_username']}}">
-                                        <h4>{{$visitor['visitor_name']}}</h4>
+                                        <h4 style="margin-top:1px;max-width: 170px;margin-left:0px!important">{{$visitor['visitor_name']}}</h4>
                                     </a>
                                 </div>
-                                <button class=" request-btn"><i class="fas fa-user-plus"></i></button>
+                                <button class="request-btn"><i class="fas fa-user-plus"></i></button>
                             </div>
                             @endforeach
                             @endif

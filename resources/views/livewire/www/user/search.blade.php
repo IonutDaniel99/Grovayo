@@ -11,8 +11,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="all-search-events">
+            <div class="all-search-events" style="margin-top: 50px;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12" wire:loading>

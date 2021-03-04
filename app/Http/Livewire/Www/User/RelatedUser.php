@@ -17,7 +17,7 @@ class RelatedUser extends Component
         $user_country = Country::where('id', Auth::user()->about_model->user_country)->value('name');
 
         $peopleAroundYourCurrentLocation = [];
-        $allAroundCurrentLocation = User::where('live_in', Auth::user()->live_in)
+        $allAroundCurrentLocation = User::where('live_in', Auth::user()->live_in)->take(6)
             ->whereDoesntHave('follower')
             ->where('id', '!=', Auth::id())
             ->whereHas('roles', function ($q) {

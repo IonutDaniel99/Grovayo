@@ -21,7 +21,7 @@
 
             <!-- New Profile Photo Preview -->
             <div class="mt-2 setting-dp" x-show="photoPreview">
-                <span class="block w-20 h-20" x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
+                <span class="block w-20 h-20" x-bind:style="'width: 150px; height: 150px; border-radius: 25%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
                 </span>
             </div>
 

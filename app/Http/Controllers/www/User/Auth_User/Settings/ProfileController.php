@@ -17,7 +17,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user_about_model = User::all()->where('id', Auth::id())->first();
+        $user_about_model = User::where('id', Auth::id())->first();
         return view("www.user.auth_user.settings.profile", compact('user_about_model'));
     }
 
@@ -73,20 +73,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-        $user_about_model = User::all()->where('id', Auth::id())->first();;
-
-        $this->validate($request, [
-            'background_image' => ['required', 'image', 'max:4096', 'dimensions:min_width=1000,min_height=300'],
-        ]);
-
-        $imageName = $user_about_model->username . '-' . time() . '.' . $request->file('background_image')->getClientOriginalExtension();
-        $request->file('background_image')->move(public_path('storage/background-photos'), $imageName);
-        $user_about_model->background_image_url = 'storage/background-photos/' . $imageName;
-        $user_about_model->save();
-
-        return back();
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -98,10 +85,27 @@ class ProfileController extends Controller
         //
     }
 
+    public function setBackgroundImage(Request $request)
+    {
+        $user_about_model = User::where('id', Auth::id())->first();;
+
+        $this->validate($request, [
+            'background_image' => ['required', 'image', 'max:4096', 'dimensions:min_width=1000,min_height=300'],
+        ]);
+
+
+        $imageName = $user_about_model->username . '-' . time() . '.' . $request->file('background_image')->getClientOriginalExtension();
+        $request->file('background_image')->move(public_path('storage/users/' . $user_about_model->username . '/background-photos'), $imageName);
+        $user_about_model->background_image_url = 'storage/users/' . $user_about_model->username . '/background-photos/' . $imageName;
+        $user_about_model->save();
+
+        return back();
+    }
+
     public function setProfileVisibility()
     {
         $auth_id = Auth::id();
-        $user_model = User::all()->where('id', $auth_id)->first();
+        $user_model = User::where('id', $auth_id)->first();
         if ($user_model->is_private == 0) {
 
             $user_model->is_private = 1;

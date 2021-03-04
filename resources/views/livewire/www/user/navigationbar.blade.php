@@ -41,7 +41,6 @@
                             </li>
                             @endif
                         </ul>
-                        <a href="add_new_event.html" class="add-event">Add New Event</a>
                     </div>
                     <ul class="group-icons">
                         <li><a href="{{ route('Search') }}" class="icon-set"><i class="fas fa-search"></i></a></li>
@@ -99,6 +98,7 @@
                             </div>
                             @else
                             <div class="dropdown-menu user-request-dropdown dropdown-menu-right">
+                                @if(!empty($latest_friends))
                                 @foreach($latest_friends as $friend)
                                 <div class="user-request-list">
                                     <div class="request-users">
@@ -123,6 +123,15 @@
                                     </div>
                                 </div>
                                 @endforeach
+                                @else
+                                <div class="user-request-list">
+                                    <div class="request-users">
+                                        <div class="user-request-dt">
+                                            <span class="text-truncate mx-0">No one followed you yet.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
                                 <div class="user-request-list">
                                     <a href="{{ route('Settings_Profile_Index') }}" class="view-all">Profile Settings!</a>
                                 </div>

@@ -85,6 +85,7 @@ class ApiController extends Controller
         $Weather['time_zone'] = $ipinfo_data['timezone'];
         $Weather['daily'] = $weather_data['daily'];
         return $Weather;
+
     }
 
     public function callNewsApi()
@@ -119,7 +120,6 @@ class ApiController extends Controller
                 }
             }
         }
-        
     }
 
     public function returnUserLocation()

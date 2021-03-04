@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Www\User\AuthUser;
 
+use App\Models\Country;
+use App\Models\State;
 use Livewire\Component;
 use App\Models\User_Follow;
 use Illuminate\Support\Facades\Auth;
@@ -27,13 +29,16 @@ class FollowersList extends Component
         }
 
         foreach ($follow_model as $follow_data) {
+            $country_id = $follow_data->user_about_following->pluck('user_country')->first();
+            $state_id = $follow_data->user_about_following->pluck('user_state')->first();
             array_push($follower_list, [
                 'follower_request_id' => $follow_data['user_follow_id'],
+                'follower_request_name' => $follow_data->user_following->pluck('name')->first(),
                 'follower_request_username' => $follow_data->user_follow->pluck('username')->first(),
                 'follower_request_profile_photo' => $follow_data->user_follow->pluck('profile_photo_path')->first(),
                 'follower_request_background_photo' => $follow_data->user_follow->pluck('background_image_url')->first(),
-                'follower_request_name' => $follow_data->user_follow->pluck('name')->first(),
-                'follower_request_location' => $follow_data->user_about_follow->pluck('user_country')->first(),
+                'follower_request_country' => Country::where('id', $country_id)->value('name'),
+                'follower_request_state' => State::where('id', $state_id)->value('name')
             ]);
         }
         return view('livewire.www.user.auth-user.followers-list', compact('follower_list', 'is_follower_list_empty'));

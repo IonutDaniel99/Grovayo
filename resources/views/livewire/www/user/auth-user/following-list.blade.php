@@ -8,16 +8,6 @@
                 </div>
             </div>
             @else
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="search-bar-main">
-                            <input type="text" class="search-1" placeholder="Search peoples...">
-                            <i class="fas fa-search srch-ic"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="all-search-events">
                 <div class="row">
                     @foreach($following_list as $follower)
@@ -37,10 +27,10 @@
                                     <h4>{{$follower['follower_request_name']}}</h4>
                                     <h6 style="color: #adadad;text-decoration: underline;">{{$follower['follower_request_username']}}</h6>
                                     <span><i class="fas fa-map-marker-alt"></i>
-                                        @if($follower['follower_request_location'] == NULL)
+                                        @if($follower['follower_request_country'] == NULL)
                                         Unspecified
                                         @else
-                                        {{$follower['follower_request_location']}}
+                                        {{$follower['follower_request_state']}} / {{$follower['follower_request_country']}}
                                         @endif
                                     </span>
                                 </div>
