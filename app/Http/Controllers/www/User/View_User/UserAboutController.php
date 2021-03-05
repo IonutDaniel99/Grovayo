@@ -4,17 +4,38 @@ namespace App\Http\Controllers\www\user\view_user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\User_About;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User_Follow;
 
 class UserAboutController extends Controller
 {
+    public $username;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($username)
     {
-        return view('www.user.view_user.about');
+        $user_model = User::where('username', $username)->first();
+        if (!$user_model || $user_model === NULL) {
+            return view('errors.404-user');
+        }
+
+        $follow_model_a_to_b = User_Follow::where("user_follow_id", Auth::id())->where('user_followed_id', $user_model->id)->pluck('user_follow_status')->first();
+        $follow_model_b_to_a = User_Follow::where("user_followed_id", Auth::id())->where('user_follow_id', $user_model->id)->pluck('user_follow_status')->first();
+
+        if ($follow_model_a_to_b == 3 || $follow_model_b_to_a == 3) {
+            return view('errors.404-user')->with('message', "This user has blocked you.");
+        } elseif ($follow_model_b_to_a == 2) {
+            $is_private = 0;
+        } else {
+            $is_private = 1;
+        }
+
+        return view('www.user.view_user.about', compact('username', 'user_model', 'is_private'));
     }
 
     /**

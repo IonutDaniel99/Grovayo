@@ -85,6 +85,25 @@ class ProfileController extends Controller
         //
     }
 
+
+    public function setProfileImage(Request $request)
+    {
+        $user_about_model = User::where('id', Auth::id())->first();;
+
+        $this->validate($request, [
+            'profile_image' => ['required', 'image', 'max:4096', 'dimensions:min_width=150,min_height=150'],
+        ]);
+
+
+        $imageName = $user_about_model->username . '-profile.' . $request->file('profile_image')->getClientOriginalExtension();
+        $request->file('profile_image')->move(public_path('storage/users/' . $user_about_model->username . '/profile-photos'), $imageName);
+        $user_about_model->profile_photo_path = 'storage/users/' . $user_about_model->username . '/profile-photos/' . $imageName;
+        $user_about_model->save();
+
+        return back();
+    }
+
+
     public function setBackgroundImage(Request $request)
     {
         $user_about_model = User::where('id', Auth::id())->first();;
@@ -94,7 +113,7 @@ class ProfileController extends Controller
         ]);
 
 
-        $imageName = $user_about_model->username . '-' . time() . '.' . $request->file('background_image')->getClientOriginalExtension();
+        $imageName = $user_about_model->username . '-bg.' . $request->file('background_image')->getClientOriginalExtension();
         $request->file('background_image')->move(public_path('storage/users/' . $user_about_model->username . '/background-photos'), $imageName);
         $user_about_model->background_image_url = 'storage/users/' . $user_about_model->username . '/background-photos/' . $imageName;
         $user_about_model->save();

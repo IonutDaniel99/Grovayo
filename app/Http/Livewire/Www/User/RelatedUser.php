@@ -64,7 +64,6 @@ class RelatedUser extends Component
             array_push($peopleAroundYourSetCountryLocation, $user);
         }
 
-
         $allAroundWorld = [];
         $randomPeople = User::where('live_in', '!=', Auth::user()->live_in)->where('live_in', '!=', 'Actual Location')
             ->whereDoesntHave('follower')
@@ -83,12 +82,14 @@ class RelatedUser extends Component
             array_push($allAroundWorld, $user);
         }
 
+
         $people = array_merge(
             $peopleAroundYourCurrentLocation,
             $peopleAroundYourSetStateLocation,
             $peopleAroundYourSetCountryLocation,
             $allAroundWorld
-        );;
+        );
+
         return view('livewire.www.user.related-user', compact('people', 'user_country', 'user_state'));
     }
 }

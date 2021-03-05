@@ -129,4 +129,17 @@ $('.widget-owl').owlCarousel({
     }
 })
 
-//News widget
+//Profile Image
+
+function load_profile_file(event) {
+    var output = document.getElementById('profileProfileImage');
+    output.src = URL.createObjectURL(event.target.files[0]);
+}
+
+
+//Background Image
+
+function load_background_file(event) {
+    var output = document.getElementById('profileBackgroundImage');
+    output.src = URL.createObjectURL(event.target.files[0]);
+}
