@@ -21,7 +21,7 @@ class AboutController extends Controller
         $user_about['user_country'] = Country::where('id', $user_about['user_country'])->pluck('name')->first();
 
         if ($user_about['birthday'] != NULL)
-            $user_about['birthday'] = date('j F, Y', strtotime($user_about['birthday']));
+            $user_about['birthday'] = date('F j, Y', strtotime($user_about['birthday']));
 
         $this->isSocialPagesNull($user_about);
         $this->isFavouritesNull($user_about);

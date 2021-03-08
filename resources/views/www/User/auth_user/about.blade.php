@@ -153,9 +153,9 @@
                                 <h3>About</h3>
                                 <a href="{{ route('Settings_Personal_Info_Index') }}">Edit</a>
                             </div>
-                            @IF($user_about['about_me'] != NULL)
+                            @IF($user_about['about'] != NULL)
                             <div class="about-dt-des">
-                                <p>{{$user_about['about_me']}}</p>
+                                <p>{{$user_about['about']}}</p>
                             </div>
                             @ENDIF
                         </div>
@@ -245,7 +245,7 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="user-data full-width mb-20">
                                         <div class="about-left-heading">
-                                            <h3>Education</h3>
+                                            <h3>Eployment</h3>
                                             <a href="{{ route('Settings_Personal_Info_Index') }}">Edit</a>
                                         </div>
                                         @IF($user_about['employment_title'] != NULL)

@@ -18,18 +18,18 @@
                                         Member Since
                                     </div>
                                     <div class="about-2">
-                                        {{date_format($user_model['created_at'],"F j, Y")}}
+                                        {{date_format($user_model['about_model']['created_at'],"F j, Y")}}
                                     </div>
                                 </div>
                             </li>
-                            @IF($user_model['user_country'] != NULL)
+                            @IF($user_model['about_model']['user_country'] != NULL)
                             <li>
                                 <div class="about-itdts">
                                     <div class="about-1">
                                         Lives in
                                     </div>
                                     <div class="about-2">
-                                        {{$user_model['user_country']}}
+                                        {{$user_model['about_model']['user_country']}}
                                     </div>
                                 </div>
                             </li>
@@ -52,7 +52,7 @@
                                         Birthday
                                     </div>
                                     <div class="about-2">
-                                        {{$user_model['about_model']['birthday'] }}
+                                        {{$user_model['about_model']['birthday']}}
                                     </div>
                                 </div>
                             </li>
@@ -77,26 +77,26 @@
                                     </div>
                                 </div>
                             </li>
-                            @IF($user_model['contact_email'] != NULL)
+                            @IF($user_model['about_model']['contact_email'] != NULL)
                             <li>
                                 <div class="about-itdts">
                                     <div class="about-1">
                                         Contact Email
                                     </div>
                                     <div class="about-2">
-                                        {{$user_model['contact_email']}}
+                                        {{$user_model['about_model']['contact_email']}}
                                     </div>
                                 </div>
                             </li>
                             @ENDIF
-                            @IF($user_model['phone_number'] != NULL)
+                            @IF($user_model['about_model']['phone_number'] != NULL)
                             <li>
                                 <div class="about-itdts">
                                     <div class="about-1">
                                         Phone No.
                                     </div>
                                     <div class="about-2">
-                                        {{$user_model['phone_number']}}
+                                        {{$user_model['about_model']['phone_number']}}
                                     </div>
                                 </div>
                             </li>
@@ -105,37 +105,37 @@
                         </ul>
                     </div>
                     <div class="user-data full-width">
-                        <!-- @IF($user_model['isSocialNetworksNull'] == 1)
+                        @IF($user_model['isSocialNetworksNull'] == 1)
                         <div class="about-left-heading">
                             <h3>Social Accounts</h3>
                         </div>
                         <div class="categories-items">
-                            @IF($user_model['social_webpage'] != NULL)
-                            <a class="category-social-item" href="{{$user_model['social_webpage']}}"><i class="fas fa-globe" style="color:#51a5fb;"></i>{{$user_model['social_webpage']}}</a>
+                            @IF($user_model['about_model']['social_webpage'] != NULL)
+                            <a class="category-social-item text-truncate" href="{{$user_model['social_webpage']}}"><i class="fas fa-globe" style="color:#51a5fb;"></i><span class="pl-3">{{$user_model['about_model']['social_webpage']}}</span></a>
                             @ENDIF
-                            @IF($user_model['social_facebook'] != NULL)
-                            <a class="category-social-item" href="{{$user_model['social_facebook']}}"><i class="fab fa-facebook-square" style="color:#3b5998;"></i>{{$user_model['social_facebook']}}</a>
+                            @IF($user_model['about_model']['social_facebook'] != NULL)
+                            <a class="category-social-item text-truncate" href="{{$user_model['social_facebook']}}"><i class="fab fa-facebook-square" style="color:#3b5998;"></i><span class="pl-3">{{$user_model['about_model']['social_facebook']}}</span></a>
                             @ENDIF
-                            @IF($user_model['social_twitter'] != NULL)
-                            <a class="category-social-item" href="{{$user_model['social_twitter']}}"><i class="fab fa-twitter" style="color:#1da1f2;"></i>{{$user_model['social_twitter']}}</a>
+                            @IF($user_model['about_model']['social_twitter'] != NULL)
+                            <a class="category-social-item text-truncate" href="{{$user_model['social_twitter']}}"><i class="fab fa-twitter" style="color:#1da1f2;"></i><span class="pl-3">{{$user_model['about_model']['social_twitter']}}</span></a>
                             @ENDIF
-                            @IF($user_model['social_youtube'] != NULL)
-                            <a class="category-social-item" href="{{$user_model['social_youtube']}}"><i class="fab fa-google-plus" style="color:#dd4b39;"></i>{{$user_model['social_youtube']}}</a>
+                            @IF($user_model['about_model']['social_youtube'] != NULL)
+                            <a class="category-social-item text-truncate" href="{{$user_model['social_youtube']}}"><i class="fab fa-google-plus" style="color:#dd4b39;"></i><span class="pl-3">{{$user_model['about_model']['social_youtube']}}</span></a>
                             @ENDIF
-                            @IF($user_model['social_instagram'] != NULL)
-                            <a class="category-social-item" href="{{$user_model['social_instagram']}}"><i class="fab fa-instagram" style="color:#405de6;"></i>{{$user_model['social_instagram']}}</a>
+                            @IF($user_model['about_model']['social_instagram'] != NULL)
+                            <a class="category-social-item text-truncate" href="{{$user_model['social_instagram']}}"><i class="fab fa-instagram" style="color:#405de6;"></i><span class="pl-3">{{$user_model['about_model']['social_instagram']}}</span></a>
                             @ENDIF
-                            @IF($user_model['social_linkedin'] != NULL)
-                            <a class="category-social-item" href="{{$user_model['social_linkedin']}}"><i class="fab fa-pinterest" style="color:#bd081c;"></i>{{$user_model['social_linkedin']}}</a>
+                            @IF($user_model['about_model']['social_linkedin'] != NULL)
+                            <a class="category-social-item text-truncate" href="{{$user_model['social_linkedin']}}"><i class="fab fa-pinterest" style="color:#bd081c;"></i><span class="pl-3">{{$user_model['about_model']['social_linkedin']}}</span></a>
                             @ENDIF
-                            @IF($user_model['social_other1'] != NULL)
-                            <a class="category-social-item" href="{{$user_model['social_other1']}}"><i class="fab fa-linkedin" style="color:#0077b5;"></i>{{$user_model['social_other1']}}</a>
+                            @IF($user_model['about_model']['social_other1'] != NULL)
+                            <a class="category-social-item text-truncate" href="{{$user_model['social_other1']}}"><i class="fab fa-linkedin" style="color:#0077b5;"></i><span class="pl-3">{{$user_model['about_model']['social_other1']}}</span></a>
                             @ENDIF
-                            @IF($user_model['social_other2'] != NULL)
-                            <a class="category-social-item" href="{{$user_model['social_other2']}}"><i class="fab fa-youtube" style="color:#ff0000;"></i>{{$user_model['social_other2']}}</a>
+                            @IF($user_model['about_model']['social_other2'] != NULL)
+                            <a class="category-social-item text-truncate" href="{{$user_model['social_other2']}}"><i class="fab fa-youtube" style="color:#ff0000;"></i><span class="pl-3">{{$user_model['about_model']['social_other2']}}</span></a>
                             @ENDIF
                         </div>
-                        @ENDIF -->
+                        @ENDIF
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-7">
@@ -143,54 +143,74 @@
                         <div class="about-left-heading">
                             <h3>About</h3>
                         </div>
+                        @IF($user_model['about_model']['about'] != NULL)
                         <div class="about-dt-des">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet, dolor ut mollis rutrum, mauris arcu mollis lacus, eget imperdiet neque neque eget nisl. Nunc suscipit nulla dapibus nisi vestibulum tincidunt. Cras vestibulum vel ante et porttitor. Duis luctus consequat purus. Duis bibendum eget enim nec posuere. Aliquam purus lectus, blandit aliquam enim nec, viverra egestas libero. Suspendisse dictum neque et finibus posuere. </p>
+                            <p>{{$user_model['about_model']['about']}}</p>
                         </div>
+                        @ENDIF
                     </div>
                     <div class="user-data full-width">
                         <div class="about-left-heading">
                             <h3>Hobbies</h3>
                         </div>
+                        @IF($user_model['isFavouritesNull'] == 1)
                         <div class="about-hobbies">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12">
+                                    @IF($user_model['about_model']['favourite_music_genre'] != NULL)
                                     <div class="all-hobbies">
-                                        <h6>Favourite Music</h6>
-                                        <span>Folk, Rap, Solo, Hiphop</span>
+                                        <h6>Favourite Music Genre</h6>
+                                        <span>{{$user_model['about_model']['favourite_music_genre']}}</span>
                                     </div>
+                                    @ENDIF
+                                    @IF($user_model['about_model']['favourite_books'] != NULL)
                                     <div class="all-hobbies">
                                         <h6>Favourite Books</h6>
-                                        <span>Novel, Comics, Jokes, Love Stories, Secience, History</span>
+                                        <span>{{$user_model['about_model']['favourite_books']}}</span>
                                     </div>
+                                    @ENDIF
+                                    @IF($user_model['about_model']['favourite_music'] != NULL)
                                     <div class="all-hobbies">
                                         <h6>Favourite Music</h6>
-                                        <span>Dangle, Na Peru Suriya, Raja the Great, Bahubali 2</span>
+                                        <span>{{$user_model['about_model']['favourite_music']}}</span>
                                     </div>
+                                    @ENDIF
+                                    @IF($user_model['about_model']['favourite_movies'] != NULL)
                                     <div class="all-hobbies">
-                                        <h6>Favourite Tv Shows</h6>
-                                        <span>The Kapil Sharma Show, Kulfi, CID, Big Boss</span>
+                                        <h6>Favourite Movies</h6>
+                                        <span>{{$user_model['about_model']['favourite_movies']}}</span>
                                     </div>
+                                    @ENDIF
                                 </div>
                                 <div class="col-lg-6 col-md-12">
+                                    @IF($user_model['about_model']['favourite_games'] != NULL)
                                     <div class="all-hobbies">
                                         <h6>Favourite Games</h6>
-                                        <span>Cricket, Football, Hockey, Kabaddi</span>
+                                        <span>{{$user_model['about_model']['favourite_games']}}</span>
                                     </div>
+                                    @ENDIF
+                                    @IF($user_model['about_model']['favourite_brands'] != NULL)
                                     <div class="all-hobbies">
                                         <h6>Favourite Brands</h6>
-                                        <span>Apple, Oppo, Nike, Addidas, Puma. Jack &amp; Jone, Nokia</span>
+                                        <span>{{$user_model['about_model']['favourite_brands']}}</span>
                                     </div>
+                                    @ENDIF
+                                    @IF($user_model['about_model']['favourite_artists'] != NULL)
                                     <div class="all-hobbies">
                                         <h6>Favourite Artists</h6>
-                                        <span>Babbu Maan, Salman Khan, Kapil Sharma, Priyanka Chopra</span>
+                                        <span>{{$user_model['about_model']['favourite_artists']}}</span>
                                     </div>
+                                    @ENDIF
+                                    @IF($user_model['about_model']['favourite_interests'] != NULL)
                                     <div class="all-hobbies">
                                         <h6>Other Interests</h6>
-                                        <span>Travel, Hiking, Web designing</span>
+                                        <span>{{$user_model['about_model']['favourite_interests']}}</span>
                                     </div>
+                                    @ENDIF
                                 </div>
                             </div>
                         </div>
+                        @ENDIF
                     </div>
                     <div class="edu-emp-items">
                         <div class="row">
@@ -201,19 +221,9 @@
                                     </div>
                                     <div class="about-hobbies">
                                         <div class="all-hobbies">
-                                            <h6>Master of Science in Information Technology</h6>
-                                            <span>2014 - 2016</span>
-                                            <a href="#">Lovelt Professional University</a>
-                                        </div>
-                                        <div class="all-hobbies">
-                                            <h6>Bachelor of Science in Information Technology</h6>
-                                            <span>2011 - 2014</span>
-                                            <a href="#">Punjab Technical University</a>
-                                        </div>
-                                        <div class="all-hobbies">
-                                            <h6>Graphic Designing Course</h6>
-                                            <span>2016 - 2017</span>
-                                            <a href="#">Gambol Information Institute</a>
+                                            <h6>{{$user_model['about_model']['education_title']}}</h6>
+                                            <span>{{$user_model['about_model']['education_date_start']}} - {{$user_model['about_model']['education_date_end']}}</span>
+                                            <a href="{{$user_model['about_model']['education_institute']}}">{{$user_model['about_model']['education_institute']}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -221,23 +231,13 @@
                             <div class="col-lg-6 col-md-12">
                                 <div class="user-data full-width mb-20">
                                     <div class="about-left-heading">
-                                        <h3>Education</h3>
+                                        <h3>Eployment</h3>
                                     </div>
                                     <div class="about-hobbies">
                                         <div class="all-hobbies">
-                                            <h6>Owner and Founder</h6>
-                                            <span>2017 - Present</span>
-                                            <a href="#">Gambol Themes</a>
-                                        </div>
-                                        <div class="all-hobbies">
-                                            <h6>Graphic Designer</h6>
-                                            <span>2016 - 2017</span>
-                                            <a href="#">Company Name</a>
-                                        </div>
-                                        <div class="all-hobbies">
-                                            <h6>Web Designer</h6>
-                                            <span>2016 - 2017</span>
-                                            <a href="#">Company Name</a>
+                                            <h6>{{$user_model['about_model']['employment_title']}}</h6>
+                                            <span>{{$user_model['about_model']['employment_date_start']}} - {{$user_model['about_model']['employment_date_end']}}</span>
+                                            <a href="{{$user_model['about_model']['education_institute']}}">{{$user_model['about_model']['employment_company']}}</a>
                                         </div>
                                     </div>
                                 </div>
