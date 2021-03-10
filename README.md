@@ -30,5 +30,5 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 ## Project Photos
 
 <img src="https://raw.githubusercontent.com/IonutDaniel99/Grovayo/master/ProjectImages/Login.jpg" >
-<img src="https://raw.githubusercontent.com/IonutDaniel99/Grovayo/master/ProjectImages/Homepage.jpg" width="400">
-<img src="https://raw.githubusercontent.com/IonutDaniel99/Grovayo/master/ProjectImages/userProfile.jpg" width="400">
+<img src="https://raw.githubusercontent.com/IonutDaniel99/Grovayo/master/ProjectImages/Homepage.jpg">
+<img src="https://raw.githubusercontent.com/IonutDaniel99/Grovayo/master/ProjectImages/userProfile.jpg">
