@@ -29,7 +29,6 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 ## Project Photos
 
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
+<img src="https://raw.githubusercontent.com/IonutDaniel99/Grovayo/master/ProjectImages/Login.jpg" width="400">
+<img src="https://raw.githubusercontent.com/IonutDaniel99/Grovayo/master/ProjectImages/Homepage.jpg" width="400">
+<img src="https://raw.githubusercontent.com/IonutDaniel99/Grovayo/master/ProjectImages/userProfile.jpg" width="400">
