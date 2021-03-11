@@ -4,7 +4,7 @@
             @if($is_following_list_empty == true)
             <div class="container">
                 <div class="row justify-content-md-center">
-                    <p>You don't have any followers yet!</p>
+                    <p>You don't follow someone.</p>
                 </div>
             </div>
             @else

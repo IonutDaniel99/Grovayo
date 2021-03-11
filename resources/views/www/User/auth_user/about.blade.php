@@ -24,7 +24,6 @@
                                         </div>
                                     </div>
                                 </li>
-                                <!-- TODO -->
                                 @IF($user_about['user_country'] != NULL)
                                 <li>
                                     <div class="about-itdts">

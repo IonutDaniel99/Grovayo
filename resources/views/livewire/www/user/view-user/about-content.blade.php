@@ -135,6 +135,17 @@
                             <a class="category-social-item text-truncate" href="{{$user_model['social_other2']}}"><i class="fab fa-youtube" style="color:#ff0000;"></i><span class="pl-3">{{$user_model['about_model']['social_other2']}}</span></a>
                             @ENDIF
                         </div>
+                        @ELSE
+                        <div class="about-left-heading">
+                            <h3>Social Accounts</h3>
+                        </div>
+                        <div class="categories-items">
+                            <div class="sugguest-user">
+                                <div class="sugguest-user-dt">
+                                    <h6>This user has social media link hidden.</h6>
+                                </div>
+                            </div>
+                        </div>
                         @ENDIF
                     </div>
                 </div>
@@ -252,7 +263,7 @@
     <div class="dash-tab-links">
         <div class="container text-center">
             <h1>This account is Private</h1>
-            <h4>Follow to see his posts, images and videos!</h4>
+            <h4>Follow to see his posts, friends, images and videos!</h4>
         </div>
     </div>
     @endif

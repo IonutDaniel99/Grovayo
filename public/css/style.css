@@ -1966,6 +1966,16 @@ main {
     margin-right: 3px;
 }
 
+@media screen and (max-width: 992px) {
+    .w-weather {
+        display: none;
+    }
+
+    .news-data-dash {
+        display: none;
+    }
+}
+
 .w-weather {
     background-image: url("../storage/www/auth_user/home/weather/weather.jpg");
     background-repeat: no-repeat;
@@ -2089,6 +2099,7 @@ main {
     font-size: 14px;
     font-weight: 500;
     color: #313131;
+    margin-left: 5px;
 }
 
 .news-item-heading svg {

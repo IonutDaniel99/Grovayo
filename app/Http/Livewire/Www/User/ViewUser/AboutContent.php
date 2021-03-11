@@ -59,7 +59,8 @@ class AboutContent extends Component
         if ($user_model['about_model']['birthday'] != NULL)
             $user_model['about_model']['birthday'] = date('F j, Y', strtotime($user_model['about_model']['birthday']));
 
-        if ($user_model->pluck('is_private')->first() == 1 && $follow_model->pluck('user_follow_status')->first() != 2) {
+
+        if ($user_model['is_private'] == 1 && $follow_model->pluck('user_follow_status')->first() != 2) {
             $this->is_private = 1;
         } else {
             $this->is_private = 0;

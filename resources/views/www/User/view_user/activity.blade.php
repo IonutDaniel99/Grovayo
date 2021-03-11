@@ -21,6 +21,6 @@
             </div>
         </div>
         <livewire:www.user.view-user.view-user-info :username='$username' />
-        <livewire:www.user.view-user.content :username='$username' />
+        <livewire:www.user.view-user.activity-content :username='$username' />
     </main>
 </x-app-layout>
