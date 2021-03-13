@@ -18,7 +18,7 @@ class WeatherController extends Controller
     public function index(Request $request)
     {
         $apiController = new ApiController;
-        $Weather = $apiController->callWeatherApi();
+        $Weather = $apiController->callWeatherApiHome();
         return view('www.user.weather', compact('Weather'));
     }
 

@@ -8,6 +8,10 @@ use Livewire\Component;
 
 class Navigationbar extends Component
 {
+    /**
+     * Function to accept user following request.
+     * @param id $username_id User id from User Table.
+     */
     public function accept($username_id)
     {
         $auth_id = Auth::id();
@@ -19,6 +23,10 @@ class Navigationbar extends Component
 
         ]);
     }
+    /**
+     * Function to decline user following request.
+     * @param id $username_id User id from User Table.
+     */
     public function decline($username_id)
     {
         $auth_id = Auth::id();

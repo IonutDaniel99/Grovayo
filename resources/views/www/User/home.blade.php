@@ -1280,7 +1280,7 @@
                                 </ul>
                             </div>
                             <div class="weather-right">
-                                <i class="owf owf-<?php echo $weather['icon'] ?>"></i>
+                                <img class="weather-icon-center" src="http://openweathermap.org/img/wn/{{$weather["icon"]}}@2x.png" alt="" style="zoom:0%">
                                 <span>{{$weather['temp']}}°</span>
                             </div>
                             <ul class="weekly-weather">

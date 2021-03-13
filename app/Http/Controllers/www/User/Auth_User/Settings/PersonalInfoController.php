@@ -187,18 +187,32 @@ class PersonalInfoController extends Controller
     {
         //
     }
+
+    /**
+     * @return json State country
+     */
     public function getState(Request $request)
     {
         $data['states'] = State::where("country_id", $request->country_id)
             ->get(["name", "id"]);
         return response()->json($data);
     }
+    /**
+     * @return json Country cities
+     */
     public function getCity(Request $request)
     {
         $data['cities'] = City::where("state_id", $request->state_id)
             ->get(["name", "id"]);
         return response()->json($data);
     }
+
+    /**
+     * Verify if its a date or "present" string
+     * @param Data $date input data
+     * @param string $format format of data
+     * @return Data
+     */
 
     public function validateDate($date, $format = 'm-Y')
     {

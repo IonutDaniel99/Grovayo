@@ -8,13 +8,22 @@ use App\Models\User_About;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
+
+/**
+ * Api Controller Class contain function which return an API call with data.
+ */
 class ApiController extends Controller
 {
+
     protected $ipinfo_key = "e0b00bfba21a07";
     protected $weather_key = "d932deb7f2601160f97de013c9de1b1e";
     protected $news_api = "2334c88bcf65427c8739252543fdea8f";
-
-    public function callWeatherApi()
+    /**
+     * Return API call from api.openweathermap.org. It requires two api keys.
+     * First from ipinfo.io to locate the user city and second for weather to retrieve data for city
+     * @return json $Weather city data
+     */
+    public function callWeatherApiHome()
     {
         $ipinfo_data = json_decode(file_get_contents("https://ipinfo.io/?token=" . $this->ipinfo_key), true);
         $ipinfo_data['lat'] = substr($ipinfo_data['loc'], 0, 5);
@@ -36,7 +45,7 @@ class ApiController extends Controller
         #region TimeAndDate
         $Weather["day"] = Carbon::now()->format('d');
         $Weather["month"] = Carbon::now()->format('M');
-        $Weather["year"] = Carbon::now()->format('yy');
+        $Weather["year"] = Carbon::now()->format('Y');
         $Weather["dayName"] = Carbon::now()->format('l');
         $Weather["time"] = Carbon::now()->format('H:i');
         $Weather["timeFormat"] = Carbon::now()->format('A');
@@ -85,9 +94,52 @@ class ApiController extends Controller
         $Weather['time_zone'] = $ipinfo_data['timezone'];
         $Weather['daily'] = $weather_data['daily'];
         return $Weather;
-
     }
 
+    public function callWeatherApiUser($city)
+    {
+        $weather_geolocation = json_decode(file_get_contents("http://api.openweathermap.org/geo/1.0/direct?q=" . $city . "&limit=2&appid=" . $this->weather_key), true);
+        $weather_geolocation['lat'] = substr($weather_geolocation[0]['lat'], 0, 5);
+        $weather_geolocation['long'] = substr($weather_geolocation[0]['lon'], 0, -2);
+        $Weather["degreePreferences"] = User_About::where('user_id', Auth::id())->value('user_weather_degree');
+        if ($Weather["degreePreferences"] === "F") {
+            $weather_data = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/onecall?lat=" . $weather_geolocation['lat'] . "&lon=" . $weather_geolocation['long'] . "&units=imperial&exclude=minutely,hourly,alerts&appid=" . $this->weather_key), true);
+            $Weather["wind_option"] = "MPH";
+            $Weather["wind_speed"] = round($weather_data["current"]["wind_speed"], 1);
+        } elseif ($Weather["degreePreferences"] === "K") {
+            $weather_data = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/onecall?lat=" . $weather_geolocation['lat'] . "&lon=" . $weather_geolocation['long'] . "&exclude=minutely,hourly,alerts&appid=" . $this->weather_key), true);
+            $Weather["wind_option"] = "MPH";
+            $Weather["wind_speed"] = round($weather_data["current"]["wind_speed"], 1);
+        } elseif ($Weather["degreePreferences"] === "C") {
+            $weather_data = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/onecall?lat=" . $weather_geolocation['lat'] . "&lon=" . $weather_geolocation['long'] . "&units=metric&exclude=minutely,hourly,alerts&appid=" . $this->weather_key), true);
+            $Weather["wind_option"] = "KM/H";
+            $Weather["wind_speed"] = round($weather_data["current"]["wind_speed"] * 1.609, 1);
+        }
+        #region TimeAndDate
+        $Weather["day"] = Carbon::now()->format('d');
+        $Weather["month"] = Carbon::now()->format('M');
+        $Weather["year"] = Carbon::now()->format('Y');
+        $Weather["dayName"] = Carbon::now()->format('l');
+        #endregion
+        #region Localization
+        $Weather["userLocationCity"] = $city;
+        #endregion
+
+        $Weather["temp"] = round($weather_data["current"]["temp"]);
+        $Weather["min_temp"] = round($weather_data["daily"][0]["temp"]["min"]);
+        $Weather["max_temp"] = round($weather_data["daily"][0]["temp"]["max"]);
+        $Weather["main_temp_text"] = $weather_data["current"]["weather"][0]["main"];
+        $Weather["icon"] = $weather_data["current"]["weather"][0]["icon"];
+
+        $Weather["humidity"] = $weather_data["current"]["humidity"];
+        $Weather['daily'] = $weather_data['daily'];
+        return $Weather;
+    }
+    /**
+     * Return api call from newsapi.org with news from 'world', 'science', 'technology', 'music', 'movies', 'games', 'sport'.
+     * It require one api key.
+     * @return json news list
+     */
     public function callNewsApi()
     {
         $from = date('Y-m-d', strtotime('-1 days'));
@@ -121,12 +173,20 @@ class ApiController extends Controller
             }
         }
     }
-
+    /**
+     * Return user location from city ipinfo.io.
+     * @return string city
+     */
     public function returnUserLocation()
     {
         $ipinfo_data = json_decode(file_get_contents("https://ipinfo.io/?token=" . $this->ipinfo_key), true);
         return $this->replace_spec_char($ipinfo_data['city']);
     }
+
+    /**
+     * @param string $subject is required to transform special characters like "Ș", "Ŋ", "Ë" into english standard letters.
+     * @return string formated city;
+     */
     function replace_spec_char($subject)
     {
         $char_map = array(

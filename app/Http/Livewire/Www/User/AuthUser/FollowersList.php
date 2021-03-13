@@ -14,6 +14,11 @@ class FollowersList extends Component
     {
         dd("message");
     }
+    /**
+     * Function to delete user follow ny id
+     * @param int User id to be deleted
+     * @return Update Delete the record in table User_Follow
+     */
     public function deleteFollow($id)
     {
         User_Follow::where('user_follow_id', $id)->where('user_followed_id', Auth::id())->delete();

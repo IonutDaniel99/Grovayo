@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\www\User\Auth_User\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ChangePasswordController extends Controller
 {

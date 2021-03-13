@@ -4,7 +4,6 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-dark1 justify-content-sm-start" style="z-index:1">
                     <a class="order-1 order-lg-0 ml-lg-0 ml-3 mr-auto" href="{{ route('Redirects') }}">
-                        <!-- <img src="images/logo.svg" alt=""> -->
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                     <button class="navbar-toggler align-self-start" type="button">
@@ -69,7 +68,7 @@
                                         <div class="user-request-dt">
                                             <a href="/user/{{$friend_request['follower_request_username']}}">
                                                 @if($friend_request['follower_request_profile_photo'])
-                                                <img src="storage/{{$friend_request['follower_request_profile_photo']}}" alt="">
+                                                <img src="/{{$friend_request['follower_request_profile_photo']}}" alt="">
                                                 @else
                                                 <img src="https://ui-avatars.com/api/?name={{$friend_request['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="">
                                                 @endif
@@ -105,7 +104,7 @@
                                         <div class="user-request-dt">
                                             <a href="/user/{{$friend['follower_request_username']}}">
                                                 @if($friend['follower_request_profile_photo'])
-                                                <img src="storage/{{$friend['follower_request_profile_photo']}}" alt="">
+                                                <img src="/{{$friend['follower_request_profile_photo']}}" alt="">
                                                 @else
                                                 <img src="https://ui-avatars.com/api/?name={{$friend['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="">
                                                 @endif

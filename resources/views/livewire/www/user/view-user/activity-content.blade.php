@@ -212,55 +212,55 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="w-weather mt-0">
+                    <div class="w-weather">
                         <div class="weather-left">
-                            <div class="weather-city">Ludhiana</div>
-                            <div class="week-text">Monday</div>
-                            <div class="week-text">14 Oct 2019</div>
-                            <div class="week-text" style="font-size: 18px;"><i class="fas fa-tint"></i> 30%</div>
+                            <div class="weather-city">{{$weather['userLocationCity']}}</div>
+                            <div class="week-text">{{$weather['dayName']}}</div>
+                            <div class="week-text">{{$weather['day']}} {{$weather['month']}} {{$weather['year']}}</div>
+                            <div class="week-text" style="font-size: 18px;"><i class="fas fa-tint"></i> {{$weather['humidity']}}%</div>
                             <ul>
                                 <li>
-                                    <div class="up-down"><i class="fas fa-long-arrow-alt-up"></i> 18°</div>
+                                    <div class="up-down"><i class="fas fa-long-arrow-alt-down"></i> {{$weather['min_temp']}}°</div>
                                 </li>
                                 <li>
-                                    <div class="up-down"><i class="fas fa-long-arrow-alt-down"></i> 25°</div>
+                                    <div class="up-down"><i class="fas fa-long-arrow-alt-up"></i> {{$weather['max_temp']}}°</div>
                                 </li>
                             </ul>
                         </div>
                         <div class="weather-right">
-                            <i class="fas fa-cloud-sun"></i>
-                            <span>22°</span>
+                            <img class="weather-icon-center" src="http://openweathermap.org/img/wn/{{$weather["icon"]}}@2x.png" alt="" style="zoom:0%">
+                            <span>{{$weather['temp']}}°</span>
                         </div>
                         <ul class="weekly-weather">
-                            <li>
-                                <div class="degree-text">32°</div>
-                                <div class="weather-icon"><i class="fas fa-sun"></i></div>
-                                <div class="day-text">Tue</div>
+                            <li title={{ $weather['daily'][1]['weather'][0]["description"]}}>
+                                <div class="degree-text">{{ round($weather['daily'][1]["temp"]["max"])}}°</div>
+                                <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][1]['weather'][0]["id"]; ?>"></i></i></div>
+                                <div class="day-text">{{date("D",$weather['daily'][1]["dt"])}}</div>
                             </li>
-                            <li>
-                                <div class="degree-text">19°</div>
-                                <div class="weather-icon"><i class="fas fa-cloud-sun-rain"></i></div>
-                                <div class="day-text">Wed</div>
+                            <li title={{ $weather['daily'][2]['weather'][0]["description"]}}>
+                                <div class="degree-text">{{ round($weather['daily'][2]["temp"]["max"])}}°</div>
+                                <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][2]['weather'][0]["id"]; ?>"></i></i></div>
+                                <div class="day-text">{{date("D",$weather['daily'][2]["dt"])}}</div>
                             </li>
-                            <li>
-                                <div class="degree-text">32°</div>
-                                <div class="weather-icon"><i class="fas fa-cloud-sun"></i></div>
-                                <div class="day-text">Thu</div>
+                            <li title={{ $weather['daily'][3]['weather'][0]["description"]}}>
+                                <div class="degree-text">{{ round($weather['daily'][3]["temp"]["max"])}}°</div>
+                                <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][3]['weather'][0]["id"]; ?>"></i></i></div>
+                                <div class="day-text">{{date("D",$weather['daily'][3]["dt"])}}</div>
                             </li>
-                            <li>
-                                <div class="degree-text">27°</div>
-                                <div class="weather-icon"><i class="fas fa-wind"></i></div>
-                                <div class="day-text">Fri</div>
+                            <li title={{ $weather['daily'][4]['weather'][0]["description"]}}>
+                                <div class="degree-text">{{ round($weather['daily'][4]["temp"]["max"])}}°</div>
+                                <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][4]['weather'][0]["id"]; ?>"></i></i></div>
+                                <div class="day-text">{{date("D",$weather['daily'][4]["dt"])}}</div>
                             </li>
-                            <li>
-                                <div class="degree-text">22°</div>
-                                <div class="weather-icon"><i class="fas fa-cloud-showers-heavy"></i></div>
-                                <div class="day-text">Sat</div>
+                            <li title={{ $weather['daily'][5]['weather'][0]["description"]}}>
+                                <div class="degree-text">{{ round($weather['daily'][5]["temp"]["max"])}}°</div>
+                                <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][5]['weather'][0]["id"]; ?>"></i></i></div>
+                                <div class="day-text">{{date("D",$weather['daily'][5]["dt"])}}</div>
                             </li>
-                            <li>
-                                <div class="degree-text">12°</div>
-                                <div class="weather-icon"><i class="fas fa-snowflake"></i></div>
-                                <div class="day-text">Sun</div>
+                            <li title={{ $weather['daily'][6]['weather'][0]["description"]}}>
+                                <div class="degree-text">{{ round($weather['daily'][6]["temp"]["max"])}}°</div>
+                                <div class="weather-icon"><i class="owf owf-<?php echo $weather['daily'][6]['weather'][0]["id"]; ?>"></i></i></div>
+                                <div class="day-text">{{date("D",$weather['daily'][6]["dt"])}}</div>
                             </li>
                         </ul>
                     </div>

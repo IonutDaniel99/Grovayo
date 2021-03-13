@@ -1294,6 +1294,7 @@ main {
 
 .sugguest-user-dt {
     float: left;
+    max-width: 175px;
     display: flex;
 }
 
@@ -2045,7 +2046,6 @@ main {
 
 .weather-right span {
     display: block;
-    margin-top: 15px;
     font-size: 50px;
     font-weight: 600;
     color: #fff;

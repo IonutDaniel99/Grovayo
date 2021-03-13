@@ -26,7 +26,10 @@ class Search extends Component
         $this->contacts = [];
     }
 
-
+    /**
+     * Main search of users. It get input from web and search for users with 'like' parameter
+     * @return json $user_list List of users.
+     */
     public function updatedQuery()
     {
         sleep(1);
@@ -50,13 +53,20 @@ class Search extends Component
         $this->users = $user_list;
     }
 
+    /**
+     * Get user actual State as number then search in State table for State name.
+     * @param Request $request
+     * @return Json State name.
+     */
     public function getState(Request $request)
     {
         $data['states'] = State::where("country_id", $request->country_id)
             ->get(["name", "id"]);
         return response()->json($data);
     }
-
+    /**
+     * Livewire render() function
+     */
     public function render()
     {
         $data['countries'] = Country::get(["name", "id"]);

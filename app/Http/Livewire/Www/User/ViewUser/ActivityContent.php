@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Www\User\ViewUser;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Models\News;
 use App\Models\User;
 use App\Models\User_About;
@@ -18,24 +19,11 @@ class ActivityContent extends Component
     {
         $this->is_private = 1;
     }
-
-    public function render()
-    {
-        foreach (['world', 'science', 'technology', 'music', 'movies', 'games', 'sport'] as $topic) {
-            $news[$topic] = News::inRandomOrder()->limit(3)->where("topic", $topic)->get();
-        }
-        $user_model = User::where("username", $this->username)->with('about_model')->first();
-        $follow_model = User_Follow::where("user_follow_id", Auth::id())->where('user_followed_id', $user_model->pluck('id')->first());
-        $user_model['isSocialNetworksNull'] = $this->isSocialPagesNull($user_model['about_model']);
-
-        if ($user_model->pluck('is_private')->first() == 1 && $follow_model->pluck('user_follow_status')->first() != 2) {
-            $this->is_private = 1;
-        } else {
-            $this->is_private = 0;
-        }
-        return view('livewire.www.user.view-user.activity-content', compact('news', 'user_model'));
-    }
-
+    /**
+     * Search specified user to see if any social media webpage is completed.
+     * @param Model $user_about necesary to grab social pages from User_About table
+     * @return bool if user has social pages or not
+     */
     function isSocialPagesNull($user_about)
     {
 
@@ -49,5 +37,26 @@ class ActivityContent extends Component
             }
         }
         return $user_about['isSocialNetworksNull'];
+    }
+    public function render()
+    {
+
+
+        foreach (['world', 'science', 'technology', 'music', 'movies', 'games', 'sport'] as $topic) {
+            $news[$topic] = News::inRandomOrder()->limit(3)->where("topic", $topic)->get();
+        }
+        $user_model = User::where("username", $this->username)->with('about_model')->first();
+        $follow_model = User_Follow::where("user_follow_id", Auth::id())->where('user_followed_id', $user_model->pluck('id')->first());
+        $user_model['isSocialNetworksNull'] = $this->isSocialPagesNull($user_model['about_model']);
+
+        $apiController = new ApiController;
+        $weather = $apiController->callWeatherApiUser($user_model['live_in']);
+
+        if ($user_model->pluck('is_private')->first() == 1 && $follow_model->pluck('user_follow_status')->first() != 2) {
+            $this->is_private = 1;
+        } else {
+            $this->is_private = 0;
+        }
+        return view('livewire.www.user.view-user.activity-content', compact('news', 'user_model', "weather"));
     }
 }

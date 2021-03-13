@@ -85,7 +85,10 @@ class ProfileController extends Controller
         //
     }
 
-
+    /**
+     * Update the user profile Image in sotrage.
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function setProfileImage(Request $request)
     {
         $user_about_model = User::where('id', Auth::id())->first();;
@@ -103,7 +106,10 @@ class ProfileController extends Controller
         return back();
     }
 
-
+    /**
+     * Update the user background Image in sotrage.
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function setBackgroundImage(Request $request)
     {
         $user_about_model = User::where('id', Auth::id())->first();;
@@ -120,7 +126,9 @@ class ProfileController extends Controller
 
         return back();
     }
-
+    /**
+     * Update the user profile visibility in table.
+     */
     public function setProfileVisibility()
     {
         $auth_id = Auth::id();

@@ -22,7 +22,14 @@ class ViewUserInfo extends Component
         $this->auth_user_id = Auth::id();
         $this->username = $username;
     }
-
+    /**
+     * Function which get the follow state of 2 users.
+     * It based on User_Follow Table
+     * 0 - Not Followed
+     * 1 - Pending
+     * 2 - Accepted
+     * 3 - Blocked
+     */
     public function toggle_follow_state()
     {
         $user_model = User::where("username", $this->username);

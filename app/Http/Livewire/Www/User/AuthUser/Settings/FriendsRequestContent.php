@@ -8,6 +8,11 @@ use Livewire\Component;
 
 class FriendsRequestContent extends Component
 {
+    /**
+     * Function to accept user by id
+     * @param int $id user id to be accepted
+     * @return Update Record in User_Follow Table
+     */
     public function accept($username_id)
     {
         $auth_id = Auth::id();
@@ -18,6 +23,11 @@ class FriendsRequestContent extends Component
             'updated_at' => now()
         ]);
     }
+    /**
+     * Function to decline user by id
+     * @param int $id user id to be declined
+     * @return Update Record in User_Follow Table
+     */
     public function decline($username_id)
     {
         $auth_id = Auth::id();

@@ -110,9 +110,7 @@ class UserActivityController extends Controller
     }
     /**
      * Return the last 5 users who visited your profile
-     * @param username $data
-     * @return App\Models\Profile_View\update;
-     * @return App\Models\Profile_View\insert;
+     * @param Model $data Require User Model
      */
     function viewdProfile($data)
     {

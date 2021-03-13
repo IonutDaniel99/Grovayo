@@ -19,7 +19,11 @@ class AboutContent extends Component
     {
         $this->is_private = 1;
     }
-
+    /**
+     * Search specified user to see if any social media webpage is completed.
+     * @param Model $user_about necesary to grab social pages from User_About table
+     * @return bool if user has social pages or not
+     */
     function isSocialPagesNull($user_about)
     {
         foreach (json_decode($user_about, true) as $key => $value) {
@@ -34,6 +38,11 @@ class AboutContent extends Component
         return $user_about['isSocialNetworksNull'];
     }
 
+    /**
+     * Search specified user to see if any favorites  is completed.
+     * @param Model $user_about necesary to grab favorites data from User_About table
+     * @return bool if user has favorites or not
+     */
     function isFavouritesNull($user_about)
     {
         foreach (json_decode($user_about, true) as $key => $value) {

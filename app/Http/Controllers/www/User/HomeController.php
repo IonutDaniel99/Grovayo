@@ -26,7 +26,7 @@ class HomeController extends Controller
         $user_about['user_country'] = Country::where('id', $user_about['user_country'])->pluck('name')->first();
 
         $apiController = new ApiController;
-        $weather = $apiController->callWeatherApi();
+        $weather = $apiController->callWeatherApiHome();
 
         $user_follow['followers_number'] = User_Follow::where("user_followed_id", Auth::id())->count();
         $user_follow['following_number'] = User_Follow::where('user_follow_id', Auth::id())->count();

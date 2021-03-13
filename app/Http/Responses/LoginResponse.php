@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginResponse extends Controller
 {
-
+    /**
+     * Function to redirect if its a user or admin.
+     * If its user. It will grab his live location and update User Table.
+     */
     public function toResponse()
     {
         $user_location = new ApiController();
@@ -21,7 +24,9 @@ class LoginResponse extends Controller
         }
         return redirect(route('Admin_Dashboard_Index'));
     }
-
+    /**
+     * Redirect user to webpage if its logged or not.
+     */
     public function toWelcome()
     {
         if (Auth::check()) {
