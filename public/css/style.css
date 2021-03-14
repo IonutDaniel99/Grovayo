@@ -1968,13 +1968,10 @@ main {
 }
 
 @media screen and (max-width: 992px) {
-    .w-weather {
+    .right-side-items {
         display: none;
     }
 
-    .news-data-dash {
-        display: none;
-    }
 }
 
 .w-weather {
@@ -6219,9 +6216,39 @@ footer {
 }
 
 .activity-button {
+    justify-content: space-between;
+    display: flex;
     margin-top: 20px;
     width: 100%;
     text-align: right;
+}
+
+.activity-button label {
+    margin-bottom: .175rem;
+}
+
+.image-input-div {
+    float: left;
+    display: flex;
+    align-items: center;
+}
+
+.image-input-div>* {
+    cursor: pointer;
+}
+
+
+
+.image-input-file {
+    float: left;
+    display: flex;
+    align-items: center;
+}
+
+.image-input-file svg {
+    font-size: 25px;
+    margin-right: 10px;
+    color: #f55f3d;
 }
 
 .act-btn-post {

@@ -10,7 +10,7 @@
                         <i class="fas fa-bars"></i>
                     </button>
                     @cannot("User")
-                    <div class="collapse navbar-collapse d-flex flex-column flex-lg-row flex-xl-row justify-content-lg-end bg-dark1 p-3 p-lg-0 mt1-5 mt-lg-0 mobileMenu" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse d-flex flex-column flex-lg-row flex-xl-row justify-content-lg-start bg-dark1 p-3 ml-lg-5 p-lg-0 mt1-5 mt-lg-0 mobileMenu" id="navbarSupportedContent">
                         <ul class="navbar-nav align-self-stretch">
                             @if(Route::is('Home'))
                             <li class="nav-item active">
@@ -136,28 +136,6 @@
                                 </div>
                             </div>
                             @endif
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="icon-set dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <div class="dropdown-menu message-dropdown dropdown-menu-right">
-                                <div class="user-request-list">
-                                    <div class="request-users">
-                                        <div class="user-request-dt">
-                                            <a href="#">
-                                                <img src="images/user-dp-1.jpg" alt="">
-                                                <div class="user-title1">Jassica William </div>
-                                                <span>Hey How are you John Doe...</span>
-                                            </a>
-                                        </div>
-                                        <div class="time5">2 min ago</div>
-                                    </div>
-                                </div>
-                                <div class="user-request-list">
-                                    <a href="{{ route('Profile_Messages_Index') }}" class="view-all">View All Messages</a>
-                                </div>
-                            </div>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="icon-set dropdown-toggle-no-caret" role="button" data-toggle="dropdown">

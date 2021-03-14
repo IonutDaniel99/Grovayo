@@ -77,4 +77,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\User_Notification_Settings', 'user_id');
     }
+    public function posts()
+    {
+        return $this->hasMany('App\Models\User_Posts', 'author_id');
+    }
 }

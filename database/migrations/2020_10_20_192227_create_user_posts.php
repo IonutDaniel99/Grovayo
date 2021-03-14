@@ -16,10 +16,10 @@ class CreateUserPosts extends Migration
         Schema::create('user_posts', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('author_id')->constrained()->references('id')->on('users')->onDelete('cascade');
-            $table->string('post_title', 255);
-            $table->text('post_content');
+            $table->text('post_description');
+            $table->text('post_content')->nullable();
             $table->unsignedInteger('post_likes');
-            $table->dateTime('post_date');
+            $table->timestamps();
         });
     }
 

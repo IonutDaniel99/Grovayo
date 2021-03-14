@@ -31,7 +31,6 @@ Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Activity', '
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/About', 'App\Http\Controllers\www\User\Auth_User\AboutController@index')->name('Profile_About_Index');
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Followers', 'App\Http\Controllers\www\User\Auth_User\FollowersController@index')->name('Profile_Followers_Index');
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Following', 'App\Http\Controllers\www\User\Auth_User\FollowingController@index')->name('Profile_Following_Index');
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Messages', 'App\Http\Controllers\www\User\Auth_User\MessagesController@index')->name('Profile_Messages_Index');
 
 #region User Personal Info
 
