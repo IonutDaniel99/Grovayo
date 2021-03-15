@@ -14,8 +14,11 @@ class CreateUserComments extends Migration
     public function up()
     {
         Schema::create('user_comments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedInteger('post_id');
             $table->foreign('post_id')->references('id')->on('user_posts')->onDelete('cascade');
+
             $table->text('comment_content');
             $table->unsignedInteger('comment_likes');
             $table->dateTime('comment_date');

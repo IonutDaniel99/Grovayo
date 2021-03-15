@@ -6328,12 +6328,48 @@ footer {
 }
 
 .activity-descp p {
+    margin-left: 20px;
+    margin-right: 20px;
     font-size: 14px;
     font-weight: 400;
     line-height: 2;
     color: #847577;
     margin-bottom: 0px;
 }
+
+.user-image-container {
+    position: relative;
+    margin: 35px;
+}
+
+.user-image-bg {
+    z-index: 0;
+    position: absolute;
+    max-height: 500px;
+    filter: blur(8px);
+    border: 10px solid black;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    max-height: 500px;
+}
+
+.user-image-front {
+    -webkit-box-shadow: 0px 0px 15px 5px #2b1717;
+    -moz-box-shadow: 0px 0px 15px 5px #2b1717;
+    box-shadow: 0px 0px 15px 5px #2b1717;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    position: relative;
+    max-height: 475px;
+    margin: auto;
+    border-radius: 5px;
+    top: 10px;
+}
+
+
 
 .dropdown-menu {
     z-index: 998 !important;
