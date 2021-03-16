@@ -1546,6 +1546,7 @@ main {
 
 .post-link-item {
     display: block;
+    cursor: pointer;
     width: 100%;
     font-size: 13px;
     padding: 6px 15px;
@@ -6280,6 +6281,7 @@ footer {
 .main-user-dts1 {
     display: flex;
     float: left;
+    max-width: 95%;
 }
 
 .main-user-dts1 img {
@@ -6287,6 +6289,12 @@ footer {
     width: 40px;
     border-radius: 100%;
     margin-right: 10px;
+}
+
+.user-text3 p {
+    background-color: #f0f2f5;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .user-text3 h4 {
@@ -6303,6 +6311,12 @@ footer {
     line-height: 24px;
     color: #847577;
     margin-bottom: 0px;
+}
+
+.comment-paragraph {
+    line-height: 16px !important;
+    margin-bottom: 0px !important;
+    color: #202021 !important;
 }
 
 .dot-option {
@@ -6323,9 +6337,6 @@ footer {
     padding: 0 0px 20px;
 }
 
-.post-description {
-    border-bottom: 1px solid #e6e6e6;
-}
 
 .activity-descp p {
     margin-left: 20px;
@@ -6354,7 +6365,6 @@ footer {
 
 .user-image-bg {
     z-index: 0;
-    top: 45px;
     filter: blur(8px);
     border: 10px solid black;
     width: 100%;
@@ -6364,15 +6374,8 @@ footer {
     max-height: 500px;
 }
 
-.user-image-bg-text {
-    z-index: 0;
-    position: absolute;
-    filter: blur(8px);
-    border: 10px solid black;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    max-height: 500px;
+.top-45 {
+    top: 45px;
 }
 
 .user-image-front {

@@ -12,40 +12,35 @@
             <div class="dot-option dropdown">
                 <span class="dropdown-toggle-no-caret" role="button" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></span>
                 <div class="dropdown-menu post-rt-dropdown dropdown-menu-right">
+                    @if($post['post_description'] != null)
                     <a class="post-link-item" href="#">Edit</a>
-                    <a class="post-link-item" href="#">Delete</a>
+                    @endif
+                    <a class="post-link-item" wire:click="deleteActivity({{$post['id']}})">Delete</a>
                 </div>
             </div>
         </div>
-        @if($post['post_description'] != NULL)
-        <div class="activity-descp-text">
-            @if($post['post_description'] != null)
-            <div class="post-description">
-                <p>{{$post['post_description']}}</p>
-            </div>
-            @endif
-            @if($post['post_content'] != null)
-            <div class="user-image-container">
-                <img class="user-image-bg-text" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
-                <img class="user-image-front" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
-            </div>
-            @endif
-        </div>
-        @else
         <div class="activity-descp">
-            @if($post['post_description'] != null)
+            @if($post['post_description'] != null && $post['post_content'] == null)
             <div class="post-description">
                 <p>{{$post['post_description']}}</p>
             </div>
-            @endif
-            @if($post['post_content'] != null)
+            @else
+            <div class="post-description" style="border-bottom: 1px solid #e6e6e6;">
+                <p>{{$post['post_description']}}</p>
+            </div>
+            @if($post['post_description'] != null)
             <div class="user-image-container">
                 <img class="user-image-bg" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
                 <img class="user-image-front" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
             </div>
+            @else
+            <div class="user-image-container">
+                <img class="user-image-bg top-45" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
+                <img class="user-image-front" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
+            </div>
+            @endif
             @endif
         </div>
-        @endif
         <div class="like-comment-view">
             <div class="left-comments">
                 <a href="#" class="like-item" title="Like">

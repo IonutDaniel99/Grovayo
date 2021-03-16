@@ -8,8 +8,8 @@
             <img src="{{$comment['user']['profile_photo_path']}}" alt="{{$comment['user']['profile_photo_path']}}">
             @endif
             <div class="user-text3">
-                <h4>{{$comment['user']['name']}}</h4>
-                <span>{{$comment['created_at']->diffForHumans()}}</span>
+                <h4>{{$comment['user']['name']}} <span>{{$comment['created_at']->diffForHumans()}}</span> </h4>
+                <p class="comment-paragraph">{{$comment['comment_content']}}</p>
             </div>
         </div>
         <div class="dot-option dropdown">
@@ -20,8 +20,6 @@
             </div>
         </div>
     </div>
-    <div class="activity-descp">
-        <p>{{$comment['comment_content']}}</p>
-    </div>
+
     @endforeach
 </div>

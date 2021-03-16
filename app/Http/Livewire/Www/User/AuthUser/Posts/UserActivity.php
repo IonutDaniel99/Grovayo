@@ -22,6 +22,11 @@ class UserActivity extends Component
         $this->reset();
     }
 
+    public function deleteActivity($post_id)
+    {
+        dd($post_id);
+    }
+
     public function replayUpload($post_id)
     {
         $replayText = $this->replayText;
