@@ -17,9 +17,26 @@
                 </div>
             </div>
         </div>
+        @if($post['post_description'] != NULL)
+        <div class="activity-descp-text">
+            @if($post['post_description'] != null)
+            <div class="post-description">
+                <p>{{$post['post_description']}}</p>
+            </div>
+            @endif
+            @if($post['post_content'] != null)
+            <div class="user-image-container">
+                <img class="user-image-bg-text" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
+                <img class="user-image-front" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
+            </div>
+            @endif
+        </div>
+        @else
         <div class="activity-descp">
             @if($post['post_description'] != null)
-            <p>{{$post['post_description']}}</p>
+            <div class="post-description">
+                <p>{{$post['post_description']}}</p>
+            </div>
             @endif
             @if($post['post_content'] != null)
             <div class="user-image-container">
@@ -27,8 +44,8 @@
                 <img class="user-image-front" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
             </div>
             @endif
-
         </div>
+        @endif
         <div class="like-comment-view">
             <div class="left-comments">
                 <a href="#" class="like-item" title="Like">
@@ -42,36 +59,20 @@
             </div>
 
         </div>
-        @IF($post->comments->count() > 0)
         <div class="activity-reply">
-            <div class="activity-group1">
-                <div class="main-user-dts1">
-                    <img src="images/event-view/user-4.jpg" alt="">
-                    <div class="user-text3">
-                        <h4>Rock William</h4>
-                        <span>posted an update a 3 min ago</span>
-                    </div>
-                </div>
-            </div>
-            <div class="activity-descp">
-                <p>Praesent laoreet, dolor ut mollis rutrum, mauris arcu mollis lacus.</p>
-                <ul>
-                    <li><a href="#">Reply</a></li>
-                    <li><a href="#">Report</a></li>
-                    <li><a href="#">Delete</a></li>
-                </ul>
-            </div>
             <div class="activity-post-reply">
                 <div class="areply-dp1">
-                    <img src="images/event-view/user-1.jpg" alt="">
+                    <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->profile_photo_url }}">
                 </div>
-                <form>
-                    <input class="areply-post" type="text" placeholder="Write a reply">
+                <form wire:submit.prevent="replayUpload({{$post['id']}})">
+                    <input class="areply-post" type="text" placeholder="Write a reply" wire:model.lazy="replayText">
                     <button class="areply-post-btn" type="submit">Reply</button>
                 </form>
             </div>
+            @IF($post->comments->count() > 0)
+            @livewire('www.user.auth-user.posts.user-activity-comments', ['post_id' => $post['id']])
+            @ENDIF
         </div>
-        @ENDIF
     </div>
     @endforeach
 </div>

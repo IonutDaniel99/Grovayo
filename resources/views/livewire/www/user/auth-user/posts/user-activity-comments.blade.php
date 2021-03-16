@@ -1,0 +1,27 @@
+<div>
+    @FOREACH($activityComments as $comment)
+    <div class="activity-group1">
+        <div class="main-user-dts1">
+            @if($comment['user']['profile_photo_path']==NULL)
+            <img src="https://ui-avatars.com/api/?name={{$comment['user']['name']}}&amp;color=7F9CF5&amp;background=EBF4FF" alt="={{$comment['user']['name']}}">
+            @else
+            <img src="{{$comment['user']['profile_photo_path']}}" alt="{{$comment['user']['profile_photo_path']}}">
+            @endif
+            <div class="user-text3">
+                <h4>{{$comment['user']['name']}}</h4>
+                <span>{{$comment['created_at']->diffForHumans()}}</span>
+            </div>
+        </div>
+        <div class="dot-option dropdown">
+            <span class="dropdown-toggle-no-caret" role="button" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></span>
+            <div class="dropdown-menu post-rt-dropdown dropdown-menu-right">
+                <a class="post-link-item" href="#">Edit</a>
+                <a class="post-link-item" href="#">Delete</a>
+            </div>
+        </div>
+    </div>
+    <div class="activity-descp">
+        <p>{{$comment['comment_content']}}</p>
+    </div>
+    @endforeach
+</div>

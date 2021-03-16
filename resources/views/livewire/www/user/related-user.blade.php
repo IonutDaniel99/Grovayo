@@ -3,15 +3,17 @@
         <div class="carousel-inner w-100" role="listbox">
             <?php $i = 0; ?>
             @foreach($people as $user)
-            <div class="carousel-item <?php if($i === 0) { echo 'active'; } ?>">
+            <div class="carousel-item <?php if ($i === 0) {
+                                            echo 'active';
+                                        } ?>">
                 <a href="/user/{{$user['username']}}">
                     <div class="user-profile" style="padding: 10px 15px 20px 15px;">
                         <div class="username-dt dpbg" style="background-image:url('{{$user['background_image_url']}}')">
                             <div class=" usr-pic">
                                 @if($user['profile_photo_path']==NULL)
-                                <img class="h-100 w-100" src="https://ui-avatars.com/api/?name={{$user['name']}}&amp;color=7F9CF5&amp;background=EBF4FF" alt="Ene Ionut Daniel">
+                                <img class="h-100 w-100" src="https://ui-avatars.com/api/?name={{$user['name']}}&amp;color=7F9CF5&amp;background=EBF4FF" alt="{{$user['name']}}">
                                 @else
-                                <img class="h-100 w-100" src="https://ui-avatars.com/api/?name={{$user['profile_photo_path']}}&amp;color=7F9CF5&amp;background=EBF4FF" alt="Ene Ionut Daniel">
+                                <img class="h-100 w-100" src="{{$user['profile_photo_path']}}" alt="{{$user['profile_photo_path']}}">
                                 @endif
                             </div>
                         </div>
@@ -42,7 +44,9 @@
         <ol class="carousel-indicators mx-3" style="bottom: -10px !important;">
             <?php $i = 0; ?>
             @foreach($people as $user)
-            <li data-target="#recipeCarouselPeople" <?php if($i === 0) { echo 'class="active"'; } ?>data-slide-to={{$i}}></li>
+            <li data-target="#recipeCarouselPeople" <?php if ($i === 0) {
+                                                        echo 'class="active"';
+                                                    } ?>data-slide-to={{$i}}></li>
             @if($i==9)
             @break
             @endif

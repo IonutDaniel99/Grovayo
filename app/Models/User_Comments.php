@@ -10,4 +10,9 @@ class User_Comments extends Model
     use HasFactory;
 
     protected $table = 'user_comments';
+
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }

@@ -14,9 +14,9 @@ class CreateUserPosts extends Migration
     public function up()
     {
         Schema::create('user_posts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->foreignId('author_id')->constrained()->references('id')->on('users')->onDelete('cascade');
-            $table->text('post_description');
+            $table->text('post_description')->nullable();
             $table->text('post_content')->nullable();
             $table->unsignedInteger('post_likes');
             $table->timestamps();
