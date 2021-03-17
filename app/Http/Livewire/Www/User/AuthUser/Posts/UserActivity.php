@@ -24,11 +24,13 @@ class UserActivity extends Component
 
     public function deleteActivity($post_id)
     {
-        dd($post_id);
+
+        User_Posts::where('id', $post_id)->where('author_id', Auth::id())->delete();
     }
 
     public function replayUpload($post_id)
     {
+
         $replayText = $this->replayText;
         $comment = new User_Comments();
         $comment->user_id = Auth::id();
@@ -43,7 +45,7 @@ class UserActivity extends Component
     public function render()
     {
         $user_model = User::where("id", Auth::id())->get()->first();
-        $user_posts = User_Posts::where('author_id', Auth::id())->with('comments')->orderBy("created_at", "DESC")->get();
+        $user_posts = User_Posts::where('author_id', Auth::id())->with('comments')->orderBy("created_at", "DESC")->take(6)->get();
         return view('livewire.www.user.auth-user.posts.user-activity', ['user_model' => $user_model, 'user_posts' => $user_posts]);
     }
 }

@@ -19,18 +19,22 @@ class UploadActivity extends Component
     {
         $this->reset();
     }
+
+
     public function activityUpload()
     {
-
+        if ($this->activityPhoto == null) {
+            $this->validate([
+                'activityText' => 'required|min:3|max:5000'
+            ]);
+        }
         $user_model = User::where('id', Auth::id())->with("posts")->get();
         $username = $user_model->pluck('username')->first();
-        $activityText = $this->activityText;
-        $activityPhoto = $this->activityPhoto;
-        if ($activityPhoto != null) {
+        if ($this->activityPhoto != null) {
             $this->validate([
-                'activityPhoto' => ['image', 'max:4096'],
+                'activityPhoto' => 'image|max:4096',
             ]);
-            $activityPhotoName = $username . '-photo-' . now()->timestamp . '.' . $activityPhoto->getClientOriginalExtension();
+            $activityPhotoName = $username . '-photo-' . now()->timestamp . '.' . $this->activityPhoto->getClientOriginalExtension();
             $this->activityPhoto->storeAs('public/users/' . $username . '/posts-images/', $activityPhotoName);
             $post_content_path = 'storage/users/' . $username . '/posts-images/' . $activityPhotoName;
         } else {
@@ -39,12 +43,13 @@ class UploadActivity extends Component
 
         $post = new User_Posts;
         $post->author_id = Auth::id();
-        $post->post_description = $activityText;
+        $post->post_description = $this->activityText;
         $post->post_content = $post_content_path;
         $post->post_likes = 0;
 
         $post->save();
         $this->clearData();
+        // $this->resetValidation();
         $this->emit('updateActivityPosts');
     }
     public function render()

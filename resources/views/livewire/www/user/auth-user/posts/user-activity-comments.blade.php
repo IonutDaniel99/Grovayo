@@ -16,7 +16,7 @@
             <span class="dropdown-toggle-no-caret" role="button" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></span>
             <div class="dropdown-menu post-rt-dropdown dropdown-menu-right">
                 <a class="post-link-item" href="#">Edit</a>
-                <a class="post-link-item" href="#">Delete</a>
+                <a class="post-link-item" wire:click="deleteComment({{$comment['id']}})">Delete</a>
             </div>
         </div>
     </div>

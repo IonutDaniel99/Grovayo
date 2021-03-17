@@ -42,7 +42,7 @@
                     <li>
                         <div class="all-dis-evnt">
                             <div class="dscun-txt">Posts</div>
-                            <div class="dscun-numbr">3</div>
+                            <div class="dscun-numbr">{{$user_about['posts_number']}}</div>
                         </div>
                     </li>
                     <li>

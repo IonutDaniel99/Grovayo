@@ -15,4 +15,8 @@ class User_Comments extends Model
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
+    public function post()
+    {
+        return $this->belongsTo('App\Models\User_Posts', 'post_id', 'id');
+    }
 }
