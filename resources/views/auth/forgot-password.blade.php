@@ -8,9 +8,6 @@
                             <div class="row no-gutters">
                                 <div class="col-lg-6">
                                     <div class="lg-left">
-                                        <div class="lg-logo">
-                                            <a href="index.html"><img src="images/login-register/logo.svg" alt=""></a>
-                                        </div>
                                         <div class="lr-text">
                                             <h2>Login Now</h2>
                                             <p>Did you just forgot your password? Don't worry! Just type your Email and we will send you a reset password link as soon as possible.</p>

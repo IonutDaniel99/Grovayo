@@ -1254,6 +1254,13 @@ main {
     margin-bottom: 0px;
 }
 
+.categories-left-heading-content {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
 .category-item {
     display: block;
     width: 100%;
@@ -1282,6 +1289,9 @@ main {
 }
 
 .sugguest-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     float: left;
     width: 100%;
     border-top: 1px solid #e1e1e1;
@@ -1290,7 +1300,6 @@ main {
 
 .sugguest-user-dt {
     float: left;
-    max-width: 175px;
     display: flex;
 }
 
@@ -4720,6 +4729,15 @@ footer {
 
 .regstr-link a:hover {
     color: #f55f3d !important;
+}
+
+.lr-right h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #313131;
+    line-height: 24px;
+    margin-top: 26px;
+    margin-bottom: 13px;
 }
 
 .lr-right h4 {

@@ -9,9 +9,6 @@
                             <div class="row no-gutters">
                                 <div class="col-lg-6">
                                     <div class="lg-left">
-                                        <div class="lg-logo">
-                                            <a href="index.html"><img src="www/login/logo.svg" alt=""></a>
-                                        </div>
                                         <div class="lr-text">
                                             <h2>Register Now</h2>
                                             <p>Connect with friends and the world around you on {{ config('app.name')}}</p>

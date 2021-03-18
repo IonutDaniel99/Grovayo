@@ -8,9 +8,6 @@
                             <div class="row no-gutters">
                                 <div class="col-lg-6">
                                     <div class="lg-left">
-                                        <div class="lg-logo">
-                                            <a href="index.html"><img src="images/login-register/logo.svg" alt=""></a>
-                                        </div>
                                         <div class="lr-text">
                                             <h2>Account Verification</h2>
                                             <p> {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}</p>

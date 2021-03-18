@@ -8,9 +8,6 @@
                             <div class="row no-gutters">
                                 <div class="col-lg-6">
                                     <div class="lg-left">
-                                        <div class="lg-logo">
-                                            <a href="index.html"><img src="images/login-register/logo.svg" alt=""></a>
-                                        </div>
                                         <div class="lr-text">
                                             <h2>Password Recover</h2>
                                             <p>Just enter your new password and voila. Your password has been changed with a new one.</p>
