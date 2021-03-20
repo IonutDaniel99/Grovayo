@@ -32,9 +32,9 @@
                                     <div class="userbg-dt dpbg" style="background-image:url('{{$user['background_image_url']}}');">
                                         <div class="usr-pic">
                                             @if($user['profile_photo_path'] == null)
-                                            <img src="https://ui-avatars.com/api/?name={{$user['name']}}&color=7F9CF5&background=EBF4FF" alt="">
+                                            <img src="https://ui-avatars.com/api/?name={{$user['name']}}&color=7F9CF5&background=EBF4FF" alt="{{$user['name']}}">
                                             @else
-                                            <img src="/{{$user['profile_photo_path']}}" alt="" style="max-height: 110px;">
+                                            <img src="/{{$user['profile_photo_path']}}" alt="{{$user['name']}}" style="max-height: 110px;">
                                             @endif
                                         </div>
                                     </div>

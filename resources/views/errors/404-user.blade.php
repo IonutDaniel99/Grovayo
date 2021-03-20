@@ -22,7 +22,7 @@
                 <div class="row justify-content-md-center">
                     <div class="col-lg-12 col-md-12">
                         <div class="errror-404">
-                            <img src="{{ asset('storage/www/404/error.png') }}" alt="" style="margin:0 auto">
+                            <img src="{{ asset('storage/www/404/error.png') }}" alt="{{ asset('storage/www/404/error.png') }}" style="margin:0 auto">
                         </div>
                     </div>
                 </div>
@@ -31,8 +31,8 @@
     </div>
     <footer class="fixed-bottom">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
+            <div class="row" style="align-items: center;">
+                <div class="col-9 col-lg-9 col-md-9">
                     <div class="footer-left">
                         <ul>
                             <li><a href="privacy_policy.html">Privacy</a></li>
@@ -42,10 +42,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12">
+                <div class="col-3 col-lg-3 col-md-3" style="display:flex; justify-content: flex-end;">
                     <div class="footer-right">
                         <ul class="copyright-text">
-                            <li><a href="index.html"><img src="images/logo-2.svg" alt=""></a></li>
+                            <li><a href="index.html"><img class="h-12 w-atuo block" src="{{ asset('storage/www/logo.svg') }}" alt=""></a></li>
                         </ul>
                     </div>
                 </div>

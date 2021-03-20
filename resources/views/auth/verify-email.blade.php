@@ -8,6 +8,12 @@
                             <div class="row no-gutters">
                                 <div class="col-lg-6">
                                     <div class="lg-left">
+                                        <div class="lg-logo">
+                                            <a href="{{ route('Welcome') }}" style="display: flex;align-items: center;">
+                                                <img src="{{ asset('storage/www/logo.svg') }}" width="38" height="48" alt="{{ asset('storage/www/logo.svg') }}">
+                                                <span style="margin-left: 20px;font-size: 1.2rem;color: white;">Home</span>
+                                            </a>
+                                        </div>
                                         <div class="lr-text">
                                             <h2>Account Verification</h2>
                                             <p> {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}</p>
@@ -17,7 +23,7 @@
                                 <div class="col-lg-6">
                                     <div class="lr-right">
                                         <div class="login-register-form" style="position: relative;Top: 50%;transform: translateY(-50%);">
-                                            <h4>Account Verification</h4>
+                                            <h1>Account Verification</h1>
                                             <div class="or"> {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
                                             </div>
                                             <form method=" POST" action="{{ route('verification.send') }}">

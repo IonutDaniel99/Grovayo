@@ -8,6 +8,12 @@
                             <div class="row no-gutters">
                                 <div class="col-lg-6">
                                     <div class="lg-left">
+                                        <div class="lg-logo">
+                                            <a href="{{ route('Welcome') }}" style="display: flex;align-items: center;">
+                                                <img src="{{ asset('storage/www/logo.svg') }}" width="38" height="48" alt="{{ asset('storage/www/logo.svg') }}">
+                                                <span style="margin-left: 20px;font-size: 1.2rem;color: white;">Home</span>
+                                            </a>
+                                        </div>
                                         <div class="lr-text">
                                             <h2>Login Now</h2>
                                             <p>Did you just forgot your password? Don't worry! Just type your Email and we will send you a reset password link as soon as possible.</p>
@@ -18,10 +24,11 @@
                                 <div class="col-lg-6">
                                     <div class="lr-right">
                                         <div class="login-register-form" style="position: relative;Top: 50%;transform: translateY(-50%);">
-                                            <h4>Password Recover</h4>
+                                            <h1>Password Recover</h1>
                                             <form method="POST" action="{{ route('password.email') }}">
                                                 @csrf
                                                 <div class="form-group">
+                                                    <label for="email"></label>
                                                     <input class="title-discussion-input" id="email" class="block mt-1 w-full" placeholder="Email" type="email" name="email" :value="old('email')" required autofocus />
                                                 </div>
                                                 <button class="login-btn" type="submit"> {{ ('Email Password Reset Link') }}</button>

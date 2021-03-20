@@ -47,7 +47,7 @@
                         </div>
                         <div class="weather-center">
                             <div class="main-big-icon">
-                                <img class="weather-icon-center" src="http://openweathermap.org/img/wn/{{$Weather["icon"]}}@2x.png" alt="">
+                                <img class="weather-icon-center" src="http://openweathermap.org/img/wn/{{$Weather["icon"]}}@2x.png" alt="http://openweathermap.org/">
                             </div>
                             <ul class="weather-list-1">
                                 <li>

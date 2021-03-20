@@ -9,6 +9,11 @@
                             <div class="row no-gutters">
                                 <div class="col-lg-6">
                                     <div class="lg-left">
+                                        <div class="lg-logo">
+                                            <img src="{{ asset('storage/www/logo.svg') }}" width="38" height="48" alt="{{ asset('storage/www/logo.svg') }}">
+                                            <span style="margin-left: 20px;font-size: 1.2rem;color: white;">Home</span>
+                                            </a>
+                                        </div>
                                         <div class="lr-text">
                                             <h2>Register Now</h2>
                                             <p>Connect with friends and the world around you on {{ config('app.name')}}</p>
@@ -17,24 +22,29 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="lr-right">
-                                        <h4>Sign Up to Goeveni</h4>
+                                        <h1>Sign Up to Goeveni</h1>
                                         <div class="login-register-form">
                                             <form method="POST" action="{{ route('register') }}">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <input class="title-discussion-input" type="text" name="name" placeholder="Full Name" required>
+                                                    <label for="name"></label>
+                                                    <input class="title-discussion-input" id="name" type="text" name="name" placeholder="Full Name" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input class="title-discussion-input" type="email" name="email" placeholder="Email Address" required>
+                                                    <label for="email"></label>
+                                                    <input class="title-discussion-input" id="email" type="email" name="email" placeholder="Email Address" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input class="title-discussion-input" type="text" name="username" placeholder="Username" required>
+                                                    <label for="username"></label>
+                                                    <input class="title-discussion-input" id="username" type="text" name="username" placeholder="Username" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input class="title-discussion-input" type="password" name="password" placeholder="Password" required>
+                                                    <label for="password"></label>
+                                                    <input class="title-discussion-input" id="password" type="password" name="password" placeholder="Password" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input class="title-discussion-input" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="ConfirmPassword" />
+                                                    <label for="password_confirmation"></label>
+                                                    <input class="title-discussion-input" id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="ConfirmPassword" />
                                                 </div>
                                                 <div class="categories-left-heading" x-data="{tooltip:false}">
                                                     <div @mouseenter="tooltip = true" @mouseleave="tooltip = false">

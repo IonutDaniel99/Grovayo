@@ -12,7 +12,7 @@
     <div class="user-request-list">
         <div class="request-users">
             <div class="user-request-dt">
-                <a href="/user/{{$friend_request['follower_request_username']}}"><img src="/{{$friend_request['follower_request_profile_photo']}}" alt=""></a>
+                <a href="/user/{{$friend_request['follower_request_username']}}"><img src="/{{$friend_request['follower_request_profile_photo']}}" alt="{{$friend_request['follower_request_profile_photo']}}"></a>
                 <a href="/user/{{$friend_request['follower_request_username']}}" class="user-title">{{$friend_request['follower_request_name']}}</a>
             </div>
             <button class="accept-btn mx-1" type="submit" wire:click="decline({{$friend_request['follower_request_id']}})">Decline</button>

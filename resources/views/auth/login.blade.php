@@ -8,6 +8,12 @@
                             <div class="row no-gutters">
                                 <div class="col-lg-6">
                                     <div class="lg-left">
+                                        <div class="lg-logo">
+                                            <a href="{{ route('Welcome') }}" style="display: flex;align-items: center;">
+                                                <img src="{{ asset('storage/www/logo.svg') }}" width="38" height="48" alt="{{ asset('storage/www/logo.svg') }}">
+                                                <span style="margin-left: 20px;font-size: 1.2rem;color: white;">Home</span>
+                                            </a>
+                                        </div>
                                         <div class="lr-text">
                                             <h2>Login Now</h2>
                                             <p>Connect with friends and the world around you on {{ config('app.name')}}</p>
@@ -29,7 +35,7 @@
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="username"></label>
-                                                    <input class="title-discussion-input" for="username" id="username" type="text" name="username" :value="old('email')" required autofocus />
+                                                    <input class="title-discussion-input" id="username" type="text" name="username" :value="old('email')" required autofocus />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password"></label>

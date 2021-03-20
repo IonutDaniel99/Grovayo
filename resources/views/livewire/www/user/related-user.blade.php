@@ -13,7 +13,7 @@
                                 @if($user['profile_photo_path']==NULL)
                                 <img class="h-100 w-100" src="https://ui-avatars.com/api/?name={{$user['name']}}&amp;color=7F9CF5&amp;background=EBF4FF" alt="{{$user['name']}}">
                                 @else
-                                <img class="h-100 w-100" src="{{$user['profile_photo_path']}}" alt="{{$user['profile_photo_path']}}">
+                                <img class="h-100 w-100" src="{{$user['profile_photo_path']}}" alt="{{$user['username']}}">
                                 @endif
                             </div>
                         </div>

@@ -338,6 +338,10 @@
         width: 100%;
     }
 
+    .lg-logo {
+        display: none;
+    }
+
     .lr-right {
         padding: 50px 30px !important;
     }
@@ -1019,6 +1023,10 @@
     .lg-left {
         height: auto !important;
         width: 100%;
+    }
+
+    .lg-logo {
+        display: none;
     }
 
     .owl-testimonials .testi-owl .item {

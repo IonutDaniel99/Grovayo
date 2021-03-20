@@ -68,9 +68,9 @@
                                         <div class="user-request-dt">
                                             <a href="/user/{{$friend_request['follower_request_username']}}">
                                                 @if($friend_request['follower_request_profile_photo'])
-                                                <img src="/{{$friend_request['follower_request_profile_photo']}}" alt="">
+                                                <img src="/{{$friend_request['follower_request_profile_photo']}}" alt="{{$friend_request['follower_request_username']}}">
                                                 @else
-                                                <img src="https://ui-avatars.com/api/?name={{$friend_request['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="">
+                                                <img src="https://ui-avatars.com/api/?name={{$friend_request['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="{{$friend_request['follower_request_username']}}">
                                                 @endif
                                             </a>
                                             <a href="/user/{{$friend_request['follower_request_username']}}" class="user-title">
@@ -104,9 +104,9 @@
                                         <div class="user-request-dt">
                                             <a href="/user/{{$friend['follower_request_username']}}">
                                                 @if($friend['follower_request_profile_photo'])
-                                                <img src="/{{$friend['follower_request_profile_photo']}}" alt="">
+                                                <img src="/{{$friend['follower_request_profile_photo']}}" alt="{{$friend['follower_request_username']}}">
                                                 @else
-                                                <img src="https://ui-avatars.com/api/?name={{$friend['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="">
+                                                <img src="https://ui-avatars.com/api/?name={{$friend['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="{{$friend['follower_request_username']}}">
                                                 @endif
                                             </a>
                                             <a href="/user/{{$friend['follower_request_username']}}" class="user-title">

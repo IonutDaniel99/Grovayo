@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="Create and account or log in to {{ config('app.name', 'Laravel') }}. A social webpage where fun & creativity, edit & share photos with friend & family become interactve.">
-
+    <meta name="description" content="Create and account or log in to {{ config('app.name', 'Laravel') }}. A social webpage where fun & creativity, edit & share photos with friends & family become interactve.">
+    <meta http-equiv="Cache-control" content="public">
     <title>Connected as {{ Auth::user()->name  }} | {{ config('app.name')}}</title>
 
     <!-- Fonts -->
@@ -19,10 +19,8 @@
     <link href="{{ asset('css/datepicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl.carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owfont-regular.css') }}" rel="stylesheet" type="text/css">
-    <!-- <link href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet"> -->
 
 
     @livewireStyles
@@ -33,12 +31,8 @@
     <script src="{{ asset('js/datepicker.min.js') }}"></script>
     <script src="{{ asset('js/datepicker.en.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/country.state.city.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.js') }}"></script>
-    <script src="{{ asset('js/custom1.js') }}"></script>
-    <script src="{{ asset('js/personal-profile.js') }}"></script>
-    <!-- <script src="{{ asset('js/jquery.mCustomScrollbar.js') }}"></script> -->
-    <!-- <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js') }}"></script> -->
+    <script src="{{ asset('js/custom.js') }}" defer></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js') }}" defer></script>
 
     <!-- Other -->

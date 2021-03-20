@@ -17,9 +17,9 @@
                                 <div class="userbg-dt dpbg" style="background-image:url({{$follower['follower_request_background_photo']}});">
                                     <div class="usr-pic">
                                         @if($follower['follower_request_profile_photo'] == NULL)
-                                        <img src="https://ui-avatars.com/api/?name={{$follower['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="">
+                                        <img src="https://ui-avatars.com/api/?name={{$follower['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="{{$follower['follower_request_username']}}">
                                         @else
-                                        <img src="/{{$follower['follower_request_profile_photo']}}" alt="">
+                                        <img src="/{{$follower['follower_request_profile_photo']}}" alt="{{$follower['follower_request_username']}}">
                                         @endif
                                     </div>
                                 </div>
