@@ -28,7 +28,7 @@ class SocialController extends Controller
             $user = Socialite::driver('facebook')->fields([
                 'name', 'email', 'birthday', 'location'
             ])->user();
-            $isUser = User::where('fb_id', $user->id)->first();
+            $isUser = User::where('email', $user->email)->first();
             if ($isUser) {
                 Auth::login($isUser);
                 return redirect('/');
@@ -64,5 +64,49 @@ class SocialController extends Controller
         } catch (Exception $exception) {
             dd($exception->getMessage());
         }
+    }
+
+
+    public function googleRedirect()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function loginWithGoogle()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (\Exception $e) {
+            return redirect('/login');
+        }
+
+        $existingUser = User::where('email', $user->email)->first();
+        if ($existingUser) {
+            Auth::login($existingUser, true);
+        } else {
+            $secret_string = Str::random(20);
+            $createUser = User::create([
+                'name' => $user->user['name'],
+                'username' => strtolower(str_replace(' ', '_', $user->user['name'])),
+                'email' => $user->user['email'],
+                'email_verified_at' => now(),
+                'password' => encrypt('password'),
+                'google_id' => $user->id,
+                'user_secret_code' => $secret_string
+            ]);
+            $createUser->assignRole('User');
+            $secret_code = User::where('user_secret_code', $secret_string)->value('id');
+            $faker = \Faker\Factory::create();
+
+            $createUser->about_model()->create([
+                'user_id' => $secret_code,
+                'user_weather_degree' => collect(['F', 'C', 'K'])->random(),
+                'time_zone' => $faker->timezone,
+                'gender' => 'Unspecified',
+                'status' => 'Not specified',
+            ]);
+            Auth::login($createUser, true);
+        }
+        return redirect()->to('/');
     }
 }

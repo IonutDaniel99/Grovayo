@@ -16,9 +16,12 @@ class DisableAccountController extends Controller
      */
     public function index()
     {
-        $user = User::where("id", Auth::id())->get()->pluck('fb_id')->first();
-        $fb_id = $user != NULL ? true : false;
-        return view('www.user.auth_user.settings.disable-account', ['fb_id' => $fb_id]);
+        $user = User::where("id", Auth::id())->get()->first();
+        $google_id = $user->google_id != NULL ? true : false;
+        $fb_id = $user->fb_id != NULL ? true : false;
+
+        dd($google_id, $fb_id);
+        return view('www.user.auth_user.settings.disable-account', ['fb_id' => $fb_id, 'google_id' => $google_id]);
     }
 
     /**

@@ -24,7 +24,8 @@ Route::get('redirects', 'App\Http\Responses\LoginResponse@toResponse')->name('Re
 /* FACEBOOK AND GOOGLE CONNECTIONS */
 Route::get('/auth/facebook', 'App\Http\Controllers\Api\SocialController@facebookRedirect')->name('FacebookRedirect');
 Route::get('/auth/facebook/callback', 'App\Http\Controllers\Api\SocialController@loginWithFacebook')->name('FacebookLogin');
-
+Route::get('/auth/google', 'App\Http\Controllers\Api\SocialController@googleRedirect')->name('GoogleRedirect');
+Route::get('/auth/google/callback', 'App\Http\Controllers\Api\SocialController@loginWithGoogle')->name('GoogleLogin');
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Home', 'App\Http\Controllers\www\User\HomeController@index')->name('Home');
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Weather', 'App\Http\Controllers\www\User\WeatherController@index')->name('Weather');

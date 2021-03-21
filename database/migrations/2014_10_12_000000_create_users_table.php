@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_blocked')->default(false);
             $table->string('user_secret_code')->nullable();
             $table->string('fb_id')->nullable();
+            $table->string('google_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

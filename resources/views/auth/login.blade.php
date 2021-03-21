@@ -28,7 +28,9 @@
                                             <a href="{{ route('FacebookRedirect') }}">
                                                 <button class="social-f-btn"><i class="fab fa-facebook-f"></i>&nbsp;Continue with facebook</button>
                                             </a>
-                                            <button class="social-g-btn"><i class="fab fa-google"></i>&nbsp;Continue with Google</button>
+                                            <a href="{{ route('GoogleRedirect') }}">
+                                                <button class="social-g-btn"><i class="fab fa-google"></i>&nbsp;Continue with Google</button>
+                                            </a>
                                         </div>
                                         <div class="or">Or</div>
                                         <div class="login-register-form">
