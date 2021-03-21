@@ -32,7 +32,8 @@ class User extends Authenticatable
         'username',
         'password',
         'created_at',
-        'email_verified_at'
+        'email_verified_at',
+        'fb_id'
     ];
 
     /**
@@ -61,9 +62,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    // protected $appends = [
-    //     'profile_photo_url',
-    // ];
+    protected $appends = [
+        'profile_photo_url',
+    ];
 
     public function about_model()
     {

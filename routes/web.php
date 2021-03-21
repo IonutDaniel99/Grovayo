@@ -16,8 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+
+
 Route::get('/', 'App\Http\Responses\LoginResponse@toWelcome')->name('Welcome');
 Route::get('redirects', 'App\Http\Responses\LoginResponse@toResponse')->name('Redirects');
+
+/* FACEBOOK AND GOOGLE CONNECTIONS */
+Route::get('/auth/facebook', 'App\Http\Controllers\Api\SocialController@facebookRedirect')->name('FacebookRedirect');
+Route::get('/auth/facebook/callback', 'App\Http\Controllers\Api\SocialController@loginWithFacebook')->name('FacebookLogin');
+
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Home', 'App\Http\Controllers\www\User\HomeController@index')->name('Home');
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Weather', 'App\Http\Controllers\www\User\WeatherController@index')->name('Weather');
@@ -86,6 +93,7 @@ Route::post('/Change-Password/Update', 'App\Http\Controllers\www\User\Auth_User\
 // ####################### Disable Account #################################
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Disable-Account', 'App\Http\Controllers\www\User\Auth_User\Settings\DisableAccountController@index')->name("Settings_Disable_Account_Index");
+Route::post('/Disable-Account/Facebook/Delete', 'App\Http\Controllers\www\User\Auth_User\Settings\DisableAccountController@Facebook_Delete')->name('Settings_Delete_Facebook_Account');
 
 #endregion
 

@@ -25,7 +25,9 @@
                                     <div class="lr-right">
                                         <h1>Log In</h1>
                                         <div class="social-logins">
-                                            <button class="social-f-btn"><i class="fab fa-facebook-f"></i>&nbsp;Continue with facebook</button>
+                                            <a href="{{ route('FacebookRedirect') }}">
+                                                <button class="social-f-btn"><i class="fab fa-facebook-f"></i>&nbsp;Continue with facebook</button>
+                                            </a>
                                             <button class="social-g-btn"><i class="fab fa-google"></i>&nbsp;Continue with Google</button>
                                         </div>
                                         <div class="or">Or</div>

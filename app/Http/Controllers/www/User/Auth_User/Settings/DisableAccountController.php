@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\www\User\Auth_User\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DisableAccountController extends Controller
 {
@@ -14,7 +16,9 @@ class DisableAccountController extends Controller
      */
     public function index()
     {
-        return view('www.user.auth_user.settings.disable-account');
+        $user = User::where("id", Auth::id())->get()->pluck('fb_id')->first();
+        $fb_id = $user != NULL ? true : false;
+        return view('www.user.auth_user.settings.disable-account', ['fb_id' => $fb_id]);
     }
 
     /**
@@ -81,5 +85,10 @@ class DisableAccountController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function Facebook_Delete()
+    {
+        User::where('id', Auth::id())->delete();
+        return redirect(route('login'));
     }
 }
