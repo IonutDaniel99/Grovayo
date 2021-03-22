@@ -41,19 +41,19 @@
                                                 <div class="col-lg-6 col-md-12">
                                                     <div class="form-group">
                                                         <label>Date of Birth</label>
-                                                        <input class="payment-input datepicker-here" name="birthday" value="{{ $user_about['birthday']  }}" data-language="en" type="text" placeholder="{{ $user_about['birthday'] }}">
+                                                        <input class="payment-input datepicker-here" name="birthday" value="{{ old('birthday')  }}" data-language="en" type="text" placeholder="{{ $user_about['birthday'] }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-12">
                                                     <div class="form-group">
                                                         <label>Contact Email</label>
-                                                        <input class="payment-input" type="contact_email" value="{{ $user_about['contact_email'] }}" name="contact_email" placeholder="{{ $user_about['contact_email'] }}">
+                                                        <input class="payment-input" type="contact_email" value="{{ old('contact_email') }}" name="contact_email" placeholder="{{ $user_about['contact_email'] }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-12">
                                                     <div class="form-group">
                                                         <label>Phone Number</label>
-                                                        <input class="payment-input" type="tel" value="{{ $user_about['phone_number']  }}" name="phone_number" placeholder="{{ $user_about['phone_number'] }}">
+                                                        <input class="payment-input" type="tel" value="{{ old('phone_number')  }}" name="phone_number" placeholder="{{ $user_about['phone_number'] }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-12">
@@ -226,7 +226,8 @@
                                                                 <input type="checkbox" id="education_present_checkbox">
                                                                 <span class="checkbox__control">
                                                                     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
-                                                                        <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
+                                                                        <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' />
+                                                                    </svg>
                                                                 </span>
                                                             </span>
                                                             <span class="radio__label">Present</span>
@@ -271,7 +272,8 @@
                                                                 <input type="checkbox" id="employee_present_checkbox">
                                                                 <span class="checkbox__control">
                                                                     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
-                                                                        <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
+                                                                        <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' />
+                                                                    </svg>
                                                                 </span>
                                                             </span>
                                                             <span class="radio__label">Present</span>

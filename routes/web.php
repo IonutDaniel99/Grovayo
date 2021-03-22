@@ -95,6 +95,7 @@ Route::post('/Change-Password/Update', 'App\Http\Controllers\www\User\Auth_User\
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Disable-Account', 'App\Http\Controllers\www\User\Auth_User\Settings\DisableAccountController@index')->name("Settings_Disable_Account_Index");
 Route::post('/Disable-Account/Facebook/Delete', 'App\Http\Controllers\www\User\Auth_User\Settings\DisableAccountController@Facebook_Delete')->name('Settings_Delete_Facebook_Account');
+Route::post('/Disable-Account/Google/Delete', 'App\Http\Controllers\www\User\Auth_User\Settings\DisableAccountController@Google_Delete')->name('Settings_Delete_Google_Account');
 
 #endregion
 

@@ -33,6 +33,7 @@ class User extends Authenticatable
         'password',
         'created_at',
         'email_verified_at',
+        'google_id',
         'fb_id'
     ];
 

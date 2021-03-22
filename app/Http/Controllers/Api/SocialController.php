@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -79,7 +78,6 @@ class SocialController extends Controller
         } catch (\Exception $e) {
             return redirect('/login');
         }
-
         $existingUser = User::where('email', $user->email)->first();
         if ($existingUser) {
             Auth::login($existingUser, true);
@@ -87,11 +85,11 @@ class SocialController extends Controller
             $secret_string = Str::random(20);
             $createUser = User::create([
                 'name' => $user->user['name'],
-                'username' => strtolower(str_replace(' ', '_', $user->user['name'])),
+                'username' => strtolower(strtok($user->user['email'], "@")),
                 'email' => $user->user['email'],
                 'email_verified_at' => now(),
                 'password' => encrypt('password'),
-                'google_id' => $user->id,
+                'google_id' => $user->user['id'],
                 'user_secret_code' => $secret_string
             ]);
             $createUser->assignRole('User');

@@ -21,10 +21,10 @@
                             <h4>{{$user['name']}}</h4>
                             @if($user['live_in'] != NULL && $user['live_in'] != 'Actual Location')
                             <span><i class="fas fa-map-marker-alt"></i>&nbsp;{{$user['live_in']}}</span>
-                            @elseif($user['about_model']['user_state'] == $user_state)
+                            @elseif($user['about_model']['user_state'] == $user_state && $user['about_model']['user_state'] != NULL)
                             <span><i class="fas fa-map-marker-alt"></i>&nbsp;{{$user['about_model']['user_state']}}</span>
                             @else
-                            <span><i class="fas fa-map-marker-alt"></i>&nbsp;{{$user['about_model']['user_country']}}</span>
+                            <span><i class="fas fa-map-marker-alt"></i>&nbsp;Not Specified</span>
                             @endif
                         </div>
                         <div class="profile-link">

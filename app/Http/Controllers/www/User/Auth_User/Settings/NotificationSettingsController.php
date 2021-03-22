@@ -18,6 +18,11 @@ class NotificationSettingsController extends Controller
     public function index()
     {
         $user_model = User::where('id', Auth::id())->with('notifications')->first();
+        if ($user_model['notifications'] == NULL) {
+            $user_model->notifications()->create([
+                'user_id' => Auth::id()
+            ]);
+        }
         $user_model = $user_model['notifications'];
         return view('www.user.auth_user.settings.notification-settings', compact('user_model'));
     }

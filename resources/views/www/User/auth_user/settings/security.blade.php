@@ -20,7 +20,7 @@
                                         <h3>Security and Connectivity</h3>
                                     </div>
                                     <div class="all-rqusts1 px-4 pb-5">
-                                        @livewire('profile.logout-other-browser-sessions-form')
+                                        <livewire:profile.logout-other-browser-sessions-form />
                                     </div>
                                 </div>
                             </div>

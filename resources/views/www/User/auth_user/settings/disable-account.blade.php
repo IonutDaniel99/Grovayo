@@ -25,7 +25,7 @@
                                         </div>
                                         @if($fb_id)
                                         <div class="mt-4 max-w-xl text-sm text-gray-600">
-                                            <b>Your account was created using your facebook creditentials.</b>
+                                            <b>Your account was created using your Facebook creditentials.</b>
                                         </div>
                                         <div class="mt-2">
                                             <form action="{{ route('Settings_Delete_Facebook_Account') }}" method="post">
@@ -36,7 +36,17 @@
                                             </form>
                                         </div>
                                         @elseif($google_id)
-                                        <p>test</p>
+                                        <div class="mt-4 max-w-xl text-sm text-gray-600">
+                                            <b>Your account was created using your Google creditentials.</b>
+                                        </div>
+                                        <div class="mt-2">
+                                            <form action="{{ route('Settings_Delete_Google_Account') }}" method="post">
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="inline-flex items-center justify-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-600 transition ease-in-out duration-150">
+                                                    Delete Account
+                                                </button>
+                                            </form>
+                                        </div>
                                         @else
                                         <livewire:profile.delete-user-form />
                                         @endif

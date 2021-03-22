@@ -20,7 +20,6 @@ class DisableAccountController extends Controller
         $google_id = $user->google_id != NULL ? true : false;
         $fb_id = $user->fb_id != NULL ? true : false;
 
-        dd($google_id, $fb_id);
         return view('www.user.auth_user.settings.disable-account', ['fb_id' => $fb_id, 'google_id' => $google_id]);
     }
 
@@ -90,6 +89,12 @@ class DisableAccountController extends Controller
         //
     }
     public function Facebook_Delete()
+    {
+        User::where('id', Auth::id())->delete();
+        return redirect(route('login'));
+    }
+
+    public function Google_Delete()
     {
         User::where('id', Auth::id())->delete();
         return redirect(route('login'));
