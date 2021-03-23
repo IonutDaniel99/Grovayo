@@ -98,6 +98,9 @@ class ApiController extends Controller
 
     public function callWeatherApiUser($city)
     {
+        if ($city == NULL) {
+            return $this->callWeatherApiHome();
+        };
         $weather_geolocation = json_decode(file_get_contents("http://api.openweathermap.org/geo/1.0/direct?q=" . $city . "&limit=2&appid=" . $this->weather_key), true);
         $weather_geolocation['lat'] = substr($weather_geolocation[0]['lat'], 0, 5);
         $weather_geolocation['long'] = substr($weather_geolocation[0]['lon'], 0, -2);

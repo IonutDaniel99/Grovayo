@@ -65,7 +65,6 @@ class SocialController extends Controller
         }
     }
 
-
     public function googleRedirect()
     {
         return Socialite::driver('google')->redirect();

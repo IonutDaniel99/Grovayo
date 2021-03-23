@@ -37,11 +37,10 @@
                                         <img src="/{{$visitor['visitor_image']}}" alt="{{$visitor['visitor_username']}}" style="margin-right:10px">
                                         @endif
                                     </a>
-                                    <a href="/user/{{$visitor['visitor_username']}}">
-                                        <h4 style="margin-top:1px;max-width: 170px;margin-left:0px!important">{{$visitor['visitor_name']}}</h4>
+                                    <a href="/user/{{$visitor['visitor_username']}}" class="d-flex align-items-center">
+                                        <h4 class="text-truncate" style="margin-top:1px;max-width: 170px;margin-left:0px!important">{{$visitor['visitor_name']}}</h4>
                                     </a>
                                 </div>
-                                <button class="request-btn"><i class="fas fa-user-plus"></i></button>
                             </div>
                             @endforeach
                             @endif

@@ -1,6 +1,6 @@
 <div>
     @foreach($user_posts as $post)
-    <div class="activity-posts">
+    <div class="activity-posts" wire:key="{{ $post['id']}}">
         <div class="activity-group1">
             <div class="main-user-dts1">
                 <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->profile_photo_url }}">
@@ -13,7 +13,9 @@
                 <span class="dropdown-toggle-no-caret" role="button" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></span>
                 <div class="dropdown-menu post-rt-dropdown dropdown-menu-right">
                     @if($post['post_description'] != null)
-                    <a class="post-link-item" href="#">Edit</a>
+                    <a type="button" class="post-link-item" data-toggle="modal" data-target="#exampleModalCenter{{ $post['id']}}">
+                        Edit
+                    </a>
                     @endif
                     <a class="post-link-item" wire:click="deleteActivity({{$post['id']}})">Delete</a>
                 </div>
@@ -43,10 +45,7 @@
         </div>
         <div class="like-comment-view">
             <div class="left-comments">
-                <a href="#" class="like-item" title="Like">
-                    <i class="fas fa-heart"></i>
-                    <span><ins>Like</ins> {{$post['post_likes']}}</span>
-                </a>
+                @livewire('www.user.auth-user.posts.user-activity-likes',['post_id' => $post['id'],'post_likes'=>$post['post_likes']], key($loop->index))
                 <a href="#" class="like-item lc-left" title="Comment">
                     <i class="fas fa-comment-alt"></i>
                     <span><ins>Comment</ins> {{$post->comments->count()}}</span>
@@ -67,6 +66,24 @@
             @IF($post->comments->count() > 0)
             @livewire('www.user.auth-user.posts.user-activity-comments', ['post_id' => $post['id']])
             @ENDIF
+        </div>
+    </div>
+    <div wire:ignore.self class="modal fade" id="exampleModalCenter{{ $post['id']}}" role="dialog" aria-labelledby="exampleModalCenterTitle{{ $post['id']}}" aria-hidden="true" wire:key="{{ $post['id']}}">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <h5 class="modal-title">Edit post</h5>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <textarea class="add-activity-des" type="text" wire:model.lazy="activityTextEdit" placeholder="Update your post with a new content"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="areply-post-btn" data-dismiss="modal" wire:click.prevent="updateActivityText({{$post['id']}})">Update</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     @endforeach

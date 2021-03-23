@@ -45,7 +45,7 @@
                         <div class="categories-items">
                             <div class="sugguest-user">
                                 <div class="sugguest-user-dt">
-                                    <h6>This user has social media link hidden.</h6>
+                                    <h6>This user has social media links hidden.</h6>
                                 </div>
                             </div>
                         </div>

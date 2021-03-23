@@ -15,4 +15,9 @@ class User_Posts extends Model
     {
         return $this->hasMany('App\Models\User_Comments', 'post_id', 'id');
     }
+
+    public function likes()
+    {
+        return $this->hasMany('App\Models\Likes', 'post_id', 'id');
+    }
 }
