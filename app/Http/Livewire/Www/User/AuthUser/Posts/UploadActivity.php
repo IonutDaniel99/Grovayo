@@ -49,7 +49,6 @@ class UploadActivity extends Component
 
         $post->save();
         $this->clearData();
-        // $this->resetValidation();
         $this->emit('updateActivityPosts');
     }
     public function render()

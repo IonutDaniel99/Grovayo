@@ -1,6 +1,6 @@
 <div>
-    @FOREACH($activityComments as $comment)
-    <div class="activity-group1">
+    @foreach($activityComments as $comment)
+    <div class="activity-group1" wire:key="comment_{{ $comment['id']}}">
         <div class="main-user-dts1">
             @if($comment['user']['profile_photo_path']==NULL)
             <img src="https://ui-avatars.com/api/?name={{$comment['user']['name']}}&amp;color=7F9CF5&amp;background=EBF4FF" alt="={{$comment['user']['name']}}">
@@ -20,6 +20,5 @@
             </div>
         </div>
     </div>
-
     @endforeach
 </div>

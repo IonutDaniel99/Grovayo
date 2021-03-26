@@ -10,13 +10,11 @@ use Livewire\Component;
 class UserActivityLikes extends Component
 {
     public $post_id;
-    public $post_likes;
     public $voted = false;
 
-    public function mount($post_id, $post_likes)
+    public function mount($post_id)
     {
         $this->post_id = $post_id;
-        $this->post_likes = $post_likes;
     }
 
     public function vote()

@@ -5,7 +5,7 @@
                 <div class="maine-activity-img">
                     <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->profile_photo_url }}">
                 </div>
-                <textarea class="add-activity-des" placeholder="What is new, John Doe?" wire:model.lazy="activityText" require></textarea>
+                <textarea class="add-activity-des" placeholder="What is new, {{ Auth::user()->name }}?" wire:model.lazy="activityText" require></textarea>
 
             </div>
             <div class="activity-button">

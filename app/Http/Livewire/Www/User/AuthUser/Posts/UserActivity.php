@@ -15,10 +15,6 @@ class UserActivity extends Component
     protected $listeners = ['updateActivityPosts' => 'render'];
     public $replayText;
     public $activityTextEdit;
-    public function clearData()
-    {
-        $this->reset();
-    }
 
     public function deleteActivity($post_id)
     {
@@ -28,21 +24,23 @@ class UserActivity extends Component
 
     public function updateActivityText($post_id)
     {
-        // dd($post_id, $this->activityTextEdit);
         User_Posts::where('id', $post_id)->where('author_id', Auth::id())->update(["post_description" => $this->activityTextEdit]);
+        $this->reset('activityTextEdit');
     }
 
     public function replayUpload($post_id)
     {
-
         $replayText = $this->replayText;
+        $this->validate([
+            'replayText' => 'required|min:3',
+        ]);
         $comment = new User_Comments();
         $comment->user_id = Auth::id();
         $comment->post_id = $post_id;
         $comment->comment_content = $replayText;
         $comment->save();
 
-        $this->clearData();
+        $this->reset('replayText');
         $this->emit('updateActivityCommentsPosts');
     }
 
