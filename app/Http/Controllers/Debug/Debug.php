@@ -16,7 +16,6 @@ class Debug extends Controller
      */
     public function index()
     {
-        $s = strtok($user->user['email'], "@");
-        return $s;
+        return;
     }
 }

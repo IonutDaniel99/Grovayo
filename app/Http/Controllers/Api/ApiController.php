@@ -145,7 +145,7 @@ class ApiController extends Controller
      */
     public function callNewsApi()
     {
-        $from = date('Y-m-d', strtotime('-1 days'));
+        $from = date('Y-m-d', strtotime('-2 days'));
         $lastCreated = strtotime(News::select("created_at")->pluck('created_at')->first());
         $lastDay = strtotime('24 hours');
         $news_array = ['world', 'science', 'technology', 'music', 'movies', 'games', 'sport'];
@@ -176,6 +176,16 @@ class ApiController extends Controller
             }
         }
     }
+    /**
+     * Delete the entire News Database then update again.
+     */
+    public function callNewsApiDelete()
+    {
+        News::truncate();
+        $this->callNewsApi();
+        return response('News Table Deleted');
+    }
+
     /**
      * Return user location from city ipinfo.io.
      * @return string city

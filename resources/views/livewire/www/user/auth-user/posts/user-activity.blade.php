@@ -1,6 +1,6 @@
 <div>
     @foreach($user_posts as $post)
-    <div class="activity-posts">
+    <div class="activity-posts" wire:key="post_{{ $post['id']}}">
         <div class="activity-group1">
             <div class="main-user-dts1">
                 <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->profile_photo_url }}">
@@ -58,7 +58,7 @@
                     <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->profile_photo_url }}">
                 </div>
                 <form wire:submit.prevent="replayUpload({{$post['id']}})" class="d-flex align-items-center justify-content-between">
-                    <input class=" areply-post" type="text" placeholder="Write a reply" wire:model.lazy="replayText" require>
+                    <input class=" areply-post" type="text" placeholder="Write a reply" wire:model.debounce.250ms="replayText" require>
                     @error('replayText')
                     <div class="categories-left-heading" x-data="{tooltip_comment_activity_error:false}" style="text-align: left;padding:0px 0px 0px 40px; width:0%">
                         <div @mouseenter="tooltip_comment_activity_error = true" @mouseleave="tooltip_comment_activity_error = false">
@@ -74,12 +74,14 @@
                     <button class="areply-post-btn" type="submit">Reply</button>
                 </form>
             </div>
-            @IF($post->comments->count() > 0)
-            @livewire('www.user.auth-user.posts.user-activity-comments', ['post_id' => $post['id']],key($post['id']))
-            @ENDIF
+            <div id="comments-div-scroll">
+                @IF($post->comments->count() > 0)
+                @livewire('www.user.auth-user.posts.user-activity-comments', ['post_id' => $post['id']],key($post['id']))
+                @ENDIF
+            </div>
         </div>
     </div>
-    <div wire:ignore.self class=" modal fade" id="exampleModalCenter{{ $post['id']}}" role="dialog" aria-labelledby="exampleModalCenterTitle{{ $post['id']}}" aria-hidden="true" wire:key="{{ $post['id']}}">
+    <div wire:ignore.self class=" modal fade" id="exampleModalCenter{{ $post['id']}}" role="dialog" aria-labelledby="exampleModalCenterTitle{{ $post['id']}}" aria-hidden="true" wire:key="modal_{{ $post['id']}}">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header justify-content-center">
@@ -87,7 +89,7 @@
                 </div>
                 <form>
                     <div class="modal-body">
-                        <textarea class="add-activity-des" type="text" wire:model.lazy="activityTextEdit" placeholder="Update your post with a new content"></textarea>
+                        <textarea class="add-activity-des" type="text" wire:model="activityTextEdit" placeholder="Update your post with a new content"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -98,4 +100,8 @@
         </div>
     </div>
     @endforeach
+    @if($amount < $postsNumber) <div class="activity-posts">
+        <a id="load-more-activities" wire:click="load">Load more posts</a>
+</div>
+@endif
 </div>

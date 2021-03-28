@@ -36,6 +36,8 @@ class UserActivityLikes extends Component
         $likes_number = User_Posts::where('id', $this->post_id)->pluck('post_likes')->first();
         if (Likes::where('user_id', Auth::id())->where('post_id', $this->post_id)->count() > 0) {
             $this->voted = true;
+        } else {
+            $this->voted = false;
         }
         return view('livewire.www.user.auth-user.posts.user-activity-likes', ['likes_number' => $likes_number, 'voted' => $this->voted]);
     }

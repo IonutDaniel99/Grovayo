@@ -15,10 +15,11 @@ class UserActivity extends Component
     protected $listeners = ['updateActivityPosts' => 'render'];
     public $replayText;
     public $activityTextEdit;
+    public $amount = 10;
+    public $postsNumber;
 
     public function deleteActivity($post_id)
     {
-
         User_Posts::where('id', $post_id)->where('author_id', Auth::id())->delete();
     }
 
@@ -28,11 +29,16 @@ class UserActivity extends Component
         $this->reset('activityTextEdit');
     }
 
+    public function load()
+    {
+        $this->amount += 5;
+    }
+
     public function replayUpload($post_id)
     {
         $replayText = $this->replayText;
         $this->validate([
-            'replayText' => 'required|min:3',
+            'replayText' => 'required|max:5000',
         ]);
         $comment = new User_Comments();
         $comment->user_id = Auth::id();
@@ -47,7 +53,9 @@ class UserActivity extends Component
     public function render()
     {
         $user_model = User::where("id", Auth::id())->get()->first();
-        $user_posts = User_Posts::where('author_id', Auth::id())->with('comments', 'likes')->orderBy("created_at", "DESC")->take(6)->get();
+        $posts = User_Posts::where('author_id', Auth::id())->with('comments', 'likes')->orderBy("created_at", "DESC");
+        $this->postsNumber = $posts->count();
+        $user_posts = $posts->take($this->amount)->get();
         return view('livewire.www.user.auth-user.posts.user-activity', ['user_model' => $user_model, 'user_posts' => $user_posts]);
     }
 }

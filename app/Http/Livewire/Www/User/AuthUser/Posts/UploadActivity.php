@@ -23,9 +23,10 @@ class UploadActivity extends Component
 
     public function activityUpload()
     {
+        $this->resetErrorBag();
         if ($this->activityPhoto == null) {
             $this->validate([
-                'activityText' => 'required|min:3|max:5000'
+                'activityText' => 'required|max:5000'
             ]);
         }
         $user_model = User::where('id', Auth::id())->with("posts")->get();

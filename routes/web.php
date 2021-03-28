@@ -132,3 +132,4 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 // ####################### Personal Info #################################
 Route::get('/Debug', 'App\Http\Controllers\Debug\Debug@index');
 Route::get('/News', 'App\Http\Controllers\Api\ApiController@callNewsApi');
+Route::get('/NewsDelete', 'App\Http\Controllers\Api\ApiController@callNewsApiDelete');

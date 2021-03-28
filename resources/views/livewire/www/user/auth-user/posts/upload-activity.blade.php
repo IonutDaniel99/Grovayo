@@ -5,15 +5,18 @@
                 <div class="maine-activity-img">
                     <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->profile_photo_url }}">
                 </div>
-                <textarea class="add-activity-des" placeholder="What is new, {{ Auth::user()->name }}?" wire:model.lazy="activityText" require></textarea>
+                <textarea class="add-activity-des" placeholder="What is new, {{ Auth::user()->name }}?" wire:model="activityText" require></textarea>
 
             </div>
             <div class="activity-button">
                 <label for="file" class="image-input-file">
                     <div class="image-input-div">
-                        <input type="file" name="activityPhotoName" id="file" style="display: none;" accept="image/*" wire:model.lazy="activityPhoto" />
+                        <input type="file" name="activityPhotoName" id="file" style="display: none;" accept="image/*" wire:model="activityPhoto" />
                         <i class="fas fa-camera"></i>
                         <span>Add Photo</span>
+                        <div class="px-3">
+                            <div wire:loading wire:target="activityPhoto">Uploading...</div>
+                        </div>
                     </div>
                 </label>
                 <div style="display: flex;align-items: center;justify-content: flex-end;">
@@ -45,5 +48,12 @@
                 </div>
             </div>
         </form>
+        @if ($activityPhoto)
+        <span class="d-flex justify-content-center my-4 pulsate-fwd underline"><b>Image Preview</b></span>
+        <div class="relative mx-3 mb-5 mt-1">
+            <img class="user-image-bg" src="{{ $activityPhoto->temporaryUrl() }}" alt="{{ $activityPhoto->temporaryUrl() }}">
+            <img class="user-image-front" src="{{ $activityPhoto->temporaryUrl() }}" alt="{{ $activityPhoto->temporaryUrl() }}">
+        </div>
+        @endif
     </div>
 </div>
