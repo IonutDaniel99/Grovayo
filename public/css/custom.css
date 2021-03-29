@@ -152,6 +152,10 @@
     text-decoration: none;
 }
 
+.comment:last-of-type {
+    padding-bottom: 20px !important;
+}
+
 #load-more-comments:hover {
     text-decoration: underline;
 }
@@ -167,4 +171,9 @@
 
 #load-more-activities:hover {
     text-decoration: underline;
+}
+
+
+.animate__animated.animate__backInDown {
+    --animate-duration: 2s !important;
 }

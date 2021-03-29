@@ -5184,6 +5184,10 @@ footer {
     background-size: 100% 100%;
 }
 
+.dpbg-border {
+    border-radius: 20px 20px 0px 0px;
+}
+
 /* === About Us Page === */
 
 .about-icon i {
@@ -6200,7 +6204,7 @@ footer {
 }
 
 .add-activity {
-    border-radius: 3px;
+    border-radius: 20px;
     float: left;
     width: 100%;
     background-color: #fff;
@@ -6390,7 +6394,8 @@ footer {
     z-index: 0;
     filter: blur(8px);
     border: 10px solid black;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;

@@ -1,6 +1,6 @@
 <div>
     @foreach($activityComments as $comment)
-    <div class="activity-group1 py-1" wire:key="comment_{{ $comment['id']}}">
+    <div class="activity-group1 py-1 comment" wire:key="comment_{{ $comment['id']}}">
         <div class="main-user-dts1 align-items-center">
             <a href="/user/{{$comment['user']['username']}}" style="display: contents;">
                 @if($comment['user']['profile_photo_path']==NULL)
@@ -8,7 +8,7 @@
                 @else
                 <img src="{{$comment['user']['profile_photo_path']}}" alt="{{$comment['user']['profile_photo_path']}}">
                 @endif
-                <div class="user-text3">
+                <div class="user-text3 text-break">
                     <h4>{{$comment['user']['name']}} <span>{{$comment['created_at']->diffForHumans()}}</span> </h4>
                     <p class="comment-paragraph">{{$comment['comment_content']}}</p>
                 </div>
@@ -24,5 +24,12 @@
     </div>
     @endforeach
     @if($amount < $commentsNumber) <a id="load-more-comments" wire:click="load">Load more</a>
+        <div wire:loading wire:target="load" class="main-loader pb-2">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
         @endif
 </div>

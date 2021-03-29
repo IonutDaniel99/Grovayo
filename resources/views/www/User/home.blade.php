@@ -7,13 +7,13 @@
                         <div class="user-data full-width">
                             <div class="user-profile">
                                 @if(Auth::user()->background_image_url == NULL)
-                                <div class="username-dt dpbg" style="background-image:url('storage/www/auth_user/home/dpbg/bg-<?php echo rand(1, 12); ?>.jpg')">
+                                <div class="username-dt dpbg dpbg-border" style="background-image:url('storage/www/auth_user/home/dpbg/bg-<?php echo rand(1, 12); ?>.jpg')">
                                     <div class=" usr-pic">
                                         <img class="h-100 w-100" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                                     </div>
                                 </div>
                                 @else
-                                <div class="username-dt dpbg" style="background-image:url('{{Auth::user()->background_image_url}}')">
+                                <div class="username-dt dpbg dpbg-border" style="background-image:url('{{Auth::user()->background_image_url}}')">
                                     <div class=" usr-pic">
                                         <img class="h-100 w-100" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                                     </div>

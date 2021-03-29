@@ -20,6 +20,10 @@ class UploadActivity extends Component
         $this->reset();
     }
 
+    public function hydrate()
+    {
+        $this->resetErrorBag();
+    }
 
     public function activityUpload()
     {
@@ -50,6 +54,7 @@ class UploadActivity extends Component
 
         $post->save();
         $this->clearData();
+        $this->emit('updateUserInfo');
         $this->emit('updateActivityPosts');
     }
     public function render()

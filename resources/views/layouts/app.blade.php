@@ -21,7 +21,7 @@
     <link href="{{ asset('css/owl.carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owfont-regular.css') }}" rel="stylesheet" type="text/css">
-
+    <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet" />
 
     @livewireStyles
 

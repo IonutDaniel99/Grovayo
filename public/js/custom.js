@@ -96,6 +96,8 @@ $(document).ready(function () {
 });
 
 
+
+
 // Owl Testimonials
 $('.testi-owl').owlCarousel({
     loop: true,
@@ -215,5 +217,4 @@ function load_background_file(event) {
     var output = document.getElementById('profileBackgroundImage');
     output.src = URL.createObjectURL(event.target.files[0]);
 }
-
 

@@ -16,7 +16,6 @@ class UserInfo extends Component
 
     public function render()
     {
-
         $profile = User::where('id', Auth::id())->with('about_model', 'posts', 'follower')->first();
         $this->user_about = $profile->about_model->where('user_id', Auth::id())->first();
         $this->user_about['posts_number'] = $profile->posts->count();
