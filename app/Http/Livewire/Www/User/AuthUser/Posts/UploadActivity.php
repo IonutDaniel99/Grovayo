@@ -51,8 +51,8 @@ class UploadActivity extends Component
         $post->post_description = $this->activityText;
         $post->post_content = $post_content_path;
         $post->post_likes = 0;
-
         $post->save();
+
         $this->clearData();
         $this->emit('updateUserInfo');
         $this->emit('updateActivityPosts');

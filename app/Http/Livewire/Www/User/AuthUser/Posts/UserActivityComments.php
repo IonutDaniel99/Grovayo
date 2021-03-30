@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Www\User\AuthUser\Posts;
 
 use App\Models\User_Comments;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class UserActivityComments extends Component
@@ -13,10 +14,17 @@ class UserActivityComments extends Component
     public $post_id;
     public $amount = 3;
     public $commentsNumber;
+    public $activityCommentEdit;
 
     public function load()
     {
         $this->amount += 3;
+    }
+
+    public function updateActivityComment($comment_id)
+    {
+        User_Comments::where('id', $comment_id)->where('user_id', Auth::id())->update(["comment_content" => $this->activityCommentEdit]);
+        $this->reset('activityCommentEdit');
     }
 
     public function deleteComment($comment_id)

@@ -1,23 +1,12 @@
-<div id="activity-post-component">
+<div>
     @foreach($user_posts as $post)
     <div class="activity-posts animate__animated animate__fadeIn" wire:key="post_{{ $post['id']}}">
         <div class="activity-group1 ">
             <div class="main-user-dts1">
-                <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->profile_photo_url }}">
+                <img src="{{ $user_model->profile_photo_url }}" alt="{{ $user_model->profile_photo_url }}">
                 <div class="user-text3">
                     <h4>{{$user_model['name']}}</h4>
                     <span>{{$post['created_at']->diffForHumans()}}</span>
-                </div>
-            </div>
-            <div class="dot-option dropdown">
-                <span class="dropdown-toggle-no-caret" role="button" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></span>
-                <div class="dropdown-menu post-rt-dropdown dropdown-menu-right">
-                    @if($post['post_description'] != null)
-                    <a type="button" class="post-link-item" data-toggle="modal" data-target="#PostModal_{{$post['id']}}">
-                        Edit
-                    </a>
-                    @endif
-                    <a class="post-link-item" wire:click="deleteActivity({{$post['id']}})">Delete</a>
                 </div>
             </div>
         </div>
@@ -32,13 +21,13 @@
             </div>
             @if($post['post_description'] != null)
             <div class="user-image-container">
-                <img class="user-image-bg" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
-                <img class="user-image-front" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
+                <img class="user-image-bg" src="/{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
+                <img class="user-image-front" src="/{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
             </div>
             @else
             <div class="user-image-container">
-                <img class="user-image-bg top-45" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
-                <img class="user-image-front" src="{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
+                <img class="user-image-bg top-45" src="/{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
+                <img class="user-image-front" src="/{{$post['post_content'] }}" alt="{{$post['post_content'] }}">
             </div>
             @endif
             @endif
@@ -76,39 +65,10 @@
             </div>
             <div id="comments-div-scroll">
                 @IF($post->comments->count() > 0)
-                @livewire('www.user.auth-user.posts.user-activity-comments', ['post_id' => $post['id']],key($post['id']))
+                @livewire('www.user.view-user.posts.view-user-activity-comments', ['post_id' => $post['id'], 'user_id'=> $user_model['id']],key($post['id']))
                 @ENDIF
             </div>
         </div>
     </div>
-    <div wire:ignore.self class="animate__animated animate__fadeIn modal" id="PostModal_{{ $post['id']}}" role="dialog" aria-labelledby="PostModal" aria-hidden="true" wire:key="modal_{{ $post['id']}}">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content" style="border-radius: 20px;">
-                <div class=" modal-header justify-content-center">
-                    <h5 class="modal-title">Edit post</h5>
-                </div>
-                <form>
-                    <div class="modal-body">
-                        <textarea class="add-activity-des" type="text" wire:model="activityTextEdit" placeholder="Update your post with a new content"></textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="areply-post-btn" data-dismiss="modal" wire:click.prevent="updateActivityText({{$post['id']}})">Update</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     @endforeach
-    @if($amount < $postsNumber) <div class="activity-posts">
-        <a id="load-more-activities" wire:click="load">Load more posts</a>
-        <div wire:loading wire:target="load" class="main-loader pb-2">
-            <div class="spinner">
-                <div class="bounce1"></div>
-                <div class="bounce2"></div>
-                <div class="bounce3"></div>
-            </div>
-        </div>
-</div>
-@endif
 </div>

@@ -8,6 +8,7 @@ use App\Models\User_Comments;
 use App\Models\User_Posts;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class UserActivity extends Component
 {
@@ -20,7 +21,10 @@ class UserActivity extends Component
 
     public function deleteActivity($post_id)
     {
-        User_Posts::where('id', $post_id)->where('author_id', Auth::id())->delete();
+
+        $post = User_Posts::where('id', $post_id)->where('author_id', Auth::id());
+        File::delete($post->pluck('post_content')->first());
+        $post->delete();
     }
 
     public function updateActivityText($post_id)

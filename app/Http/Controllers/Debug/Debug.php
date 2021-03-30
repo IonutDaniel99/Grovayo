@@ -16,6 +16,6 @@ class Debug extends Controller
      */
     public function index()
     {
-        return;
+        return view('errors.debug');
     }
 }

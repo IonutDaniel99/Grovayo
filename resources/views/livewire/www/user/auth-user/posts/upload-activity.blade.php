@@ -50,7 +50,7 @@
         </form>
         @if ($activityPhoto)
         <span class="d-flex justify-content-center my-4 pulsate-fwd underline"><b>Image Preview</b></span>
-        <div class="relative mx-3 mb-5 mt-1 flex justify-content-center">
+        <div class="relative mx-3 mb-5 mt-1 flex justify-content-center animate__animated animate__fadeIn">
             <img class="user-image-bg" src="{{ $activityPhoto->temporaryUrl() }}" alt="{{ $activityPhoto->temporaryUrl() }}">
             <img class="user-image-front" src="{{ $activityPhoto->temporaryUrl() }}" alt="{{ $activityPhoto->temporaryUrl() }}">
         </div>

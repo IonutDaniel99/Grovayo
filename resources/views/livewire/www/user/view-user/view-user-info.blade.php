@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 my-auto">
+                    <div class="col-lg-6 col-md-6 col-sm-12 my-3 d-flex align-items-center justify-content-center">
                         <ul class="right-details my-auto">
                             <li>
                                 <div class="user-buttons">

@@ -26,10 +26,10 @@
                         @if(!empty($query))
                         @if(!empty($users))
                         @foreach($users as $user)
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-3 col-md-6 animate__animated animate__backInDown">
                             <div class="user-data full-width">
                                 <div class="user-profile">
-                                    <div class="userbg-dt dpbg" style="background-image:url('{{$user['background_image_url']}}');">
+                                    <div class="userbg-dt dpbg dpbg-border" style="background-image:url('{{$user['background_image_url']}}');">
                                         <div class="usr-pic">
                                             @if($user['profile_photo_path'] == null)
                                             <img src="https://ui-avatars.com/api/?name={{$user['name']}}&color=7F9CF5&background=EBF4FF" alt="{{$user['name']}}">

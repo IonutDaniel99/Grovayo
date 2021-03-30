@@ -22,7 +22,7 @@ class PersonalInfoController extends Controller
     public function index()
     {
         $data['countries'] = Country::get(["name", "id"]);
-        $user_about = User_About::all()->where('user_id', Auth::id())->first();
+        $user_about = User_About::where('user_id', Auth::id())->first();
         return view("www.user.auth_user.settings.personal-info", compact('user_about', 'data'));
     }
 

@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Www\User\ViewUser;
 use App\Http\Controllers\Api\ApiController;
 use App\Models\News;
 use App\Models\User;
-use App\Models\User_About;
 use App\Models\User_Follow;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;

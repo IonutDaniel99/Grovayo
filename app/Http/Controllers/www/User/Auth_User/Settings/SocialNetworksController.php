@@ -16,7 +16,7 @@ class SocialNetworksController extends Controller
      */
     public function index()
     {
-        $this->user_about = User_About::all()->where('user_id', Auth::id())->first();
+        $this->user_about = User_About::where('user_id', Auth::id())->first();
         $user_about = $this->user_about;
         return view('www.user.auth_user.settings.social-networks', compact('user_about'));
     }
@@ -85,7 +85,7 @@ class SocialNetworksController extends Controller
             'social_other1' => 'nullable|url',
         ]);
 
-        $user_about_model = User_About::all()->where('user_id', Auth::id())->first();
+        $user_about_model = User_About::where('user_id', Auth::id())->first();
 
         if ($user_about_model->social_webpage === NULL && isset($data['social_webpage'])) {
             $user_about_model->social_webpage = $data['social_webpage'];
