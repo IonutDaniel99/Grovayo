@@ -6,8 +6,6 @@ use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\News;
-use App\Models\State;
-use App\Models\User;
 use App\Models\User_About;
 use App\Models\User_Follow;
 use Illuminate\Http\Request;
@@ -22,6 +20,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $user_about['user_country'] = User_About::where('user_id', Auth::id())->pluck('user_country')->first();
         $user_about['user_country'] = Country::where('id', $user_about['user_country'])->pluck('name')->first();
 

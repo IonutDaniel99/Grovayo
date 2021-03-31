@@ -14,17 +14,20 @@ class UserActivityComments extends Component
     public $post_id;
     public $amount = 3;
     public $commentsNumber;
-    public $activityCommentEdit;
+    public $activityCommentToEdit;
 
     public function load()
     {
         $this->amount += 3;
     }
 
-    public function updateActivityComment($comment_id)
+    public function editActivityComment($comment_id)
     {
-        User_Comments::where('id', $comment_id)->where('user_id', Auth::id())->update(["comment_content" => $this->activityCommentEdit]);
-        $this->reset('activityCommentEdit');
+        $this->validate([
+            'activityCommentToEdit' => 'required|max:5000',
+        ]);
+        User_Comments::where('id', $comment_id)->where('user_id', Auth::id())->update(["comment_content" => $this->activityCommentToEdit]);
+        $this->reset('activityCommentToEdit');
     }
 
     public function deleteComment($comment_id)
@@ -34,6 +37,7 @@ class UserActivityComments extends Component
 
     public function render()
     {
+
         $Comments = User_Comments::where('post_id', $this->post_id)->with('user')->orderBy("created_at", "DESC");
         $this->commentsNumber = $Comments->count();
         $activityComments = $Comments->take($this->amount)->get();

@@ -58,18 +58,11 @@
                     <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->profile_photo_url }}">
                 </div>
                 <form wire:submit.prevent="replayUpload({{$post['id']}})" class="d-flex align-items-center justify-content-between">
-                    <input class=" areply-post" type="text" placeholder="Write a reply" wire:model.debounce.250ms="replayText" require>
+                    <input class="areply-post" type="text" placeholder="Write a reply" wire:model="replayText" require wire:key="label_{{ $post['id']}}">
                     @error('replayText')
-                    <div class="categories-left-heading" x-data="{tooltip_comment_activity_error:false}" style="text-align: left;padding:0px 0px 0px 40px; width:0%">
-                        <div @mouseenter="tooltip_comment_activity_error = true" @mouseleave="tooltip_comment_activity_error = false">
-                            <i class="fas fa-remove-format info-button pt-1  pulsate-fwd" style="padding:0px !important"></i>
-                        </div>
-                        <div class="relative" x-cloak x-show.transition.origin.top="tooltip_comment_activity_error" style="display:block !important">
-                            <div class="text-center absolute z-10 w300px p-2 -mt-1 text-sm leading-tight text-white transform -translate-x-40 -translate-y-12 bg-orange-500 rounded-lg shadow-lg">
-                                {{ $message }}
-                            </div>
-                        </div>
-                    </div>
+                    <script>
+                        toastr.error('Comment can`t be empty.')
+                    </script>
                     @enderror
                     <button class="areply-post-btn" type="submit">Reply</button>
                 </form>
@@ -89,12 +82,17 @@
                 </div>
                 <form>
                     <div class="modal-body">
-                        <textarea class="add-activity-des" type="text" wire:model="activityTextEdit" placeholder="Update your post with a new content"></textarea>
+                        <textarea class="add-activity-des" type="text" wire:model="activityTextEdit" placeholder="{{$post['post_description']}}">{{$post['post_description']}}</textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="areply-post-btn" data-dismiss="modal" wire:click.prevent="updateActivityText({{$post['id']}})">Update</button>
                     </div>
+                    @error('activityTextEdit')
+                    <script>
+                        toastr.error('Your activity content edit input can`t be empty!')
+                    </script>
+                    @enderror
                 </form>
             </div>
         </div>

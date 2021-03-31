@@ -7,6 +7,7 @@ use App\Models\User_Posts;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
+use Yoeunes\Notify\Notifiers\Toastr;
 
 class UploadActivity extends Component
 {

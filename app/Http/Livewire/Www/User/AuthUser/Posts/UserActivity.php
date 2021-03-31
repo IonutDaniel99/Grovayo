@@ -29,6 +29,9 @@ class UserActivity extends Component
 
     public function updateActivityText($post_id)
     {
+        $this->validate([
+            'activityTextEdit' => 'required|max:5000'
+        ]);
         User_Posts::where('id', $post_id)->where('author_id', Auth::id())->update(["post_description" => $this->activityTextEdit]);
         $this->reset('activityTextEdit');
     }

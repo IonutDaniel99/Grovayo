@@ -16,6 +16,7 @@ class Debug extends Controller
      */
     public function index()
     {
+        toastr()->info('Are you the 6 fingered man?');
         return view('errors.debug');
     }
 }

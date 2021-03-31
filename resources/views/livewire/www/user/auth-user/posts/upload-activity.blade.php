@@ -31,6 +31,9 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        toastr.error('Your activity content can`t be empty!')
+                    </script>
                     @enderror
                     @error('activityPhoto')
                     <div class="categories-left-heading" x-data="{tooltip_activity_error:false}" style="text-align: left;padding: 0px 20px 0px 20px; width:0%">
@@ -43,6 +46,9 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        toastr.error('We cannot upload your image. Try again.')
+                    </script>
                     @enderror
                     <button class="act-btn-post" type="submit">Upload Activity</button>
                 </div>

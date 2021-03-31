@@ -50,6 +50,7 @@ class Search extends Component
             $x['about_model']['user_country'] = Country::where('id', $x['about_model']['user_country'])->value('name');
             array_push($user_list, $x);
         }
+
         $this->users = $user_list;
     }
 

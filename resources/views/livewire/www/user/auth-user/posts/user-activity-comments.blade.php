@@ -33,12 +33,17 @@
                 </div>
                 <form>
                     <div class="modal-body">
-                        <textarea class="add-activity-des" type="text" wire:model="activityCommentEdit" placeholder="Update your comment with a new content"></textarea>
+                        <textarea class="add-activity-des" type="text" wire:model="activityCommentToEdit" placeholder="Update your comment with a new content"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="areply-post-btn" data-dismiss="modal" wire:click.prevent="updateActivityComment({{$comment['id']}})">Update</button>
+                        <button type="submit" class="areply-post-btn" data-dismiss="modal" wire:click.prevent="editActivityComment({{$comment['id']}})">Update</button>
                     </div>
+                    @error('activityCommentToEdit')
+                    <script>
+                        toastr.error('Edit comment input can`t be empty.')
+                    </script>
+                    @enderror
                 </form>
             </div>
         </div>

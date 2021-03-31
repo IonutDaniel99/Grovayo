@@ -130,6 +130,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 // ####################### Personal Info #################################
-Route::get('/Debug', 'App\Http\Controllers\Debug\Debug@index');
+Route::get('/Debug', 'App\Http\Controllers\Debug\Debug@index')->name("Debug");
 Route::get('/News', 'App\Http\Controllers\Api\ApiController@callNewsApi');
 Route::get('/NewsDelete', 'App\Http\Controllers\Api\ApiController@callNewsApiDelete');

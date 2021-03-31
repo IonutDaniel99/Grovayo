@@ -22,6 +22,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owfont-regular.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css') }}" rel="stylesheet">
 
     @livewireStyles
 
@@ -34,6 +35,7 @@
     <script src="{{ asset('js/owl.carousel.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}" defer></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js') }}" defer></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js') }}" defer></script>
 
     <!-- Other -->
 </head>
@@ -46,9 +48,9 @@
         {{ $slot }}
     </div>
 
-    @stack('modals')
-
     @livewireScripts
+    @toastr_js
+    @notify_render
 </body>
 
 </html>
