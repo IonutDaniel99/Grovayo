@@ -52,28 +52,28 @@
                             </div>
                             <div class="categories-items">
                                 @IF($user_about['social_webpage'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_webpage']}}"><i class="fas fa-globe" style="color:#51a5fb;"></i>&nbsp;&nbsp;{{$user_about['social_webpage']}}</a>
+                                <a target="_blank" class="category-social-item" href="{{$user_about['social_webpage']}}"><i class="fas fa-globe" style="color:#51a5fb;"></i>&nbsp;&nbsp;{{$user_about['social_webpage']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_facebook'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_facebook']}}"><i class="fab fa-facebook-square" style="color:#3b5998;"></i>&nbsp;&nbsp;{{$user_about['social_facebook']}}</a>
+                                <a target="_blank" class="category-social-item" href="{{$user_about['social_facebook']}}"><i class="fab fa-facebook-square" style="color:#3b5998;"></i>&nbsp;&nbsp;{{$user_about['social_facebook']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_twitter'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_twitter']}}"><i class="fab fa-twitter" style="color:#1da1f2;"></i>&nbsp;&nbsp;{{$user_about['social_twitter']}}</a>
+                                <a target="_blank" class="category-social-item" href="{{$user_about['social_twitter']}}"><i class="fab fa-twitter" style="color:#1da1f2;"></i>&nbsp;&nbsp;{{$user_about['social_twitter']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_youtube'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_youtube']}}"><i class="fab fa-google-plus" style="color:#dd4b39;"></i>&nbsp;&nbsp;{{$user_about['social_youtube']}}</a>
+                                <a target="_blank" class="category-social-item" href="{{$user_about['social_youtube']}}"><i class="fab fa-google-plus" style="color:#dd4b39;"></i>&nbsp;&nbsp;{{$user_about['social_youtube']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_instagram'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_instagram']}}"><i class="fab fa-instagram" style="color:#405de6;"></i>&nbsp;&nbsp;{{$user_about['social_instagram']}}</a>
+                                <a target="_blank" class="category-social-item" href="{{$user_about['social_instagram']}}"><i class="fab fa-instagram" style="color:#405de6;"></i>&nbsp;&nbsp;{{$user_about['social_instagram']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_linkedin'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_linkedin']}}"><i class="fab fa-pinterest" style="color:#bd081c;"></i>&nbsp;&nbsp;{{$user_about['social_linkedin']}}</a>
+                                <a target="_blank" class="category-social-item" href="{{$user_about['social_linkedin']}}"><i class="fab fa-pinterest" style="color:#bd081c;"></i>&nbsp;&nbsp;{{$user_about['social_linkedin']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_other1'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_other1']}}"><i class="fab fa-linkedin" style="color:#0077b5;"></i>&nbsp;&nbsp;{{$user_about['social_other1']}}</a>
+                                <a target="_blank" class="category-social-item" href="{{$user_about['social_other1']}}"><i class="fab fa-linkedin" style="color:#0077b5;"></i>&nbsp;&nbsp;{{$user_about['social_other1']}}</a>
                                 @ENDIF
                                 @IF($user_about['social_other2'] != NULL)
-                                <a class="category-social-item" href="{{$user_about['social_other2']}}"><i class="fab fa-youtube" style="color:#ff0000;"></i>&nbsp;&nbsp;{{$user_about['social_other2']}}</a>
+                                <a target="_blank" class="category-social-item" href="{{$user_about['social_other2']}}"><i class="fab fa-youtube" style="color:#ff0000;"></i>&nbsp;&nbsp;{{$user_about['social_other2']}}</a>
                                 @ENDIF
                             </div>
                             @ENDIF

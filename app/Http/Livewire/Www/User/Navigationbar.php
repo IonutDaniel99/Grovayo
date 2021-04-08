@@ -2,7 +2,10 @@
 
 namespace App\Http\Livewire\Www\User;
 
+use App\Models\User;
 use App\Models\User_Follow;
+use App\Models\User_Posts;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -67,6 +70,41 @@ class Navigationbar extends Component
             ]);
         }
 
-        return view('livewire.www.user.navigationbar', compact('friends_request', 'latest_friends'));
+
+        //#########################################33
+        /**
+         * Likes = 1
+         *  Comments = 2
+         * 
+         */
+        $user_post = User_Posts::where('author_id', Auth::id())->where('author_id', '!=', Auth::id())->with('comments', 'likes')->orderBy("created_at", "DESC")->first();
+        $latest_activities = [];
+        if ($user_post !== null) {
+            foreach ($user_post->likes as $like) {
+                $user = User::where('id', $like->user_id)->select('name', 'profile_photo_path')->get()->first();
+                array_push($latest_activities, [
+                    "type" => 1,
+                    "like_user_name" => $user->name,
+                    "like_user_photo" => $user->profile_photo_path,
+                    "created_at" => $like->created_at->format('Y-m-d H:i:s'),
+                ]);
+            }
+
+            foreach ($user_post->comments as $comment) {
+                $user = User::where('id', $comment->user_id)->select('name', 'profile_photo_path')->get()->first();
+                array_push($latest_activities, [
+                    "type" => 2,
+                    "comment_user_name" => $user->name,
+                    "comment_user_photo" => $user->profile_photo_path,
+                    "comment_content" => $comment->comment_content,
+                    "comment_photo" => $user_post->post_content ? true : false,
+                    "created_at" => $comment->created_at->format('Y-m-d H:i:s'),
+                ]);
+            }
+            $latest_activities = collect($latest_activities)->take(8)->sortBy('created_at')->reverse()->toArray();
+        } else {
+            $latest_activities == NULL;
+        }
+        return view('livewire.www.user.navigationbar', ['friends_request' => $friends_request, 'latest_friends' => $latest_friends, "latest_activities" => $latest_activities]);
     }
 }

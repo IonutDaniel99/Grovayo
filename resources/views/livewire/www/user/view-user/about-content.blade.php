@@ -111,28 +111,28 @@
                         </div>
                         <div class="categories-items">
                             @IF($user_model['about_model']['social_webpage'] != NULL)
-                            <a class="category-social-item text-truncate" href="{{$user_model['social_webpage']}}"><i class="fas fa-globe" style="color:#51a5fb;"></i><span class="pl-3">{{$user_model['about_model']['social_webpage']}}</span></a>
+                            <a target="_blank" class="category-social-item text-truncate" href="{{$user_model['social_webpage']}}"><i class="fas fa-globe" style="color:#51a5fb;"></i><span class="pl-3">{{$user_model['about_model']['social_webpage']}}</span></a>
                             @ENDIF
                             @IF($user_model['about_model']['social_facebook'] != NULL)
-                            <a class="category-social-item text-truncate" href="{{$user_model['social_facebook']}}"><i class="fab fa-facebook-square" style="color:#3b5998;"></i><span class="pl-3">{{$user_model['about_model']['social_facebook']}}</span></a>
+                            <a target="_blank" class="category-social-item text-truncate" href="{{$user_model['social_facebook']}}"><i class="fab fa-facebook-square" style="color:#3b5998;"></i><span class="pl-3">{{$user_model['about_model']['social_facebook']}}</span></a>
                             @ENDIF
                             @IF($user_model['about_model']['social_twitter'] != NULL)
-                            <a class="category-social-item text-truncate" href="{{$user_model['social_twitter']}}"><i class="fab fa-twitter" style="color:#1da1f2;"></i><span class="pl-3">{{$user_model['about_model']['social_twitter']}}</span></a>
+                            <a target="_blank" class="category-social-item text-truncate" href="{{$user_model['social_twitter']}}"><i class="fab fa-twitter" style="color:#1da1f2;"></i><span class="pl-3">{{$user_model['about_model']['social_twitter']}}</span></a>
                             @ENDIF
                             @IF($user_model['about_model']['social_youtube'] != NULL)
-                            <a class="category-social-item text-truncate" href="{{$user_model['social_youtube']}}"><i class="fab fa-google-plus" style="color:#dd4b39;"></i><span class="pl-3">{{$user_model['about_model']['social_youtube']}}</span></a>
+                            <a target="_blank" class="category-social-item text-truncate" href="{{$user_model['social_youtube']}}"><i class="fab fa-google-plus" style="color:#dd4b39;"></i><span class="pl-3">{{$user_model['about_model']['social_youtube']}}</span></a>
                             @ENDIF
                             @IF($user_model['about_model']['social_instagram'] != NULL)
-                            <a class="category-social-item text-truncate" href="{{$user_model['social_instagram']}}"><i class="fab fa-instagram" style="color:#405de6;"></i><span class="pl-3">{{$user_model['about_model']['social_instagram']}}</span></a>
+                            <a target="_blank" class="category-social-item text-truncate" href="{{$user_model['social_instagram']}}"><i class="fab fa-instagram" style="color:#405de6;"></i><span class="pl-3">{{$user_model['about_model']['social_instagram']}}</span></a>
                             @ENDIF
                             @IF($user_model['about_model']['social_linkedin'] != NULL)
-                            <a class="category-social-item text-truncate" href="{{$user_model['social_linkedin']}}"><i class="fab fa-pinterest" style="color:#bd081c;"></i><span class="pl-3">{{$user_model['about_model']['social_linkedin']}}</span></a>
+                            <a target="_blank" class="category-social-item text-truncate" href="{{$user_model['social_linkedin']}}"><i class="fab fa-pinterest" style="color:#bd081c;"></i><span class="pl-3">{{$user_model['about_model']['social_linkedin']}}</span></a>
                             @ENDIF
                             @IF($user_model['about_model']['social_other1'] != NULL)
-                            <a class="category-social-item text-truncate" href="{{$user_model['social_other1']}}"><i class="fab fa-linkedin" style="color:#0077b5;"></i><span class="pl-3">{{$user_model['about_model']['social_other1']}}</span></a>
+                            <a target="_blank" class="category-social-item text-truncate" href="{{$user_model['social_other1']}}"><i class="fab fa-linkedin" style="color:#0077b5;"></i><span class="pl-3">{{$user_model['about_model']['social_other1']}}</span></a>
                             @ENDIF
                             @IF($user_model['about_model']['social_other2'] != NULL)
-                            <a class="category-social-item text-truncate" href="{{$user_model['social_other2']}}"><i class="fab fa-youtube" style="color:#ff0000;"></i><span class="pl-3">{{$user_model['about_model']['social_other2']}}</span></a>
+                            <a target="_blank" class="category-social-item text-truncate" href="{{$user_model['social_other2']}}"><i class="fab fa-youtube" style="color:#ff0000;"></i><span class="pl-3">{{$user_model['about_model']['social_other2']}}</span></a>
                             @ENDIF
                         </div>
                         @ELSE

@@ -1,4 +1,5 @@
 <div>
+    @if($user_posts->count() > 0)
     @foreach($user_posts as $post)
     <div class="activity-posts animate__animated animate__fadeIn" wire:key="post_{{ $post['id']}}">
         <div class="activity-group1 ">
@@ -71,4 +72,15 @@
         </div>
     </div>
     @endforeach
+    @else
+    <div class="activity-posts animate__animated animate__fadeIn">
+        <div class="activity-group-no-posts">
+            <img src="{{ $user_model->profile_photo_url }}" alt="{{ $user_model->profile_photo_url }}">
+            <div class="user-text3">
+                <h3>{{$user_model['name']}}</h3>
+                <h4>Joined {{date_format($user_model['created_at'],"F j, Y")}}</h4>
+            </div>
+        </div>
+    </div>
+    @endif
 </div>

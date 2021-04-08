@@ -1100,6 +1100,7 @@
         display: none;
     }
 
+
     .sugguest-user-dt img {
         display: none !important;
     }
@@ -1214,4 +1215,6 @@
     .container {
         max-width: 1170px !important;
     }
+
+
 }

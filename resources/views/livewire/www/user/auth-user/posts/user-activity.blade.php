@@ -1,4 +1,5 @@
 <div id="activity-post-component">
+    @if($user_posts->count() > 0)
     @foreach($user_posts as $post)
     <div class="activity-posts animate__animated animate__fadeIn" wire:key="post_{{ $post['id']}}">
         <div class="activity-group1 ">
@@ -58,7 +59,7 @@
                     <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->profile_photo_url }}">
                 </div>
                 <form wire:submit.prevent="replayUpload({{$post['id']}})" class="d-flex align-items-center justify-content-between">
-                    <input class="areply-post" type="text" placeholder="Write a reply" wire:model="replayText" require wire:key="label_{{ $post['id']}}">
+                    <input class="areply-post" type="text" placeholder="Write a reply" wire:model.defer="replayText" require wire:key="label_{{ $post['id']}}">
                     @error('replayText')
                     <script>
                         toastr.error('Comment can`t be empty.')
@@ -107,6 +108,17 @@
                 <div class="bounce3"></div>
             </div>
         </div>
+</div>
+@endif
+@else
+<div class="activity-posts animate__animated animate__fadeIn">
+    <div class="activity-group-no-posts">
+        <img src="{{ $user_model->profile_photo_url }}" alt="{{ $user_model->profile_photo_url }}">
+        <div class="user-text3">
+            <h3>Welcome {{$user_model['name']}}</h3>
+            <h4>Joined {{date_format($user_model['created_at'],"F j, Y")}}</h4>
+        </div>
+    </div>
 </div>
 @endif
 </div>

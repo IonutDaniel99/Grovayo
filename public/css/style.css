@@ -1257,7 +1257,6 @@ main {
 
 .categories-left-heading-content {
     display: flex;
-    align-items: center;
     text-align: center;
     justify-content: space-between;
 }
@@ -1292,7 +1291,7 @@ main {
 .sugguest-user {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     float: left;
     width: 100%;
     border-top: 1px solid #e1e1e1;
@@ -6217,6 +6216,24 @@ footer {
 .activity-group {
     display: flex;
     width: 100%;
+}
+
+.activity-group-no-posts {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.activity-group-no-posts .user-text3 {
+    text-align: center;
+    padding: 25px 0px 0px 0px;
+}
+
+.activity-group-no-posts img {
+    min-width: 150px;
+    min-height: 150px;
+    border-radius: 50%;
 }
 
 .maine-activity-img img {

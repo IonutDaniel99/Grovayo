@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Www\User\ViewUser;
 
+use App\Models\City;
 use App\Models\Country;
 use App\Models\State;
 use App\Models\User;
@@ -110,6 +111,7 @@ class ViewUserInfo extends Component
         $about_model = User_About::where('user_id', $user_model->id)->first();
         $about_model['user_state'] = State::where('id', $about_model['user_state'])->value('name');
         $about_model['user_country'] = Country::where('id', $about_model['user_country'])->value('name');
+        $about_model['user_city'] = City::where("id", $about_model['user_city'])->value('name');
         $follow_model = User_Follow::where("user_follow_id", $this->auth_user_id)->where('user_followed_id', $user_model->id);
 
         if ($follow_model->exists()) {

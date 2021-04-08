@@ -42,9 +42,8 @@
                         </ul>
                     </div>
                     <ul class="group-icons">
-                        <li><a href="{{ route('Search') }}" class="icon-set"><i class="fas fa-search"></i></a></li>
-                        <li class="dropdown">
-                            <a href="#" class="icon-set dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
+                        <li><a href="{{ route('Search') }}" class="icon-set d-flex align-items-center"><span class="pr-2">Search</span><i class="fas fa-search"></i></a></li>
+                        <li class="dropdown"><a href="#" class="icon-set dropdown-toggle-no-caret d-flex align-items-center" role="button" data-toggle="dropdown"><span class="pr-2">Requests</span>
                                 @if($friends_request == NULL)
                                 <i class="fas fa-user-plus"></i>
                                 @else
@@ -137,47 +136,79 @@
                             </div>
                             @endif
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="icon-set dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
+                        <li class="dropdown"><a href="#" class="icon-set dropdown-toggle-no-caret d-flex align-items-center" role="button" data-toggle="dropdown">
+                                <span class="pr-2">Activity</span>
                                 <i class="fas fa-bell"></i>
                             </a>
                             <div class="dropdown-menu notification-dropdown dropdown-menu-right">
+                                @if($latest_activities)
+                                @foreach($latest_activities as $activity)
+                                @if($activity['type'] == 1)
                                 <div class="user-request-list">
                                     <div class="request-users">
                                         <div class="user-request-dt">
-                                            <a href="#"><img src="images/user-dp-1.jpg" alt="">
-                                                <div class="user-title1">Jassica William </div>
-                                                <span>comment on your video.</span>
+                                            <a>
+                                                @if($friend['follower_request_profile_photo'])
+                                                <img class="wh-35" src="/{{$friend['follower_request_profile_photo']}}" alt="{{$friend['follower_request_username']}}">
+                                                @else
+                                                <img class="wh-35" src="https://ui-avatars.com/api/?name={{$friend['follower_request_username']}}&color=7F9CF5&background=EBF4FF" alt="{{$friend['follower_request_username']}}">
+                                                @endif
+                                            </a>
+                                            <a class="user-title">
+                                                <span class="text-truncate" style="max-width: 90px;">
+                                                    {{$activity['like_user_name']}}
+                                                </span>
+                                                <span class="time4">
+                                                    <d style="float:right">
+                                                        {{\Carbon\Carbon::parse($activity['created_at'])->diffForHumans(null, true).' ago'}}
+                                                    </d>
+                                                </span>
+                                                <span class="text-truncate mx-0">liked your last post.</span>
                                             </a>
                                         </div>
-                                        <div class="time5">2 min ago</div>
                                     </div>
                                 </div>
+                                @endif
+                                @if($activity['type'] == 2)
                                 <div class="user-request-list">
                                     <div class="request-users">
                                         <div class="user-request-dt">
-                                            <a href="#"><img src="images/user-dp-1.jpg" alt="">
-                                                <div class="user-title1">Rock Smith</div>
-                                                <span>your order is accepted.</span>
+                                            <a>
+                                                @if($activity['comment_user_photo'])
+                                                <img class="wh-35" src="/{{$activity['comment_user_photo']}}" alt="">
+                                                @else
+                                                <img class="wh-35" src="https://ui-avatars.com/api/?name={{$activity['comment_user_name']}}&amp;color=7F9CF5&amp;background=EBF4FF" alt="{{$activity['comment_user_name']}}">
+                                                @endif
+                                            </a>
+                                            <a class="user-title">
+                                                <span class="text-truncate" style="max-width: 90px;">
+                                                    {{$activity['comment_user_name']}}
+                                                </span>
+                                                <span class="time4">
+                                                    <d style="float:right">
+                                                        {{\Carbon\Carbon::parse($activity['created_at'])->diffForHumans(null, true).' ago'}}
+                                                    </d>
+                                                </span>
+                                                @if($activity['comment_photo'])
+                                                <span class="text-truncate mx-0">comment your last photo.</span>
+                                                @else
+                                                <span class="text-truncate mx-0">comment your last post.</span>
+                                                @endif
                                             </a>
                                         </div>
-                                        <div class="time5">5 min ago</div>
                                     </div>
                                 </div>
+                                @endif
+                                @endforeach
+                                @else
                                 <div class="user-request-list">
-                                    <div class="request-users">
+                                    <div class="request-users d-flex justify-content-center">
                                         <div class="user-request-dt">
-                                            <a href="#"><img src="images/user-dp-1.jpg" alt="">
-                                                <div class="user-title1">Joy Doe </div>
-                                                <span>your bill slip sent on your email.</span>
-                                            </a>
+                                            <span class="text-truncate mx-0">No one liked or comment your last post.</span>
                                         </div>
-                                        <div class="time5">10 min ago</div>
                                     </div>
                                 </div>
-                                <div class="user-request-list">
-                                    <a href="my_dashboard_all_notifications.html" class="view-all">View All Notifications</a>
-                                </div>
+                                @endif
                             </div>
                         </li>
                     </ul>

@@ -79,7 +79,7 @@ class RelatedUser extends Component
          */
         $allAroundWorld = [];
         $randomPeople = User::where('live_in', '!=', Auth::user()->live_in)->where('live_in', '!=', 'Actual Location')
-            ->whereDoesntHave('follower')
+            // ->whereDoesntHave('follower')
             ->whereHas('roles', function ($q) {
                 $q->where('name', "User");
             })
@@ -102,7 +102,6 @@ class RelatedUser extends Component
             $peopleAroundYourSetCountryLocation,
             $allAroundWorld
         );
-
         return view('livewire.www.user.related-user', compact('people', 'user_country', 'user_state'));
     }
 }

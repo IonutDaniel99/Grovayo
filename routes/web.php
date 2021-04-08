@@ -62,11 +62,6 @@ Route::post('/Profile/Update/ProfileVisibility', 'App\Http\Controllers\www\User\
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Requests', 'App\Http\Controllers\www\User\Auth_User\Settings\FriendsRequestController@index')->name("Settings_Friends_Request_Index");
 Route::post('/Friends-Request', 'App\Http\Controllers\www\User\Auth_User\Settings\FriendsRequestController@store')->name('Settings_Friends_Request_Store');
 
-// ####################### All Notification #################################
-
-Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Activity-History', 'App\Http\Controllers\www\User\Auth_User\Settings\ActivityHistoryController@index')->name("Settings_Activity_History_Index");
-Route::post('/Activity-History', 'App\Http\Controllers\www\User\Auth_User\Settings\ActivityHistoryController@store')->name('Settings_Activity_History_Store');
-
 // ####################### Social Networks #################################
 
 Route::middleware(['auth:sanctum', 'verified', 'role:User'])->get('/Social-Networks', 'App\Http\Controllers\www\User\Auth_User\Settings\SocialNetworksController@index')->name("Settings_Social_Networks_Index");
