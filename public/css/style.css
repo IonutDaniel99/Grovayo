@@ -1043,7 +1043,7 @@ span.right-cm {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin-right: 10px;
+    margin-right: 3px;
     min-width: 88px;
 }
 
@@ -1291,7 +1291,7 @@ main {
 .sugguest-user {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     float: left;
     width: 100%;
     border-top: 1px solid #e1e1e1;

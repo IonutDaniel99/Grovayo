@@ -282,7 +282,7 @@
                                     </div>
                                     <ol class="carousel-indicators mx-3" style="bottom: -18px !important;">
                                         <li data-target="#recipeCarousel" data-slide-to="0" class="active"></li>
-                                        @for($i=1;$i<=5;$i++) <li data-target="#recipeCarousel" data-slide-to={{$i}}>
+                                        @for($i=1;$i<=6;$i++) <li data-target="#recipeCarousel" data-slide-to={{$i}}>
                                             </li>
                                             @endfor
                                     </ol>

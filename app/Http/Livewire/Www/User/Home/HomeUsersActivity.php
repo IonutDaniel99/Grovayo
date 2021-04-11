@@ -31,7 +31,7 @@ class HomeUsersActivity extends Component
         $comment->save();
 
         $this->reset('replayText');
-        $this->emit('updateActivityCommentsPosts');
+        $this->emit('updateViewUserActivityCommentsPost');
     }
     public function render()
     {

@@ -163,7 +163,7 @@
                                                         {{\Carbon\Carbon::parse($activity['created_at'])->diffForHumans(null, true).' ago'}}
                                                     </d>
                                                 </span>
-                                                <span class="text-truncate mx-0">liked your last post.</span>
+                                                <span class="text-truncate mx-0"> <span class="like-item-liked" style="float:unset;"> <i class="fas fa-heart "></i> liked</span> your last post.</span>
                                             </a>
                                         </div>
                                     </div>
@@ -190,9 +190,9 @@
                                                     </d>
                                                 </span>
                                                 @if($activity['comment_photo'])
-                                                <span class="text-truncate mx-0">comment your last photo.</span>
+                                                <span class="text-truncate mx-0"><span style="color: #3f83f8;float:unset;"><i class="fas fa-comment-alt"></i> Comment</span>your last photo.</span>
                                                 @else
-                                                <span class="text-truncate mx-0">comment your last post.</span>
+                                                <span class="text-truncate mx-0"><span style="color: #3f83f8;float:unset;"><i class="fas fa-comment-alt"></i> Comment</span>your last photo.</span>
                                                 @endif
                                             </a>
                                         </div>

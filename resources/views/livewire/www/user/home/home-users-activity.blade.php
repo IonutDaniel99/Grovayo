@@ -2,6 +2,7 @@
     <div class="activity-posts animate__animated animate__fadeIn" wire:key="post_{{ $post['id']}}">
         <div class="activity-group1 ">
             <div class="main-user-dts1">
+                <a href="/user/{{$user_model['username']}}" class="d-flex">
                 @if($user_model['profile_photo_path'] == null)
                 <img src="https://ui-avatars.com/api/?name={{$user_model['name']}}&color=7F9CF5&background=EBF4FF" alt="{{$user_model['name']}}">
                 @else
@@ -11,6 +12,7 @@
                     <h4>{{$user_model['name']}}</h4>
                     <span>{{$post['created_at']->diffForHumans()}}</span>
                 </div>
+                </a>
             </div>
         </div>
         <div class="activity-descp">
@@ -69,7 +71,7 @@
             <div id="comments-div-scroll">
                 @IF($post->comments->count() > 0)
                 @livewire('www.user.view-user.posts.view-user-activity-comments', ['post_id' => $post['id'], 'user_id'=> $user_model['id']],key($post['id']))
-                @ENDIF
+                @endif
             </div>
         </div>
     </div>

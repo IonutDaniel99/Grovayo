@@ -74,10 +74,10 @@ class Navigationbar extends Component
         //#########################################33
         /**
          * Likes = 1
-         *  Comments = 2
+         * Comments = 2
          * 
          */
-        $user_post = User_Posts::where('author_id', Auth::id())->where('author_id', '!=', Auth::id())->with('comments', 'likes')->orderBy("created_at", "DESC")->first();
+        $user_post = User_Posts::where('author_id', Auth::id())->with('comments', 'likes')->orderBy("created_at", "DESC")->first();
         $latest_activities = [];
         if ($user_post !== null) {
             foreach ($user_post->likes as $like) {
