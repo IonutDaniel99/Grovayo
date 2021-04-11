@@ -8,6 +8,7 @@ use App\Models\Country;
 use App\Models\News;
 use App\Models\User_About;
 use App\Models\User_Follow;
+use App\Models\User_Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,9 @@ class HomeController extends Controller
         foreach (['world', 'science', 'technology', 'music', 'movies', 'games', 'sport'] as $topic) {
             $news[$topic] = News::inRandomOrder()->limit(3)->where("topic", $topic)->get();
         }
-        return view('www.user.home', compact('news', 'weather', 'user_about', 'user_follow'));
+
+        $followed = User_Follow::where('user_follow_id', Auth::id())->where('user_follow_status', 2)->pluck('user_followed_id');
+        return view('www.user.home', compact('news', 'weather', 'user_about', 'user_follow', 'followed'));
     }
 
     /**
