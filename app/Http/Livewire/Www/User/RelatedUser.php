@@ -24,7 +24,7 @@ class RelatedUser extends Component
          */
         $peopleAroundYourCurrentLocation = [];
         $allAroundCurrentLocation = User::where('live_in', Auth::user()->live_in)->take(6)
-            ->whereDoesntHave('follower')
+            ->whereHas('follower')
             ->where('id', '!=', Auth::id())
             ->whereHas('roles', function ($q) {
                 $q->where('name', "User");
@@ -40,7 +40,7 @@ class RelatedUser extends Component
          * Return people from your State location configured in profile settings
          */
         $peopleAroundYourSetStateLocation = [];
-        $allAroundSetStateLocation = User::whereDoesntHave('follower')
+        $allAroundSetStateLocation = User::whereHas('follower')
             ->whereHas('about_model', function ($q) {
                 $q->where('user_state', auth()->user()->about_model->user_state);
             })
@@ -59,7 +59,7 @@ class RelatedUser extends Component
          * Return people from your Country location configured in profile settings
          */
         $peopleAroundYourSetCountryLocation = [];
-        $allAroundSetCountryLocation = User::whereDoesntHave('follower')->where('live_in', '!=', Auth::user()->live_in)
+        $allAroundSetCountryLocation = User::whereHas('follower')->where('live_in', '!=', Auth::user()->live_in)
             ->whereHas('about_model', function ($q) {
                 $q->where('user_country', auth()->user()->about_model->user_country)
                     ->where('user_state', '!=', auth()->user()->about_model->user_state);
@@ -79,7 +79,7 @@ class RelatedUser extends Component
          */
         $allAroundWorld = [];
         $randomPeople = User::where('live_in', '!=', Auth::user()->live_in)->where('live_in', '!=', 'Actual Location')
-            // ->whereDoesntHave('follower')
+            ->whereHas('follower')
             ->whereHas('roles', function ($q) {
                 $q->where('name', "User");
             })

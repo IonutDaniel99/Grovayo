@@ -10,13 +10,15 @@
                                 <div class="col-lg-6">
                                     <div class="lg-left">
                                         <div class="lg-logo">
-                                            <img src="{{ asset('storage/www/logo.svg') }}" width="38" height="48" alt="{{ asset('storage/www/logo.svg') }}">
+                                            <img src="{{ asset('storage/www/logo.svg') }}" width="38" height="48"
+                                                alt="{{ asset('storage/www/logo.svg') }}">
                                             <span style="margin-left: 20px;font-size: 1.2rem;color: white;">Home</span>
                                             </a>
                                         </div>
                                         <div class="lr-text">
                                             <h2>Register Now</h2>
-                                            <p>Connect with friends and the world around you on {{ config('app.name')}}</p>
+                                            <p>Connect with friends and the world around you on {{ config('app.name')}}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -28,34 +30,46 @@
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="name"></label>
-                                                    <input class="title-discussion-input" id="name" type="text" name="name" placeholder="Full Name" required>
+                                                    <input class="title-discussion-input" id="name" type="text"
+                                                        name="name" placeholder="Full Name" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email"></label>
-                                                    <input class="title-discussion-input" id="email" type="email" name="email" placeholder="Email Address" required>
+                                                    <input class="title-discussion-input" id="email" type="email"
+                                                        name="email" placeholder="Email Address" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="username"></label>
-                                                    <input class="title-discussion-input" id="username" type="text" name="username" placeholder="Username" required>
+                                                    <input class="title-discussion-input" id="username" type="text"
+                                                        name="username" placeholder="Username" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password"></label>
-                                                    <input class="title-discussion-input" id="password" type="password" name="password" placeholder="Password" required>
+                                                    <input class="title-discussion-input" id="password" type="password"
+                                                        name="password" placeholder="Password" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password_confirmation"></label>
-                                                    <input class="title-discussion-input" id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="ConfirmPassword" />
+                                                    <input class="title-discussion-input" id="password_confirmation"
+                                                        class="block mt-1 w-full" type="password"
+                                                        name="password_confirmation" required
+                                                        autocomplete="new-password" placeholder="ConfirmPassword" />
                                                 </div>
                                                 <div class="categories-left-heading" x-data="{tooltip:false}">
                                                     <div @mouseenter="tooltip = true" @mouseleave="tooltip = false">
                                                         <button class="login-btn" type="submit">Register Now</button>
                                                     </div>
-                                                    <div class="relative" x-cloak x-show.transition.origin.top="tooltip" @mouseenter="tooltip = true" @mouseleave="tooltip = false">
-                                                        <div class="absolute z-10 w-auto p-2 mt-1 text-sm leading-tight text-white transform -translate-x-0 -translate-y-40 bg-orange-500 rounded-lg shadow-lg">
-                                                            By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy. You may receive Email notifications from us and can opt out at any time </div>
+                                                    <div class="relative" x-cloak x-show.transition.origin.top="tooltip"
+                                                        @mouseenter="tooltip = true" @mouseleave="tooltip = false">
+                                                        <div
+                                                            class="absolute z-10 w-auto p-2 mt-1 text-sm leading-tight text-white transform -translate-x-0 -translate-y-40 bg-orange-500 rounded-lg shadow-lg">
+                                                            By clicking Sign Up, you agree to our Terms, Data Policy and
+                                                            Cookie Policy. You may receive Email notifications from us
+                                                            and can opt out at any time </div>
                                                     </div>
                                                 </div>
-                                                <div class="login-link">If you have an account? <a href="{{ route('login') }}">Login Now</a></div>
+                                                <div class="login-link">If you have an account? <a
+                                                        href="{{ route('login') }}">Login Now</a></div>
                                             </form>
                                         </div>
                                     </div>
@@ -71,7 +85,8 @@
     <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 100px;">
         <div class="toast" style="position: absolute; top: 0; right: 0; opacity: 1 !important; margin: 35px;">
             <div class="toast-header">
-                <svg class="bd-placeholder-img rounded mr-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+                <svg class="bd-placeholder-img rounded mr-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
                     <rect width="100%" height="100%" fill="#F32013"></rect>
                 </svg>
                 <strong class="mr-auto">Creditential Error</strong>

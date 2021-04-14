@@ -17,22 +17,17 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script src="{{ asset('js/all.js') }}" defer></script>
     <script src="{{ asset('js/jquery.min.js') }}" defer></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" defer></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js') }}" defer></script>
-    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js') }}" defer></script>
 </head>
 
 <body class="body-bg">
     <div class="font-sans text-gray-900 antialiased">
         {{ $slot }}
     </div>
-    @jquery
-    @toastr_js
-    @toastr_render
 </body>
 
 </html>

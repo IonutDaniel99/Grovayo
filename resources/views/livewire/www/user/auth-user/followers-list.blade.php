@@ -36,8 +36,10 @@
                                 </div>
                                 <ul class="follow-msg-dt">
                                     <li>
-                                        <div class="msg-dt-sm">
-                                            <button class="msg-btn1" wire:click="message()">Message</button>
+                                        <div class="user-follow" style="margin:0 auto">
+                                            <a type="button" class="msg-btn1"
+                                                href="/user/{{$follower['follower_request_username']}}"
+                                                style="padding: 5px 10px !important">View Profile</a>
                                         </div>
                                     </li>
                                     <li>
@@ -46,9 +48,6 @@
                                         </div>
                                     </li>
                                 </ul>
-                                <div class="profile-link">
-                                    <a href="/user/{{$follower['follower_request_username']}}">View Profile</a>
-                                </div>
                             </div>
                         </div>
                     </div>

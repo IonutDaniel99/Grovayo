@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Create and account or log in to {{ config('app.name', 'Laravel') }}. A social webpage where fun & creativity, edit & share photos with friends & family become interactve.">
     <meta http-equiv="Cache-control" content="public">
-    <title>Connected as {{ Auth::user()->name  }} | {{ config('app.name')}}</title>
+    <title>{{ Auth::user()->name  }} | {{ Auth::user()->username  }} | {{ config('app.name')}}</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
