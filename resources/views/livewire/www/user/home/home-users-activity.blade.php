@@ -3,16 +3,27 @@
         <div class="activity-group1 ">
             <div class="main-user-dts1">
                 <a href="/user/{{$user_model['username']}}" class="d-flex">
-                @if($user_model['profile_photo_path'] == null)
-                <img src="https://ui-avatars.com/api/?name={{$user_model['name']}}&color=7F9CF5&background=EBF4FF" alt="{{$user_model['name']}}">
-                @else
-                <img src="/{{$user_model['profile_photo_path']}}" alt="{{$user_model['name']}}" style="max-height: 110px;">
-                @endif
-                <div class="user-text3">
-                    <h4>{{$user_model['name']}}</h4>
-                    <span>{{$post['created_at']->diffForHumans()}}</span>
-                </div>
+                    @if($user_model['profile_photo_path'] == null)
+                    <img src="https://ui-avatars.com/api/?name={{$user_model['name']}}&color=7F9CF5&background=EBF4FF" alt="{{$user_model['name']}}">
+                    @else
+                    <img src="/{{$user_model['profile_photo_path']}}" alt="{{$user_model['name']}}" style="max-height: 110px;">
+                    @endif
+                    <div class="user-text3">
+                        <h4>{{$user_model['name']}}</h4>
+                        <span>{{$post['created_at']->diffForHumans()}}</span>
+                    </div>
                 </a>
+            </div>
+            <div class="dot-option dropdown">
+                <span class="dropdown-toggle-no-caret" role="button" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></span>
+                <div class="dropdown-menu post-rt-dropdown dropdown-menu-right">
+                    <a class="post-link-item" wire:click.prevent="report_post({{$post['id']}})" onclick="report_upload()">Report</a>
+                    <script>
+                        function report_upload() {
+                            toastr.success('Your report has been sent.')
+                        }
+                    </script>
+                </div>
             </div>
         </div>
         <div class="activity-descp">

@@ -14,7 +14,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('www.admin.admin');
+        $users_today = 1;
+        $posts_today = 1;
+        $likes_today = 1;
+        $reports_today = 1;
+        return view('www.admin.dashboard');
     }
 
     /**

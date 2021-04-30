@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Www\User\Home;
 
+use App\Models\Posts_Reports;
 use App\Models\User;
 use App\Models\User_Comments;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,14 @@ class HomeUsersActivity extends Component
     public function load()
     {
         $this->amount += 5;
+    }
+
+    public function report_post($id)
+    {
+        $report = new Posts_Reports;
+        $report->user_id = Auth::id();
+        $report->post_id = $id;
+        $report->save();
     }
 
     public function replayUpload($post_id)
