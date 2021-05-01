@@ -2,12 +2,23 @@
     @if($user_posts->count() > 0)
     @foreach($user_posts as $post)
     <div class="activity-posts animate__animated animate__fadeIn" wire:key="post_{{ $post['id']}}">
-        <div class="activity-group1 ">
+        <div class="activity-group1">
             <div class="main-user-dts1">
                 <img src="{{ $user_model->profile_photo_url }}" alt="{{ $user_model->profile_photo_url }}">
                 <div class="user-text3">
                     <h4>{{$user_model['name']}}</h4>
                     <span>{{$post['created_at']->diffForHumans()}}</span>
+                </div>
+            </div>
+            <div class="dot-option dropdown">
+                <span class="dropdown-toggle-no-caret" role="button" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></span>
+                <div class="dropdown-menu post-rt-dropdown dropdown-menu-right">
+                    <a class="post-link-item" wire:click.prevent="report_post({{$post['id']}})" onclick="report_upload()">Report</a>
+                    <script>
+                        function report_upload() {
+                            toastr.success('Your report has been sent.')
+                        }
+                    </script>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Www\User\ViewUser\Posts;
 
+use App\Models\Posts_Reports;
 use App\Models\User;
 use App\Models\User_Comments;
 use App\Models\User_Posts;
@@ -25,6 +26,17 @@ class ViewUserActivity extends Component
     public function load()
     {
         $this->amount += 5;
+    }
+
+    public function report_post($id)
+    {
+        $is_report = Posts_Reports::where('user_id', Auth::id())->where("post_id", $id)->exists();
+        if (!$is_report) {
+            $report = new Posts_Reports();
+            $report->user_id = Auth::id();
+            $report->post_id = $id;
+            $report->save();
+        }
     }
 
     public function replayUpload($post_id)

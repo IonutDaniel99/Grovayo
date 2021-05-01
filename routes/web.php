@@ -97,6 +97,7 @@ Route::post('/Disable-Account/Google/Delete', 'App\Http\Controllers\www\User\Aut
 // ############################ ADMIN ###############################
 
 Route::middleware(['auth:sanctum', 'verified', 'role:Support|Moderator|Administrator|Owner'])->get('/Admin', 'App\Http\Controllers\www\Admin\AdminController@index')->name("Admin_Dashboard_Index");
+Route::middleware(['auth:sanctum', 'verified', 'role:Support|Moderator|Administrator|Owner'])->get('/Users', 'App\Http\Controllers\www\Admin\UsersController@index')->name("Users_Dashboard_Index");
 
 // ########################### USER PROFILE #########################
 

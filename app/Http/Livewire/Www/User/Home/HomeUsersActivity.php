@@ -21,10 +21,13 @@ class HomeUsersActivity extends Component
 
     public function report_post($id)
     {
-        $report = new Posts_Reports;
-        $report->user_id = Auth::id();
-        $report->post_id = $id;
-        $report->save();
+        $is_report = Posts_Reports::where('user_id', Auth::id())->where("post_id", $id)->exists();
+        if (!$is_report) {
+            $report = new Posts_Reports();
+            $report->user_id = Auth::id();
+            $report->post_id = $id;
+            $report->save();
+        }
     }
 
     public function replayUpload($post_id)

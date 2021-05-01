@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\www\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Livewire\Www\User\AuthUser\Posts;
+use App\Models\Likes;
+use App\Models\Posts_Reports;
+use App\Models\User_Posts;
+use Carbon\Carbon;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,11 +20,15 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users_today = 1;
-        $posts_today = 1;
-        $likes_today = 1;
-        $reports_today = 1;
-        return view('www.admin.dashboard');
+        $dashboard_data = [
+            'users_today' => User::whereDate('created_at', Carbon::today())->count(),
+            'posts_today' => User_Posts::whereDate('created_at', Carbon::today())->count(),
+            'likes_today' => Likes::whereDate('created_at', Carbon::today())->count(),
+            'reports_today' => Posts_Reports::whereDate('created_at', Carbon::today())->count(),
+            'latest_users' => User::orderBy('created_at', 'desc')->take(12)->get(),
+            'latest_reports' => Posts_Reports::orderBy('created_at', 'desc')->take(12)->get(),
+        ];
+        return view('www.admin.dashboard', ['dashboard_data' => $dashboard_data]);
     }
 
     /**

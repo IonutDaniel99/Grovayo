@@ -182,3 +182,12 @@
     max-width: 35px;
     min-width: 35px;
 }
+
+
+.w-5 {
+    width: 1.5rem;
+}
+
+.h-5 {
+    height: 1.5rem;
+}

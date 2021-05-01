@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/ionicons.min.css') }}" rel="stylesheet" />
@@ -36,7 +37,77 @@
 </head>
 
 <body>
-    {{ $slot }}
+
+    <body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
+        <div class="wrapper" style="height: auto; min-height: 100%;">
+
+            <header class="main-header">
+
+                <!-- Logo -->
+                <a href="index2.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>A</b>LT</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>Admin</b>LTE</span>
+                </a>
+
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar" style="height: auto;">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            @if(Auth::user()->profile_photo_url)
+                            <img src="{{Auth::user()->profile_photo_url}}" class="img-circle" alt="User Image">
+                            @else
+                            <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}&color=7F9CF5&background=EBF4FF"">
+                            @endif
+                        </div>
+                        <div class=" pull-left info">
+                            <p>{{ Auth::user()->username }}</p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <ul class="sidebar-menu tree" data-widget="tree">
+                        <li class="header">MAIN NAVIGATION</li>
+                        <li>
+                            <a href="{{route('Admin_Dashboard_Index')}}">
+                                <i class="fa fa-calendar"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('Users_Dashboard_Index')}}">
+                                <i class="fa fa-calendar"></i> <span>Users</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="calendar.html">
+                                <i class="fa fa-calendar"></i> <span>Reports</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="calendar.html">
+                                <i class="fa fa-calendar"></i> <span>Admin</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+            <div class="content-wrapper" style="min-height: 926px;">
+                {{ $slot }}
+            </div>
+        </div>
+        <div class="jvectormap-label"></div>
+    </body>
     @livewireScripts
 
 </body>
