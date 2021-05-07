@@ -57,11 +57,11 @@
             <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-yellow"><i class="fa fa-flag"></i></span>
+                    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Reports Today</span>
-                        <span class="info-box-number">{{$dashboard_data['reports_today']}}</span>
+                        <span class="info-box-text">Total Accounts</span>
+                        <span class="info-box-number">{{$dashboard_data['total_accounts']}}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -109,7 +109,7 @@
             <div class="col-md-8">
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Latest Reports</h3>
+                        <h3 class="box-title">Latest Posts</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
@@ -123,41 +123,26 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Reported User</th>
-                                        <th>Reported By</th>
-                                        <th>Date</th>
-                                        <th class="d-flex align-items-center justify-content-center">Actions</th>
+                                        <th width="20%">User</th>
+                                        <th width="70%">Content</th>
+                                        <th width="10%">Likes</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($dashboard_data["latest_reports"] as $report)
+                                    @foreach($dashboard_data["latest_posts"] as $post)
                                     <tr>
-                                        <td><a href="/users/">{{$report['id']}}</a></td>
-                                        <td>{{$report['user_id']}}</td>
-                                        <td>{{$report['post_id']}}</td>
-                                        <td>{{{$report['created_at']->diffForHumans()}}}</td>
-                                        <td class="d-flex align-items-center justify-content-center">
-                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-outline-success btn-simple-primary" data-original-title="View">
-                                                <i class="fa fa-eye"></i>
-                                            </button>
-                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-outline-primary btn-simple-primary" data-original-title="Edit Task">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-outline-danger btn-simple-danger" data-original-title="Remove">
-                                                <i class="fa fa-close"></i>
-                                            </button>
-                                        </td>
+                                        <td>{{$post['id']}}</td>
+                                        <td width="20%"><a target="_blank" href="/user/{{App\Models\User::where('id',$post['author_id'])->pluck('username')->first()}}">{{App\Models\User::where('id',$post['author_id'])->pluck('name')->first()}}</a> </td>
+                                        <td width="70%" style="max-width: 65%; position:absolute;" class="text-truncate">{{$post['post_description']}}</td>
+                                        <td width="10%">{{$post['post_likes']}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.table-responsive -->
-                    </div>
-                    <div class="box-footer text-center">
-                        <a href="javascript:void(0)" class="uppercase">View All Reports</a>
                     </div>
                 </div>
+                {{ $dashboard_data["latest_posts"]->links() }}
             </div>
         </div>
     </section>

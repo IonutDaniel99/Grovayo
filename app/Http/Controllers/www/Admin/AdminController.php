@@ -20,13 +20,14 @@ class AdminController extends Controller
      */
     public function index()
     {
+
         $dashboard_data = [
             'users_today' => User::whereDate('created_at', Carbon::today())->count(),
             'posts_today' => User_Posts::whereDate('created_at', Carbon::today())->count(),
             'likes_today' => Likes::whereDate('created_at', Carbon::today())->count(),
-            'reports_today' => Posts_Reports::whereDate('created_at', Carbon::today())->count(),
+            'total_accounts' => User::count(),
             'latest_users' => User::orderBy('created_at', 'desc')->take(12)->get(),
-            'latest_reports' => Posts_Reports::orderBy('created_at', 'desc')->take(12)->get(),
+            'latest_posts' => User_Posts::orderBy('created_at', 'desc')->paginate(20)
         ];
         return view('www.admin.dashboard', ['dashboard_data' => $dashboard_data]);
     }

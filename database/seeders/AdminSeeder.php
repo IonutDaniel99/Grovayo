@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
         $secret_string = Str::random(30);
         $user = User::create([
             'name' => 'Admin',
-            'email' => 'admin@gravayo.com',
+            'email' => 'admin@grovayo.com',
             'username' => 'admin',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

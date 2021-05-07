@@ -81,24 +81,20 @@
                         <li class="header">MAIN NAVIGATION</li>
                         <li>
                             <a href="{{route('Admin_Dashboard_Index')}}">
-                                <i class="fa fa-calendar"></i> <span>Dashboard</span>
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{route('Users_Dashboard_Index')}}">
-                                <i class="fa fa-calendar"></i> <span>Users</span>
+                                <i class="fa fa-users"></i> <span>Users</span>
                             </a>
                         </li>
                         <li>
-                            <a href="calendar.html">
-                                <i class="fa fa-calendar"></i> <span>Reports</span>
+                            <a href="{{ route('logout') }}">
+                                <i class="fa fa-share"></i> <span>Logout</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="calendar.html">
-                                <i class="fa fa-calendar"></i> <span>Admin</span>
-                            </a>
-                        </li>
+
                     </ul>
                 </section>
             </aside>

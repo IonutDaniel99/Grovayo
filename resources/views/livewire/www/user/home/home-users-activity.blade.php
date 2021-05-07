@@ -14,17 +14,6 @@
                     </div>
                 </a>
             </div>
-            <div class="dot-option dropdown">
-                <span class="dropdown-toggle-no-caret" role="button" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></span>
-                <div class="dropdown-menu post-rt-dropdown dropdown-menu-right">
-                    <a class="post-link-item" wire:click.prevent="report_post({{$post['id']}})" onclick="report_upload()">Report</a>
-                    <script>
-                        function report_upload() {
-                            toastr.success('Your report has been sent.')
-                        }
-                    </script>
-                </div>
-            </div>
         </div>
         <div class="activity-descp">
             @if($post['post_description'] != null && $post['post_content'] == null)

@@ -59,9 +59,11 @@
                                     <button type="button" data-toggle="tooltip" title="" class="btn btn-outline-primary btn-simple-primary" data-original-title="Edit Task">
                                         <i class="fa fa-edit"></i>
                                     </button>
+                                    @can('Moderator')
                                     <button type="button" data-toggle="tooltip" title="" class="btn btn-outline-danger btn-simple-danger" data-original-title="Remove">
                                         <i class="fa fa-close"></i>
                                     </button>
+                                    @endcan
                                 </td>
                             </tr>
                             @endforeach

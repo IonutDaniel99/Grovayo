@@ -28,16 +28,6 @@ class ViewUserActivity extends Component
         $this->amount += 5;
     }
 
-    public function report_post($id)
-    {
-        $is_report = Posts_Reports::where('user_id', Auth::id())->where("post_id", $id)->exists();
-        if (!$is_report) {
-            $report = new Posts_Reports();
-            $report->user_id = Auth::id();
-            $report->post_id = $id;
-            $report->save();
-        }
-    }
 
     public function replayUpload($post_id)
     {

@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -98,6 +99,7 @@ Route::post('/Disable-Account/Google/Delete', 'App\Http\Controllers\www\User\Aut
 
 Route::middleware(['auth:sanctum', 'verified', 'role:Support|Moderator|Administrator|Owner'])->get('/Admin', 'App\Http\Controllers\www\Admin\AdminController@index')->name("Admin_Dashboard_Index");
 Route::middleware(['auth:sanctum', 'verified', 'role:Support|Moderator|Administrator|Owner'])->get('/Users', 'App\Http\Controllers\www\Admin\UsersController@index')->name("Users_Dashboard_Index");
+Route::middleware(['auth:sanctum', 'verified', 'role:Support|Moderator|Administrator|Owner'])->get('/Reports', 'App\Http\Controllers\www\Admin\ReportsController@index')->name("Reports_Dashboard_Index");
 
 // ########################### USER PROFILE #########################
 
@@ -124,6 +126,13 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
     return redirect('/Home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::get('logout', function () {
+    auth()->logout();
+    Session()->flush();
+
+    return Redirect::to('/');
+})->name('logout');
 
 // ####################### Personal Info #################################
 Route::get('/Debug', 'App\Http\Controllers\Debug\Debug@index')->name("Debug");
